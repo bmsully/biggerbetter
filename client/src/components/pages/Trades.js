@@ -10,3 +10,5 @@ const Trades = () => {
     </div>
   );
 };
+
+export default Trades;
