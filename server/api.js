@@ -34,13 +34,30 @@ router.get("/whoami", (req, res) => {
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
-  if (req.user) socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
+  if (req.user)
+    socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
 
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
+
+// router.get("", (req, res) => { // Retrieves data
+
+// })
+
+// router.post("", (req, res) => { // Creates data
+
+// })
+
+// router.put("", (req, res) => { // Fetches then modifies data
+
+// })
+
+// router.delete("", (req, res) => { // Deletes data
+
+// })
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
