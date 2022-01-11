@@ -9,6 +9,7 @@ const ItemSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  active: Boolean,
 });
 
 // compile model from schema

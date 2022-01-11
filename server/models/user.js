@@ -6,11 +6,15 @@ const UserSchema = new mongoose.Schema({
   googleid: String,
   email: String,
   target: String, //user's target item
+  img: {
+    data: Buffer,
+    contentType: String,
+  },
   stats: {
     join: Date, //Date when user joined
     propto: Number, //Number of proposals made to user
     propby: Number, //Number of proposals made by user
-    approved: Number, //Number of proposals approved by user
+    trades: Number, //Number of trades user has made
   },
 });
 

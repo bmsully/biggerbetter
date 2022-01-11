@@ -51,6 +51,7 @@ const App = () => {
         <Profile path="/profile" />
         <NotFound default />
       </Router>
+      {/* <SideBar /> */}
     </>
   );
 };
