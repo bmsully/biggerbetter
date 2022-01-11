@@ -40,8 +40,12 @@ const App = () => {
 
   return (
     <>
+      {/* <NavBar /> */}
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+        <Explore path="/explore" />
+        <Trades path="/trades" />
+        <Profile path="/profile" />
         <NotFound default />
       </Router>
     </>
