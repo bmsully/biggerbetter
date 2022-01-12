@@ -40,7 +40,9 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
         />
       ) : (
         <div>
-          <button>Sign up!</button>
+          <Link to="/profile" className="NavBar-linkAsButton">
+            Sign up!
+          </Link>
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Login"

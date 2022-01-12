@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GoogleLogin from "react-google-login";
+import { Link } from "@reach/router";
 
 import "../../utilities.css";
 import "./Landing.css";
@@ -26,7 +27,9 @@ const Landing = ({ userId, handleLogin }) => {
       ) : (
         <div>
           <h3>Get Started!</h3>
-          <button>Sign up!</button>
+          <Link to="/profile" className="Landing-linkAsButton">
+            Sign up!
+          </Link>
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Login"
