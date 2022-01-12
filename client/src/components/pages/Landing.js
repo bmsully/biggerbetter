@@ -27,14 +27,14 @@ const Landing = ({ userId, handleLogin }) => {
       ) : (
         <div>
           <h3>Get Started!</h3>
-          <Link to="/profile" className="Landing-linkAsButton">
+          <Link to="/signup" className="Landing-linkAsButton">
             Sign up!
           </Link>
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Login"
             onSuccess={handleLogin}
-            onFailure={(err) => console.log(err)}
+            onFailure={(err) => console.log(err) /*redirect to sign up page or alert maybe? */}
           />
         </div>
       )}

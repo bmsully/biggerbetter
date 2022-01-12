@@ -5,6 +5,7 @@ import Landing from "./pages/Landing.js";
 import Explore from "./pages/Explore.js";
 import Trades from "./pages/Trades.js";
 import Profile from "./pages/Profile.js";
+import SignUp from "./pages/SignUp.js";
 import NavBar from "./modules/NavBar.js";
 
 import "../utilities.css";
@@ -50,6 +51,7 @@ const App = () => {
         <Explore path="/explore" />
         <Trades path="/trades" />
         <Profile path="/profile" />
+        <SignUp path="/signup" />
         {/* <Profile path="/profile:userId" */}
         <NotFound default />
       </Router>

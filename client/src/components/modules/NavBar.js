@@ -40,14 +40,14 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
         />
       ) : (
         <div>
-          <Link to="/profile" className="NavBar-linkAsButton">
+          <Link to="/signup" className="NavBar-linkAsButton">
             Sign up!
           </Link>
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Login"
             onSuccess={handleLogin}
-            onFailure={(err) => console.log(err)}
+            onFailure={(err) => console.log(err) /*redirect to sign up page or alert maybe? */}
           />
         </div>
       )}
