@@ -5,6 +5,7 @@ import Landing from "./pages/Landing.js";
 import Explore from "./pages/Explore.js";
 import Trades from "./pages/Trades.js";
 import Profile from "./pages/Profile.js";
+import NavBar from "./modules/NavBar.js";
 
 import "../utilities.css";
 
@@ -43,12 +44,13 @@ const App = () => {
 
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar userId={userId} handleLogin={handleLogin} handleLogout={handleLogout} />
       <Router>
-        <Landing path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+        <Landing path="/" />
         <Explore path="/explore" />
         <Trades path="/trades" />
         <Profile path="/profile" />
+        {/* <Profile path="/profile:userId" */}
         <NotFound default />
       </Router>
       {/* <SideBar /> */}
