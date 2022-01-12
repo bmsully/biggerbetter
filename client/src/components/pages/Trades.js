@@ -28,10 +28,7 @@ const Trades = () => {
         <button className={activeTab === "Accepted" ? "active" : ""} onClick={handleAccepted}>
           Accepted
         </button>
-        <button
-          className={activeTab === "Complete" ? "active" : "" + "u-bold"}
-          onClick={handleComplete}
-        >
+        <button className={activeTab === "Complete" ? "active" : "" + ""} onClick={handleComplete}>
           Complete
         </button>
       </div>
