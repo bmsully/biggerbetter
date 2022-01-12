@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
+import "../../utilities.css";
 import "./NavBar.css";
 
 // Identifies your web application to Google's authentication service
@@ -15,10 +16,16 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
   return (
     <nav>
       <div>BiggerBetter</div>
-      <Link to="/">Home</Link>
-      <Link to="/explore">Explore</Link>
-      <Link to="/trades">Trades</Link>
-      <Link to="/profile">Profile</Link>
+      <div>
+        <Link to="/">Home</Link>
+        {userId && (
+          <>
+            <Link to="/explore">Explore</Link>
+            <Link to="/trades">Trades</Link>
+            <Link to="/profile">Profile</Link>
+          </>
+        )}
+      </div>
       {/* {userId && (
           <Link to={`/profile/${userId}`}>
             Profile
@@ -32,12 +39,15 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
           onFailure={(err) => console.log(err)}
         />
       ) : (
-        <GoogleLogin
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Login"
-          onSuccess={handleLogin}
-          onFailure={(err) => console.log(err)}
-        />
+        <div>
+          <button>Sign up!</button>
+          <GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={handleLogin}
+            onFailure={(err) => console.log(err)}
+          />
+        </div>
       )}
     </nav>
   );

@@ -46,7 +46,7 @@ const App = () => {
     <>
       <NavBar userId={userId} handleLogin={handleLogin} handleLogout={handleLogout} />
       <Router>
-        <Landing path="/" />
+        <Landing path="/" userId={userId} handleLogin={handleLogin} />
         <Explore path="/explore" />
         <Trades path="/trades" />
         <Profile path="/profile" />

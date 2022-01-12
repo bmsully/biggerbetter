@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import GoogleLogin from "react-google-login";
 
 import "../../utilities.css";
 import "./Landing.css";
 
-const Landing = () => {
+// Identifies your web application to Google's authentication service
+const GOOGLE_CLIENT_ID =
+  "1047284490856-5h5pbkhftbnlhumb5t3rtfm9hq1gv5rv.apps.googleusercontent.com";
+
+const Landing = ({ userId, handleLogin }) => {
   return (
     <>
       <h1>BiggerBetter Landing Page</h1>
@@ -16,6 +21,20 @@ const Landing = () => {
       </ul>
       <h2>From Weblab staff:</h2>
       <a href="http://weblab.to/get-started">Check out this getting started guide</a>
+      {userId ? (
+        <></>
+      ) : (
+        <div>
+          <h3>Get Started!</h3>
+          <button>Sign up!</button>
+          <GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={handleLogin}
+            onFailure={(err) => console.log(err)}
+          />
+        </div>
+      )}
     </>
   );
 };
