@@ -21,18 +21,27 @@ const Trades = () => {
   return (
     <div>
       <h1>Trades Page</h1>
-      <div>
-        <button className={activeTab === "Pending" ? "active" : ""} onClick={handlePending}>
+      <div className="Trades-buttonGroup">
+        <button
+          className={(activeTab === "Pending" ? "Trades-active" : "") + "Trades-button"}
+          onClick={handlePending}
+        >
           Pending
         </button>
-        <button className={activeTab === "Accepted" ? "active" : ""} onClick={handleAccepted}>
+        <button
+          className={(activeTab === "Accepted" ? "Trades-active" : "") + "Trades-button"}
+          onClick={handleAccepted}
+        >
           Accepted
         </button>
-        <button className={activeTab === "Complete" ? "active" : "" + ""} onClick={handleComplete}>
+        <button
+          className={(activeTab === "Complete" ? "Trades-active" : "") + "Trades-button"}
+          onClick={handleComplete}
+        >
           Complete
         </button>
       </div>
-      <div className="outlet">
+      <div className="Trades-outlet">
         {activeTab === "Pending" ? (
           <Pending />
         ) : activeTab === "Accepted" ? (

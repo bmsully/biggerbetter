@@ -1,4 +1,23 @@
-.active {
+.Trades-buttonGroup {
+  display: flex;
+}
+
+.Trades-button {
+  font-size: 16px;
+  padding: 10px 60px;
+  cursor: pointer;
+  opacity: 0.6;
+  background: white;
+  border: 0;
+  outline: none;
+  display: inline-block;
+}
+
+.Trades-active {
   font-weight: 600;
-  /* update this later */
+  border-bottom: 2px solid black;
+  opacity: 1;
+  background: white;
+  border: 0;
+  outline: none;
 }
