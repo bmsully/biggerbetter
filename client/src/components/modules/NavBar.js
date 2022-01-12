@@ -17,8 +17,8 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
       <div>BiggerBetter</div>
       <Link to="/">Home</Link>
       <Link to="/explore">Explore</Link>
-      <Link to="/trades/">Trades</Link>
-      <Link to="/profile/">Profile</Link>
+      <Link to="/trades">Trades</Link>
+      <Link to="/profile">Profile</Link>
       {/* {userId && (
           <Link to={`/profile/${userId}`}>
             Profile
