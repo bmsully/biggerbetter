@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
-import Skeleton from "./pages/Skeleton.js";
+import Landing from "./pages/Landing.js";
 import Explore from "./pages/Explore.js";
 import Trades from "./pages/Trades.js";
 import Profile from "./pages/Profile.js";
@@ -45,7 +45,7 @@ const App = () => {
     <>
       {/* <NavBar /> */}
       <Router>
-        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+        <Landing path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <Explore path="/explore" />
         <Trades path="/trades" />
         <Profile path="/profile" />

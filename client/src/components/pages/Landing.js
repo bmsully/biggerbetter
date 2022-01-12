@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
 import "../../utilities.css";
-import "./Skeleton.css";
+import "./Landing.css";
 
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 const GOOGLE_CLIENT_ID =
   "1047284490856-5h5pbkhftbnlhumb5t3rtfm9hq1gv5rv.apps.googleusercontent.com";
 
-const Skeleton = ({ userId, handleLogin, handleLogout }) => {
+const Landing = ({ userId, handleLogin, handleLogout }) => {
   return (
     <>
       {userId ? (
@@ -46,4 +46,4 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
   );
 };
 
-export default Skeleton;
+export default Landing;

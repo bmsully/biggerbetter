@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../../utilities.css";
-import "./Skeleton.css";
+import "./NotFound.css";
 
 const NotFound = () => {
   return (
