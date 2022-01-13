@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
 import "../../utilities.css";

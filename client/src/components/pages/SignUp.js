@@ -1,4 +1,6 @@
 import React, { Component, useState } from "react";
+import NewSignUp from "../modules/NewSignUp.js";
+import GoogleLogin from "react-google-login";
 
 import "../../utilities.css";
 import "./SignUp.css";
@@ -9,10 +11,9 @@ const GOOGLE_CLIENT_ID =
 
 const SignUp = ({ handleLogin }) => {
   const [nextPressed, setNextPressed] = useState(false);
-  const [nameEntry, setNameEntry] = useState("");
-  const [targetItem, setTargetItem] = useState("");
+  const [name, setName] = useState("");
+  const [item, setItem] = useState("");
   const [image, setImage] = useState(null);
-  //Need text entry functions
 
   //Need text parsing functions
 
@@ -22,17 +23,47 @@ const SignUp = ({ handleLogin }) => {
 
   //Will need google login button too
 
+  /**
+   *
+   * Proptypes
+   * @param {string} defaultText is the placeholder text
+   * @param {string} storyId to add comment to
+   * NOTE TO BRADY - pass in defaultText when working on this in future
+   */
+
+  const showNext = (props) => {
+    setNextPressed(true);
+    setName(props.name);
+    setItem(props.item);
+    // const addComment = (data) => {
+    //   //we get data.name and data.target returned from
+    //   const body = { parent: props.storyId, content: value };
+    //   post("/api/comment", body).then((comment) => {
+    //     // display this comment on the screen
+    //     props.addNewComment(comment);
+    //   });
+    // };
+  };
+
   return (
     <div>
       <h1>Sign Up Page</h1>
-      <h2>Name:</h2>
-      <input type="" defaultValue="" />
-      <h3>Target Item:</h3>
-      <input type="" defaultValue="" />
-      <div>
-        <h3>Profile Photo:</h3>
-      </div>
-      <button>Next</button>
+      {nextPressed ? (
+        <>
+          <h3> Please also login with google</h3>
+          <GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={handleLogin}
+            onFailure={(err) => console.log(err)}
+          />
+        </>
+      ) : (
+        <>
+          <NewSignUp defaultName="" defaultItem="" onSubmit={showNext} />
+          <div> still need to add profile photo upload </div>
+        </>
+      )}
     </div>
   );
 };
