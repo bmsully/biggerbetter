@@ -39,7 +39,7 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
           onFailure={(err) => console.log(err)}
         />
       ) : (
-        <div>
+        <div className="SignUp-hideNavBar">
           <Link to="/signup" className="NavBar-linkAsButton">
             Sign up!
           </Link>
