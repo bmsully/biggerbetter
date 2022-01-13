@@ -51,7 +51,7 @@ const App = () => {
         <Explore path="/explore" />
         <Trades path="/trades" />
         <Profile path="/profile" />
-        <SignUp path="/signup" />
+        <SignUp path="/signup" userId={userId} handleLogin={handleLogin} />
         {/* <Profile path="/profile:userId" */}
         <NotFound default />
       </Router>
