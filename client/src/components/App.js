@@ -45,14 +45,16 @@ const App = () => {
 
   return (
     <>
-      <NavBar userId={userId} handleLogin={handleLogin} handleLogout={handleLogout} />
       <Router>
-        <Landing path="/" userId={userId} handleLogin={handleLogin} />
-        <Explore path="/explore" />
-        <Trades path="/trades" />
-        <Profile path="/profile" />
-        {/* <SignUp path="/signup" userId={userId} handleLogin={handleLogin} /> */}
-        {/* <Profile path="/profile:userId" */}
+        <NavBar path="/" userId={userId} handleLogin={handleLogin} handleLogout={handleLogout}>
+          <Landing path="/" userId={userId} handleLogin={handleLogin} handleLogout={handleLogout} />
+          <Explore path="explore" />
+          <Trades path="trades" />
+          <Profile path="profile" />
+          {/* <SignUp path="/signup" userId={userId} handleLogin={handleLogin} /> */}
+          {/* <Profile path="/profile:userId" */}
+          <NotFound default />
+        </NavBar>
         <NotFound default />
       </Router>
       {/* <SideBar /> */}

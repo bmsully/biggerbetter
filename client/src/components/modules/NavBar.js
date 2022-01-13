@@ -12,46 +12,49 @@ const GOOGLE_CLIENT_ID =
 /**
  * The navigation bar at the top of all pages. Takes no props.
  */
-const NavBar = ({ userId, handleLogin, handleLogout }) => {
+const NavBar = ({ userId, handleLogin, handleLogout, children }) => {
   return (
-    <nav>
-      <div>BiggerBetter</div>
-      <div>
-        <Link to="/">Home</Link>
-        {userId && (
-          <>
-            <Link to="/explore">Explore</Link>
-            <Link to="/trades">Trades</Link>
-            <Link to="/profile">Profile</Link>
-          </>
-        )}
-      </div>
-      {/* {userId && (
+    <>
+      <nav>
+        <div>BiggerBetter</div>
+        <div>
+          <Link to="/">Home</Link>
+          {userId && (
+            <>
+              <Link to="/explore">Explore</Link>
+              <Link to="/trades">Trades</Link>
+              <Link to="/profile">Profile</Link>
+            </>
+          )}
+        </div>
+        {/* {userId && (
           <Link to={`/profile/${userId}`}>
             Profile
           </Link>
         )} */}
-      {userId ? (
-        <GoogleLogout
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Logout"
-          onLogoutSuccess={handleLogout}
-          onFailure={(err) => console.log(err)}
-        />
-      ) : (
-        <div className="SignUp-hideNavBar">
-          <Link to="/signup" className="NavBar-linkAsButton">
-            Sign up!
-          </Link>
-          <GoogleLogin
+        {userId ? (
+          <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={handleLogin}
-            onFailure={(err) => console.log(err) /*redirect to sign up page or alert maybe? */}
+            buttonText="Logout"
+            onLogoutSuccess={handleLogout}
+            onFailure={(err) => console.log(err)}
           />
-        </div>
-      )}
-    </nav>
+        ) : (
+          <div className="SignUp-hideNavBar">
+            <Link to="/signup" className="NavBar-linkAsButton">
+              Sign up!
+            </Link>
+            <GoogleLogin
+              clientId={GOOGLE_CLIENT_ID}
+              buttonText="Login"
+              onSuccess={handleLogin}
+              onFailure={(err) => console.log(err) /*redirect to sign up page or alert maybe? */}
+            />
+          </div>
+        )}
+      </nav>
+      {children}
+    </>
   );
 };
 

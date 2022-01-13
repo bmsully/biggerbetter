@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GoogleLogin from "react-google-login";
 import { Link } from "@reach/router";
+import NavBar from "../modules/NavBar.js";
 
 import "../../utilities.css";
 import "./Landing.css";
@@ -9,9 +10,10 @@ import "./Landing.css";
 const GOOGLE_CLIENT_ID =
   "1047284490856-5h5pbkhftbnlhumb5t3rtfm9hq1gv5rv.apps.googleusercontent.com";
 
-const Landing = ({ userId, handleLogin }) => {
+const Landing = ({ userId, handleLogin, handleLogout, children }) => {
   return (
     <>
+      {/* <NavBar userId={userId} handleLogin={handleLogin} handleLogout={handleLogout} /> */}
       <h1>BiggerBetter Landing Page</h1>
       <h2>Here are some things that will appear on this page</h2>
       <ul>
@@ -38,6 +40,7 @@ const Landing = ({ userId, handleLogin }) => {
           />
         </div>
       )}
+      {/* {children} */}
     </>
   );
 };
