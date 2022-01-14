@@ -13,6 +13,13 @@ const GOOGLE_CLIENT_ID =
  * The navigation bar at the top of all pages. Takes no props.
  */
 const NavBar = ({ userId, handleLogout, children }) => {
+  const navigate = useNavigate();
+
+  const redirect = (res) => {
+    handleLogout(res);
+    navigate(`/`);
+  };
+
   return (
     <>
       <nav>
@@ -31,7 +38,7 @@ const NavBar = ({ userId, handleLogout, children }) => {
           <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Logout"
-            onLogoutSuccess={handleLogout}
+            onLogoutSuccess={redirect}
             onFailure={(err) => console.log(err)}
           />
         ) : (

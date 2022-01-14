@@ -18,10 +18,10 @@ const LogIn = ({ userId, handleLogin }) => {
 
   //Will need google login button too
 
-  async function redirect(res) {
-    await handleLogin(res);
+  const redirect = (res) => {
+    handleLogin(res);
     navigate(`/`);
-  }
+  };
 
   return (
     <div>
