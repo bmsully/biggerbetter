@@ -6,10 +6,7 @@ const UserSchema = new mongoose.Schema({
   googleid: String,
   email: String,
   target: String, //user's target item
-  img: {
-    data: Buffer,
-    contentType: String,
-  },
+  img_loc: String, //location of profile image
   stats: {
     join: Date, //Date when user joined
     propto: Number, //Number of proposals made to user
