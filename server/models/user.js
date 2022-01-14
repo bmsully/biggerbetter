@@ -4,7 +4,6 @@ const UserSchema = new mongoose.Schema({
   //_id: added automatically
   name: String,
   googleid: String,
-  email: String,
   target: String, //user's target item
   img_loc: String, //location of profile image
   stats: {
