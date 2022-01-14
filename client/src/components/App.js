@@ -53,7 +53,6 @@ const App = () => {
           <Trades path="trades" />
           <Profile path="profile/:userId" handleLogin={handleLogin} />
           <LogIn path="login" userId={userId} handleLogin={handleLogin} />
-          {/* <SignUp path="/signup" userId={userId} handleLogin={handleLogin} /> */}
           {/* <Profile path="/profile:userId" */}
           <NotFound default />
         </NavBar>
