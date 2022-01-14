@@ -6,11 +6,7 @@ import NavBar from "../modules/NavBar.js";
 import "../../utilities.css";
 import "./Landing.css";
 
-// Identifies your web application to Google's authentication service
-const GOOGLE_CLIENT_ID =
-  "1047284490856-5h5pbkhftbnlhumb5t3rtfm9hq1gv5rv.apps.googleusercontent.com";
-
-const Landing = ({ userId, handleLogin, handleLogout, children }) => {
+const Landing = ({ userId }) => {
   return (
     <>
       {/* <NavBar userId={userId} handleLogin={handleLogin} handleLogout={handleLogout} /> */}
@@ -28,16 +24,10 @@ const Landing = ({ userId, handleLogin, handleLogout, children }) => {
         <></>
       ) : (
         <div>
-          <h3>Get Started!</h3>
-          <Link to="/signup" className="Landing-linkAsButton">
-            Sign up!
+          <h3>Start Trading!</h3>
+          <Link to="/profile" className="Landing-linkAsButton">
+            Get Started
           </Link>
-          <GoogleLogin
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={handleLogin}
-            onFailure={(err) => console.log(err) /*redirect to sign up page or alert maybe? */}
-          />
         </div>
       )}
       {/* {children} */}

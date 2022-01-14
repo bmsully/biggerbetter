@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, useNavigate } from "@reach/router";
-import GoogleLogin, { GoogleLogout } from "react-google-login";
+import { GoogleLogout } from "react-google-login";
 
 import "../../utilities.css";
 import "./NavBar.css";
@@ -12,7 +12,7 @@ const GOOGLE_CLIENT_ID =
 /**
  * The navigation bar at the top of all pages. Takes no props.
  */
-const NavBar = ({ userId, handleLogin, handleLogout, children }) => {
+const NavBar = ({ userId, handleLogout, children }) => {
   return (
     <>
       <nav>
@@ -40,16 +40,10 @@ const NavBar = ({ userId, handleLogin, handleLogout, children }) => {
             onFailure={(err) => console.log(err)}
           />
         ) : (
-          <div className="SignUp-hideNavBar">
-            <Link to="/signup" className="NavBar-linkAsButton">
-              Sign up!
+          <div>
+            <Link to="/profile" className="NavBar-linkAsButton">
+              Sign In
             </Link>
-            <GoogleLogin
-              clientId={GOOGLE_CLIENT_ID}
-              buttonText="Login"
-              onSuccess={handleLogin}
-              onFailure={(err) => console.log(err) /*redirect to sign up page or alert maybe? */}
-            />
           </div>
         )}
       </nav>

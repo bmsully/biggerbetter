@@ -46,11 +46,11 @@ const App = () => {
   return (
     <>
       <Router>
-        <NavBar path="/" userId={userId} handleLogin={handleLogin} handleLogout={handleLogout}>
-          <Landing path="/" userId={userId} handleLogin={handleLogin} handleLogout={handleLogout} />
+        <NavBar path="/" userId={userId} handleLogout={handleLogout}>
+          <Landing path="/" userId={userId} />
           <Explore path="explore" />
           <Trades path="trades" />
-          <Profile path="profile" />
+          <Profile path="profile" userId={userId} handleLogin={handleLogin} />
           {/* <SignUp path="/signup" userId={userId} handleLogin={handleLogin} /> */}
           {/* <Profile path="/profile:userId" */}
           <NotFound default />
