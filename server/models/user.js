@@ -13,6 +13,11 @@ const UserSchema = new mongoose.Schema({
     propby: Number, //Number of proposals made by user
     trades: Number, //Number of trades user has made
   },
+  loc: {
+    //location for sorting items by distance!
+    lat: Number,
+    lon: Number,
+  },
 });
 
 // compile model from schema
