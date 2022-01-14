@@ -25,7 +25,7 @@ const Landing = ({ userId }) => {
       ) : (
         <div>
           <h3>Start Trading!</h3>
-          <Link to="/profile" className="Landing-linkAsButton">
+          <Link to="/profile/:userId" className="Landing-linkAsButton">
             Get Started
           </Link>
         </div>

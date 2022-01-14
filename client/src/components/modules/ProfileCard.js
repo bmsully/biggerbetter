@@ -6,13 +6,13 @@ import "./ProfileCard.css";
 
 // NOTE TO BRADY - update profile pic url
 
-const ProfileCard = () => {
+const ProfileCard = ({ username, usertarget, userimg_loc }) => {
   return (
     <div>
       <h2>Profile Card</h2>
       <img src={defaultProfilePic} className="ProfileCard-img" />
-      <h3>Name: Brady</h3>
-      <h4>Target Item: Hot Dog</h4>
+      <h3>Name: {username}</h3>
+      <h4>Target Item: {usertarget}</h4>
     </div>
   );
 };

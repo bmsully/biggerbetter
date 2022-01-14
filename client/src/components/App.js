@@ -22,6 +22,7 @@ const App = () => {
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
+      console.log(user);
       if (user._id) {
         // they are registed in the database, and currently logged in.
         setUserId(user._id);
@@ -50,7 +51,7 @@ const App = () => {
           <Landing path="/" userId={userId} />
           <Explore path="explore" />
           <Trades path="trades" />
-          <Profile path="profile" userId={userId} handleLogin={handleLogin} />
+          <Profile path="profile/:userId" handleLogin={handleLogin} />
           {/* <SignUp path="/signup" userId={userId} handleLogin={handleLogin} /> */}
           {/* <Profile path="/profile:userId" */}
           <NotFound default />

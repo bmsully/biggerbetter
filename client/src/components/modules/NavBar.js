@@ -23,15 +23,10 @@ const NavBar = ({ userId, handleLogout, children }) => {
             <>
               <Link to="/explore">Explore</Link>
               <Link to="/trades">Trades</Link>
-              <Link to="/profile">Profile</Link>
+              <Link to={`/profile/${userId}`}>Profile</Link>
             </>
           )}
         </div>
-        {/* {userId && (
-          <Link to={`/profile/${userId}`}>
-            Profile
-          </Link>
-        )} */}
         {userId ? (
           <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}
@@ -41,7 +36,7 @@ const NavBar = ({ userId, handleLogout, children }) => {
           />
         ) : (
           <div>
-            <Link to="/profile" className="NavBar-linkAsButton">
+            <Link to="/profile:userId" className="NavBar-linkAsButton">
               Sign In
             </Link>
           </div>
