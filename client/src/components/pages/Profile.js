@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import ProfileCard from "../modules/ProfileCard.js";
 import ItemList from "../modules/ItemList.js";
+import { Link } from "@reach/router";
 
 import "../../utilities.css";
 import "./Profile.css";
@@ -14,7 +15,13 @@ const Profile = (props) => {
     get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
   }, []);
 
-  if (!user) {
+  if (!props.userId) {
+    return (
+      <Link to="/login" className="NavBar-linkAsButton">
+        Get Started
+      </Link>
+    );
+  } else if (!user) {
     return <div> Loading! </div>;
   } else {
     return (

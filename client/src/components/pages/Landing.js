@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import GoogleLogin from "react-google-login";
 import { Link } from "@reach/router";
-import NavBar from "../modules/NavBar.js";
 
 import "../../utilities.css";
 import "./Landing.css";
