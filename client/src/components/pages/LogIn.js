@@ -1,21 +1,19 @@
 import React, { Component, useState } from "react";
-import NewSignUp from "../modules/NewSignUp.js";
+import { useNavigate } from "@reach/router";
 import GoogleLogin from "react-google-login";
 
 import "../../utilities.css";
-import "./SignUp.css";
+import "./LogIn.css";
 
 // Identifies your web application to Google's authentication service
 const GOOGLE_CLIENT_ID =
   "1047284490856-5h5pbkhftbnlhumb5t3rtfm9hq1gv5rv.apps.googleusercontent.com";
 
-const SignUp = ({ handleLogin }) => {
+const LogIn = ({ userId, handleLogin }) => {
   const [nextPressed, setNextPressed] = useState(false);
-  const [name, setName] = useState("");
   const [item, setItem] = useState("");
-  const [image, setImage] = useState(null);
 
-  //Need text parsing functions
+  const navigate = useNavigate();
 
   //Will need image upload
 
@@ -23,18 +21,7 @@ const SignUp = ({ handleLogin }) => {
 
   //Will need google login button too
 
-  /**
-   *
-   * Proptypes
-   * @param {string} defaultText is the placeholder text
-   * @param {string} storyId to add comment to
-   * NOTE TO BRADY - pass in defaultText when working on this in future
-   */
-
   const showNext = (props) => {
-    setNextPressed(true);
-    setName(props.name);
-    setItem(props.item);
     // const addComment = (data) => {
     //   //we get data.name and data.target returned from
     //   const body = { parent: props.storyId, content: value };
@@ -45,27 +32,45 @@ const SignUp = ({ handleLogin }) => {
     // };
   };
 
+  const handleChange = (event) => {
+    setItem(event.target.value);
+  };
+
+  const redirect = () => {
+    handleLogin;
+    navigate(`/profile/${userId}`);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setNextPressed(true);
+    setItem("");
+  };
+
   return (
     <div>
-      <h1>Sign Up Page</h1>
+      <h1>Sign Up/Log In Page</h1>
       {nextPressed ? (
         <>
           <h3> Please also login with google</h3>
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Login"
-            onSuccess={handleLogin}
+            onSuccess={redirect}
             onFailure={(err) => console.log(err)}
           />
         </>
       ) : (
-        <>
-          <NewSignUp defaultName="" defaultItem="" onSubmit={showNext} />
+        <div>
+          <input type="text" placeholder={"Target item"} value={item} onChange={handleChange} />
+          <button type="Submit" onClick={handleSubmit}>
+            Next
+          </button>
           <div> still need to add profile photo upload </div>
-        </>
+        </div>
       )}
     </div>
   );
 };
 
-export default SignUp;
+export default LogIn;

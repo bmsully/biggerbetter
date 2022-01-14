@@ -5,7 +5,7 @@ import Landing from "./pages/Landing.js";
 import Explore from "./pages/Explore.js";
 import Trades from "./pages/Trades.js";
 import Profile from "./pages/Profile.js";
-// import SignUp from "./pages/SignUp.js";
+import LogIn from "./pages/LogIn.js";
 import NavBar from "./modules/NavBar.js";
 
 import "../utilities.css";
@@ -52,6 +52,7 @@ const App = () => {
           <Explore path="explore" />
           <Trades path="trades" />
           <Profile path="profile/:userId" handleLogin={handleLogin} />
+          <LogIn path="login" userId={userId} handleLogin={handleLogin} />
           {/* <SignUp path="/signup" userId={userId} handleLogin={handleLogin} /> */}
           {/* <Profile path="/profile:userId" */}
           <NotFound default />
