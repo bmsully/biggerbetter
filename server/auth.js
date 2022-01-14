@@ -26,6 +26,19 @@ function getOrCreateUser(user) {
     const newUser = new User({
       name: user.name,
       googleid: user.sub,
+      target: "No target item :(",
+      img_loc: "url of profile pic once enabled",
+      stats: {
+        join: Date(),
+        propto: 0,
+        propby: 0,
+        trades: 0,
+      },
+      loc: {
+        //temporary location for kresge oval
+        lat: 42.358262,
+        lon: -71.094657,
+      },
     });
 
     return newUser.save();
