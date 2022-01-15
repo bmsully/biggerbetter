@@ -52,16 +52,19 @@ router.get("/user", (req, res) => {
   });
 });
 
-router.put("/user", (req, res) => {
-  console.log(req.query);
-  User.findById(req.query.userId).then((user) => {
-    for ([key, value] of Object.entries(req.query.newInfo)) {
-      if (value !== user.key) {
-        user.key = value;
+router.post("/user", (req, res) => {
+  console.log(req.body);
+  User.findById(req.body.userId).then((user) => {
+    for ([key, value] of Object.entries(req.body.newInfo)) {
+      console.log(`${key}:${value}`);
+      if (value !== user[key]) {
+        user[key] = value;
       }
     }
-    user.save();
-    res.send(user);
+    console.log(user);
+    user.save().then((user) => {
+      res.send(user);
+    });
   });
 });
 

@@ -7,7 +7,7 @@ import EditProfile from "../modules/EditProfile.js";
 import "../../utilities.css";
 import "./Profile.css";
 
-import { get, put } from "../../utilities.js";
+import { get, post } from "../../utilities.js";
 
 const Profile = (props) => {
   const [user, setUser] = useState();
@@ -17,8 +17,12 @@ const Profile = (props) => {
   //userId is for checking if logged in i.e. this is the actual user
   const onSubmit = (newProfileInfo) => {
     const query = { userId: props.userId, newInfo: newProfileInfo };
-    put("/user", query).then((userObj) => setUser(userObj));
+    post("/api/user", query).then((userObj) => setUser(userObj));
   };
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   useEffect(() => {
     get(`/api/user`, { userid: props.userid }).then((userObj) => setUser(userObj));
