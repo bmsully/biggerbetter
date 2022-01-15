@@ -52,6 +52,19 @@ router.get("/user", (req, res) => {
   });
 });
 
+router.put("/user", (req, res) => {
+  console.log(req.query);
+  User.findById(req.query.userId).then((user) => {
+    for ([key, value] of Object.entries(req.query.newInfo)) {
+      if (value !== user.key) {
+        user.key = value;
+      }
+    }
+    user.save();
+    res.send(user);
+  });
+});
+
 // router.get("", (req, res) => { // Retrieves data
 
 // })
