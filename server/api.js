@@ -53,15 +53,12 @@ router.get("/user", (req, res) => {
 });
 
 router.post("/user", (req, res) => {
-  console.log(req.body);
   User.findById(req.body.userId).then((user) => {
     for ([key, value] of Object.entries(req.body.newInfo)) {
-      console.log(`${key}:${value}`);
       if (value !== user[key]) {
         user[key] = value;
       }
     }
-    console.log(user);
     user.save().then((user) => {
       res.send(user);
     });
@@ -84,6 +81,10 @@ router.post("/items", (req, res) => {
   });
 
   newItem.save().then((item) => res.send(item));
+});
+
+router.get("/users", (req, res) => {
+  User.find({}).then((users) => res.send(users));
 });
 // router.get("", (req, res) => { // Retrieves data
 

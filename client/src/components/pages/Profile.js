@@ -25,7 +25,7 @@ const Profile = (props) => {
   }, [user]);
 
   useEffect(() => {
-    get(`/api/user`, { userid: props.userid }).then((userObj) => setUser(userObj));
+    get("/api/user", { userid: props.userid }).then((userObj) => setUser(userObj));
   }, []);
 
   if (!props.userId) {
