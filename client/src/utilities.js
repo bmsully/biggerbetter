@@ -62,20 +62,6 @@ export function post(endpoint, params = {}) {
     });
 }
 
-// Helper code to make a put request. Default parameter of empty JSON Object for params.
-// Returns a Promise to a JSON Object.
-export function put(endpoint, params = {}) {
-  console.log("here");
-  console.log(params);
-  const fullPath = endpoint + "?" + formatParams(params);
-  return fetch(fullPath)
-    .then(convertToJSON)
-    .catch((error) => {
-      //give a useful error message
-      throw `PUT request to ${endpoint} failed with error:/n${error}`;
-    });
-}
-
 // Helper code to make a delete request. Default parameter of empty JSON Object for params.
 // Returns a Promise to a JSON Object.
 // export function delete(endpoint, params = {}) {
