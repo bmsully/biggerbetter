@@ -68,15 +68,28 @@ router.post("/user", (req, res) => {
   });
 });
 
+router.get("/items", (req, res) => {
+  Item.find({ userid: req.query.userid }).then((items) => {
+    res.send(items);
+  });
+});
+
+router.post("/items", (req, res) => {
+  const newItem = new Item({
+    userid: req.body.userid,
+    name: req.body.name,
+    desc: req.body.desc,
+    img_loc: "url of item pic once enabled",
+    active: true,
+  });
+
+  newItem.save().then((item) => res.send(item));
+});
 // router.get("", (req, res) => { // Retrieves data
 
 // })
 
 // router.post("", (req, res) => { // Creates data
-
-// })
-
-// router.put("", (req, res) => { // Fetches then modifies data
 
 // })
 

@@ -5,10 +5,7 @@ const ItemSchema = new mongoose.Schema({
   userid: String, //owner of item
   name: String,
   desc: String,
-  img: {
-    data: Buffer,
-    contentType: String,
-  },
+  img_loc: String,
   active: Boolean,
 });
 

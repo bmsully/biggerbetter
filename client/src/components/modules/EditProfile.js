@@ -18,7 +18,6 @@ const EditProfile = (props) => {
   };
 
   // called when the user hits "Submit" in a text input area
-  // will this be one or two functions?
   const handleSubmit = (event) => {
     event.preventDefault();
     props.onSubmit && props.onSubmit({ target: item });

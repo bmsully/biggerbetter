@@ -44,7 +44,7 @@ const NavBar = ({ userId, handleLogout, children }) => {
         ) : (
           <div>
             <Link to="/login" className="NavBar-linkAsButton">
-              Log In
+              Get Started
             </Link>
           </div>
         )}

@@ -48,7 +48,7 @@ const Profile = (props) => {
           {props.userId === props.userid && (
             <EditProfile onSubmit={onSubmit} defaultItem={user.target} />
           )}
-          <ItemList />
+          <ItemList userid={props.userid} userId={props.userId} />
         </div>
       </div>
     );
