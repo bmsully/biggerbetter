@@ -5,14 +5,24 @@ const TradeSchema = new mongoose.Schema({
   proposer: {
     userid: String,
     name: String,
-    itemid: String,
+    item: {
+      itemid: String,
+      name: String,
+      desc: String,
+      img_loc: String,
+    },
     approved: Boolean, //initialized True
     completed: Boolean, //initialized False
   },
   approver: {
     userid: String,
     name: String,
-    itemid: String,
+    item: {
+      itemid: String,
+      name: String,
+      desc: String,
+      img_loc: String,
+    },
     approved: Boolean, //initialized False
     completed: Boolean, //initialized False
   },

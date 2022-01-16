@@ -68,6 +68,7 @@ export default TradeModule;
 //Trades page:
 //Sort into various pages
 //Create control for managing trades (approve/deny)
+//Create control for completing trades (switch/keep for self)
 //Create messaging system (socket)
 
 //Create some initial styling!
