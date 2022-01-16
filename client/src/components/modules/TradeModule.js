@@ -17,12 +17,36 @@ import { get } from "../../utilities.js";
  * @param {function} onSubmit posts a trade with selected items
  */
 const TradeModule = (props) => {
+  const [otherSelected, setOtherSelected] = useState(null);
+  const [userSelected, setUserSelected] = useState(null);
+  const [userItems, setUserItems] = useState([]);
+  const [trades, setTrades] = useState([]);
+
+  useEffect(() => {
+    get("/api/items", { userid: props.userId }).then((items) => setUserItems(items));
+    const query = { proposerid: props.userId, approverid: props.tradeInfo.user.id };
+    get("/api/trades", query).then((tradeObj) => setTrades(tradeObj));
+  }, []);
+
   return (
     <>
-      <button> close the trade module </button>
+      <button onClick={props.toggle}> close the trade module </button>
       <div> Placeholder text</div>
     </>
   );
 };
 
 export default TradeModule;
+
+/**
+ * Note on trade module process
+ *
+ * Opens on user's profile Card and Items
+ * Get request to items(userId) and to trades(proposer:userId, approver:userId and vice versa)
+ * Each item has select button, user selects one
+ * (profile card disappears, other items disappear)
+ * User's items appear (user must have items)
+ * User then selects one item (their other items disappear)
+ * Check if selected trade exists or has been made before
+ * Otherwise, confirm button appears (post request)
+ */

@@ -89,6 +89,22 @@ router.post("/items", (req, res) => {
   newItem.save().then((item) => res.send(item));
 });
 
+router.get("/trades", (req, res) => {
+  let query;
+  if (req.query.approver) {
+    query = {
+      $or: [{ "proposer.userid": req.query.userid }, { "approver.userid": req.query.userid }],
+    };
+  } else {
+    query = {
+      $or: [
+        { "proposer.userid": req.query.proposerid, "approver.userid": req.query.approverid },
+        { "proposer.userid": req.query.approverid, "approver.userid": req.query.proposerid },
+      ],
+    };
+  }
+  Trade.find(query).then((trades) => res.send(trades));
+});
 // router.get("", (req, res) => { // Retrieves data
 
 // })
