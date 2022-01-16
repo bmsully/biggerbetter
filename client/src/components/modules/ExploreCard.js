@@ -1,14 +1,68 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
+import defaultProfilePic from "../../public/default-user-image.png";
+import tempItemPic from "../../public/temp-item.png";
 
 import "../../utilities.css";
 import "./ExploreCard.css";
 
-const ExploreCard = () => {
+import { get } from "../../utilities.js";
+
+/**
+ * ExploreCard is a component of ExploreList
+ *
+ * @param {String} userId id of the active user
+ * @param {String} key key for the ExploreCard
+ * @param {String} userid id of the user on the ExploreCard
+ * @param {String} name name of the user on the ExploreCard
+ * @param {String} target target item of user on the ExploreCard
+ * @param {String} img_loc location of the user's profile image
+ * @param {function} toggle passes item/user info to tradeModule
+ */
+const ExploreCard = (props) => {
+  const [itemList, setItemList] = useState([]);
+
+  useEffect(() => {
+    get("/api/items", { userid: props.userid }).then((itemListObj) => setItemList(itemListObj));
+  });
+
+  const onClick = () => {
+    const userAndItemInfo = {
+      user: {
+        id: props.userid,
+        name: props.name,
+        target: props.target,
+        img_loc: props.img_loc,
+      },
+      items: itemList,
+    };
+    props.toggle(userAndItemInfo);
+  };
+
+  let items = null;
+  const hasItems = itemList.length !== 0;
+  if (hasItems) {
+    items = itemList
+      .filter((itemObj) => itemObj.active)
+      .map((itemObj) => (
+        <div key={`UserItem_${itemObj._id}`}>
+          <img src={tempItemPic} className="ExploreCard-itemImg" />
+          <div>{itemObj.img_loc}</div>
+          <div>Item name: {itemObj.name}</div>
+          <div>Item description: {itemObj.desc}</div>
+        </div>
+      ));
+  } else {
+    items = <div> {props.name} does not have any items posted :(</div>;
+  }
+
   return (
     <div>
-      <h3>Name of person</h3>
-      <h4>Target Item: Also a hot dog</h4>
-      <p>Photos of this person's items in a neat row</p>
+      <img src={defaultProfilePic} className="ExploreCard-profileImg" />
+      <p>this will be the user's uploaded image</p>
+      <h3>{props.name}</h3>
+      <h4>Target Item: {props.target}</h4>
+      <button onClick={onClick}>Trade with this user!</button>
+      {items}
     </div>
   );
 };

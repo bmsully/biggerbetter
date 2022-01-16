@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import ExploreCard from "./ExploreCard.js";
 
 import "../../utilities.css";
@@ -10,21 +10,22 @@ import { get } from "../../utilities.js";
  * ExploreList is a component of Explore
  *
  * @param {String} userId is the id of the active user
+ * @param {function} toggle for the trade module
  */
 
-const ExploreList = () => {
+const ExploreList = (props) => {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
     get("/api/users").then((userList) => {
-      setAllUsers(
-        userList.filter((userObj) => {
-          userObj._id !== props.userId;
-        })
-      );
+      const newUserList = userList.filter((userObj) => userObj._id !== props.userId);
+      setAllUsers(newUserList);
     });
   }, []);
 
+  useEffect(() => {
+    console.log(allUsers);
+  }, []);
   //create sorting function that sorts by distance
 
   let users = null;
@@ -38,6 +39,7 @@ const ExploreList = () => {
         name={userObj.name}
         target={userObj.target}
         img_loc={userObj.img_loc}
+        toggle={props.toggle}
       />
     ));
   } else {

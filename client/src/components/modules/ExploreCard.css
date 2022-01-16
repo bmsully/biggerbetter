@@ -1,0 +1,16 @@
+.ExploreCard-profileImg {
+  border-radius: 50%;
+  width: 10%;
+  height: auto;
+}
+
+.ExploreCard-itemImg {
+  object-fit: cover;
+  width: 20%;
+}
+
+.ExploreCard-itemImg:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}

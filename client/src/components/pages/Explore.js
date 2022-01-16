@@ -1,9 +1,12 @@
 import React, { Component, useEffect, useState } from "react";
 import ExploreList from "../modules/ExploreList.js";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
+import TradeModule from "../modules/TradeModule.js";
 
 import "../../utilities.css";
 import "./Explore.css";
+
+import { post } from "../../utilities.js";
 
 /**
  * Explore is a page
@@ -12,6 +15,25 @@ import "./Explore.css";
  */
 
 const Explore = (props) => {
+  const [tradingVisible, setTradingVisible] = useState(false);
+  const [tradeInfo, setTradeInfo] = useState(null);
+
+  const submitTrade = (userAndItemInfo) => {
+    //this will be called in the TradeModule component
+    //post trade
+    //redirect to trades page?
+  };
+
+  const toggleTradeModule = (userAndItemInfo) => {
+    if (tradingVisible) {
+      setTradingVisible(false);
+      setTradeInfo(null);
+    } else {
+      setTradeInfo(userAndItemInfo);
+      setTradingVisible(true);
+    }
+  };
+
   return (
     <>
       <h1>Explore Page</h1>
@@ -24,7 +46,15 @@ const Explore = (props) => {
               <option disabled>other cities soon!</option>
             </select>
           </form>
-          <ExploreList userId={props.userId} />
+          {tradingVisible && (
+            <TradeModule
+              userId={props.userId}
+              tradeInfo={tradeInfo}
+              toggle={toggleTradeModule}
+              onSubmit={submitTrade}
+            />
+          )}
+          <ExploreList userId={props.userId} toggle={toggleTradeModule} />
         </>
       ) : (
         <>

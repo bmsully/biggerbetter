@@ -46,6 +46,12 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 
+router.get("/users", (req, res) => {
+  User.find({}).then((users) => {
+    res.send(users);
+  });
+});
+
 router.get("/user", (req, res) => {
   User.findById(req.query.userid).then((user) => {
     res.send(user);
@@ -83,9 +89,6 @@ router.post("/items", (req, res) => {
   newItem.save().then((item) => res.send(item));
 });
 
-router.get("/users", (req, res) => {
-  User.find({}).then((users) => res.send(users));
-});
 // router.get("", (req, res) => { // Retrieves data
 
 // })
