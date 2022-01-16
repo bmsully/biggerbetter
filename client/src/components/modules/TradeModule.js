@@ -28,9 +28,15 @@ const TradeModule = (props) => {
     get("/api/trades", query).then((tradeObj) => setTrades(tradeObj));
   }, []);
 
+  const closeTradeModule = () => {
+    //set otherSelected to null
+    //set userSelected to null
+    props.toggle();
+  };
+
   return (
     <>
-      <button onClick={props.toggle}> close the trade module </button>
+      <button onClick={closeTradeModule}> close the trade module </button>
       <div> Placeholder text</div>
     </>
   );
@@ -50,3 +56,20 @@ export default TradeModule;
  * Check if selected trade exists or has been made before
  * Otherwise, confirm button appears (post request)
  */
+
+//TODO:
+//Put data into trade module
+//Connect ProfileCard and ItemCard (with selectors/buttons)
+//Conditional rendering for selection process (see above)
+//Fill in api for adding a trade
+//Sort function to make sure the trade is legal/valid
+//Testing!!
+
+//Trades page:
+//Sort into various pages
+//Create control for managing trades (approve/deny)
+//Create messaging system (socket)
+
+//Create some initial styling!
+
+//Deploy!
