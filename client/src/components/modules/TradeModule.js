@@ -1,7 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import ItemCard from "./ItemCard.js";
 import ProfileCard from "./ProfileCard.js";
-import tempItemPic from "../../public/temp-item.png";
 
 import "../../utilities.css";
 import "./TradeModule.css";
@@ -28,6 +27,10 @@ const TradeModule = (props) => {
     get("/api/items", { userid: props.userId }).then((items) => setUserItems(items));
   }, []);
 
+  useEffect(() => {
+    console.log(trades);
+  }, [trades]);
+
   const closeTradeModule = () => {
     setOtherSelected(null);
     setUserSelected(null);
@@ -38,8 +41,12 @@ const TradeModule = (props) => {
     setLoading(true);
     const query = { proposerid: props.userId, approverid: props.tradeInfo.user.id };
     get("/api/trades", query)
-      .then((tradeObj) => setTrades(tradeObj))
+      .then((res) => {
+        console.log(res);
+        setTrades(res);
+      })
       .then(() => {
+        console.log(trades);
         if (trades.length === 0) {
           const trade = {
             proposer: {
@@ -60,6 +67,7 @@ const TradeModule = (props) => {
           closeTradeModule();
         } else {
           for (const tradeObj of trades) {
+            console.log(tradeObj);
             if (
               tradeObj.proposer.item.itemid === userSelected._id &&
               tradeObj.approver.item.itemid === otherSelected._id

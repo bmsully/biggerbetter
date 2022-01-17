@@ -91,19 +91,22 @@ router.post("/items", (req, res) => {
 
 router.get("/trades", (req, res) => {
   let query;
-  if (req.query.approver) {
-    query = {
-      $or: [{ "proposer.userid": req.query.userid }, { "approver.userid": req.query.userid }],
-    };
-  } else {
+  if (req.query.approverid) {
     query = {
       $or: [
         { "proposer.userid": req.query.proposerid, "approver.userid": req.query.approverid },
         { "proposer.userid": req.query.approverid, "approver.userid": req.query.proposerid },
       ],
     };
+  } else {
+    query = {
+      $or: [{ "proposer.userid": req.query.userid }, { "approver.userid": req.query.userid }],
+    };
   }
-  Trade.find(query).then((trades) => res.send(trades));
+  Trade.find(query).then((trades) => {
+    console.log(trades);
+    res.send(trades);
+  });
 });
 
 router.post("/trade", (req, res) => {
