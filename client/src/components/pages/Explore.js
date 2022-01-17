@@ -20,8 +20,7 @@ const Explore = (props) => {
   const [tradeInfo, setTradeInfo] = useState(null);
 
   const submitTrade = (userAndItemInfo) => {
-    console.log(userAndItemInfo);
-    console.log("no post request yet");
+    post("/api/trade", { proposer: userAndItemInfo.proposer, approver: userAndItemInfo.approver });
   };
 
   const toggleTradeModule = (userAndItemInfo) => {

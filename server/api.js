@@ -105,6 +105,36 @@ router.get("/trades", (req, res) => {
   }
   Trade.find(query).then((trades) => res.send(trades));
 });
+
+router.post("/trade", (req, res) => {
+  const newTrade = new Trade({
+    proposer: {
+      userid: req.body.proposer.userid,
+      name: req.body.proposer.name,
+      item: {
+        itemid: req.body.proposer.item._id,
+        name: req.body.proposer.item.name,
+        desc: req.body.proposer.item.desc,
+        img_loc: req.body.proposer.item.img_loc,
+      },
+      approved: true,
+      completed: false,
+    },
+    approver: {
+      userid: req.body.approver.userid,
+      name: req.body.approver.name,
+      item: {
+        itemid: req.body.approver.item._id,
+        name: req.body.approver.item.name,
+        desc: req.body.approver.item.desc,
+        img_loc: req.body.approver.item.img_loc,
+      },
+      approved: false,
+      completed: false,
+    },
+  });
+  newTrade.save().then((trade) => res.send(trade));
+});
 // router.get("", (req, res) => { // Retrieves data
 
 // })

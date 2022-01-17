@@ -22,11 +22,10 @@ const TradeModule = (props) => {
   const [userSelected, setUserSelected] = useState(null); //active user's item selection
   const [userItems, setUserItems] = useState([]);
   const [trades, setTrades] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     get("/api/items", { userid: props.userId }).then((items) => setUserItems(items));
-    const query = { proposerid: props.userId, approverid: props.tradeInfo.user.id };
-    get("/api/trades", query).then((tradeObj) => setTrades(tradeObj));
   }, []);
 
   const closeTradeModule = () => {
@@ -36,38 +35,12 @@ const TradeModule = (props) => {
   };
 
   const confirmTrade = () => {
-    if (trades.length === 0) {
-      const trade = {
-        proposer: {
-          userid: props.userId,
-          name: props.username,
-          item: userSelected,
-        },
-        approver: {
-          userid: props.tradeInfo.user.id,
-          name: props.tradeInfo.user.name,
-          item: otherSelected,
-        },
-      };
-      props.onSubmit(trade);
-      const message = `You have submitted the following trade:\nYou recieve ${otherSelected.name} from ${props.tradeInfo.user.name}.\n${props.tradeInfo.user.name} recieves ${userSelected.name} from you.`;
-      alert(message);
-      closeTradeModule();
-    } else {
-      for (const tradeObj of trades) {
-        if (
-          tradeObj.proposer.item.itemid === userSelected._id &&
-          tradeObj.approver.item.itemid === otherSelected._id
-        ) {
-          const message = "You have proposed this trade before.\nPlease select different items.";
-          alert(message);
-        } else if (
-          tradeObj.proposer.item.itemid === otherSelected._id &&
-          tradeObj.approver.item.itemid === userSelected._id
-        ) {
-          const message = `${props.tradeInfo.user.name} has proposed this trade before\nPlease select different items.`;
-          alert(message);
-        } else {
+    setLoading(true);
+    const query = { proposerid: props.userId, approverid: props.tradeInfo.user.id };
+    get("/api/trades", query)
+      .then((tradeObj) => setTrades(tradeObj))
+      .then(() => {
+        if (trades.length === 0) {
           const trade = {
             proposer: {
               userid: props.userId,
@@ -75,18 +48,55 @@ const TradeModule = (props) => {
               item: userSelected,
             },
             approver: {
-              userid: props.tradeInfo.user._id,
+              userid: props.tradeInfo.user.id,
               name: props.tradeInfo.user.name,
               item: otherSelected,
             },
           };
+          setLoading(false);
           props.onSubmit(trade);
           const message = `You have submitted the following trade:\nYou recieve ${otherSelected.name} from ${props.tradeInfo.user.name}.\n${props.tradeInfo.user.name} recieves ${userSelected.name} from you.`;
           alert(message);
           closeTradeModule();
+        } else {
+          for (const tradeObj of trades) {
+            if (
+              tradeObj.proposer.item.itemid === userSelected._id &&
+              tradeObj.approver.item.itemid === otherSelected._id
+            ) {
+              setLoading(false);
+              const message =
+                "You have proposed this trade before.\nPlease select different items.";
+              alert(message);
+            } else if (
+              tradeObj.proposer.item.itemid === otherSelected._id &&
+              tradeObj.approver.item.itemid === userSelected._id
+            ) {
+              setLoading(false);
+              const message = `${props.tradeInfo.user.name} has proposed this trade before\nPlease select different items.`;
+              alert(message);
+            } else {
+              const trade = {
+                proposer: {
+                  userid: props.userId,
+                  name: props.username,
+                  item: userSelected,
+                },
+                approver: {
+                  userid: props.tradeInfo.user._id,
+                  name: props.tradeInfo.user.name,
+                  item: otherSelected,
+                },
+              };
+              setLoading(false);
+              props.onSubmit(trade);
+              const message = `You have submitted the following trade:\nYou recieve ${otherSelected.name} from ${props.tradeInfo.user.name}.\n${props.tradeInfo.user.name} recieves ${userSelected.name} from you.`;
+              alert(message);
+              closeTradeModule();
+            }
+          }
         }
-      }
-    }
+      });
   };
 
   let otherItems = null;
@@ -139,7 +149,15 @@ const TradeModule = (props) => {
     myItems = <div>You must add items to trade!</div>;
   }
 
-  if (!otherSelected) {
+  if (loading) {
+    return (
+      <>
+        <h3>Trade Module</h3>
+        <div>Loading!</div>
+        <hr />
+      </>
+    );
+  } else if (!otherSelected) {
     //display other user's profile and items
     return (
       <>
