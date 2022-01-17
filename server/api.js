@@ -103,10 +103,7 @@ router.get("/trades", (req, res) => {
       $or: [{ "proposer.userid": req.query.userid }, { "approver.userid": req.query.userid }],
     };
   }
-  Trade.find(query).then((trades) => {
-    console.log(trades);
-    res.send(trades);
-  });
+  Trade.find(query).then((trades) => res.send(trades));
 });
 
 router.post("/trade", (req, res) => {
