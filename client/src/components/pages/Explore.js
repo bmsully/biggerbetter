@@ -12,6 +12,7 @@ import { post } from "../../utilities.js";
  * Explore is a page
  *
  * @param {String} userId is the id of the active user
+ * @param {String} username is the name of the active user
  */
 
 const Explore = (props) => {
@@ -19,9 +20,8 @@ const Explore = (props) => {
   const [tradeInfo, setTradeInfo] = useState(null);
 
   const submitTrade = (userAndItemInfo) => {
-    //this will be called in the TradeModule component
-    //post trade
-    //redirect to trades page?
+    console.log(userAndItemInfo);
+    console.log("no post request yet");
   };
 
   const toggleTradeModule = (userAndItemInfo) => {
@@ -49,6 +49,7 @@ const Explore = (props) => {
           {tradingVisible && (
             <TradeModule
               userId={props.userId}
+              username={props.username}
               tradeInfo={tradeInfo}
               toggle={toggleTradeModule}
               onSubmit={submitTrade}

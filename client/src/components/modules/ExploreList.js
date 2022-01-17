@@ -27,6 +27,11 @@ const ExploreList = (props) => {
     console.log(allUsers);
   }, []);
   //create sorting function that sorts by distance
+  //create sorting function that sorts by newest/oldest items
+  //create sorting function that sorts by newest/oldest members
+  //create sorting function that sorts by number of items
+
+  //update userSchema to include #active items - can remove users with 0!
 
   let users = null;
   const hasUsers = allUsers.length !== 0;

@@ -33,9 +33,11 @@ const ItemList = (props) => {
   let items = null;
   const hasItems = itemList.length !== 0;
   if (hasItems) {
-    items = itemList
-      .filter((itemObj) => itemObj.active)
-      .map((itemObj) => (
+    items = itemList.filter((itemObj) => itemObj.active);
+    if (items.length === 0) {
+      items = <div>No active items :(</div>;
+    } else {
+      items = items.map((itemObj) => (
         <ItemCard
           userId={props.userId}
           key={`Item_${itemObj._id}`}
@@ -43,8 +45,10 @@ const ItemList = (props) => {
           userid={itemObj.userid}
           name={itemObj.name}
           desc={itemObj.desc}
+          img_loc={itemObj.img_loc}
         />
       ));
+    }
   } else {
     items = <div>No items :(</div>;
   }

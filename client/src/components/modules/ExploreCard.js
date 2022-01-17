@@ -41,9 +41,11 @@ const ExploreCard = (props) => {
   let items = null;
   const hasItems = itemList.length !== 0;
   if (hasItems) {
-    items = itemList
-      .filter((itemObj) => itemObj.active)
-      .map((itemObj) => (
+    items = itemList.filter((itemObj) => itemObj.active);
+    if (items.length === 0) {
+      items = <div>User has no active items :(</div>;
+    } else {
+      items = items.map((itemObj) => (
         <div key={`UserItem_${itemObj._id}`}>
           <img src={tempItemPic} className="ExploreCard-itemImg" />
           <div>{itemObj.img_loc}</div>
@@ -51,6 +53,7 @@ const ExploreCard = (props) => {
           <div>Item description: {itemObj.desc}</div>
         </div>
       ));
+    }
   } else {
     items = <div> {props.name} does not have any items posted :(</div>;
   }

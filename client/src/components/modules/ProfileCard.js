@@ -6,6 +6,14 @@ import "./ProfileCard.css";
 
 // NOTE TO BRADY - update profile pic url
 
+/**
+ * ProfileCard is a Component displaying info about a user
+ *
+ * @param {String} username name of user being displayed
+ * @param {String} usertarget is the target item of user being displayed
+ * @param {String} userimg_loc url of profile image of user being displayed
+ */
+
 const ProfileCard = ({ username, usertarget, userimg_loc }) => {
   return (
     <div>
