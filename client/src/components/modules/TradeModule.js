@@ -68,6 +68,7 @@ const TradeModule = (props) => {
               const message =
                 "You have proposed this trade before.\nPlease select different items.";
               alert(message);
+              break;
             } else if (
               tradeObj.proposer.item.itemid === otherSelected._id &&
               tradeObj.approver.item.itemid === userSelected._id
@@ -75,6 +76,7 @@ const TradeModule = (props) => {
               setLoading(false);
               const message = `${props.tradeInfo.user.name} has proposed this trade before\nPlease select different items.`;
               alert(message);
+              break;
             } else {
               const trade = {
                 proposer: {
@@ -92,6 +94,7 @@ const TradeModule = (props) => {
               props.onSubmit(trade);
               const message = `You have submitted the following trade:\nYou recieve ${otherSelected.name} from ${props.tradeInfo.user.name}.\n${props.tradeInfo.user.name} recieves ${userSelected.name} from you.`;
               alert(message);
+              break;
               closeTradeModule();
             }
           }
