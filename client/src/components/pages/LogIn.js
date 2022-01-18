@@ -6,17 +6,10 @@ import "../../utilities.css";
 import "./LogIn.css";
 
 // Identifies your web application to Google's authentication service
-const GOOGLE_CLIENT_ID =
-  "1047284490856-5h5pbkhftbnlhumb5t3rtfm9hq1gv5rv.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 
 const LogIn = ({ userId, handleLogin }) => {
   const navigate = useNavigate();
-
-  //Will need image upload
-
-  //Will need to send data
-
-  //Will need google login button too
 
   const redirect = (res) => {
     handleLogin(res);
