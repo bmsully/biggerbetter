@@ -231,11 +231,13 @@ export default TradeModule;
  * Note on trade module process
  *
  * Opens on user's profile Card and Items
- * Get request to items(userId) and to trades(proposer:userId, approver:userId and vice versa)
+ * Get request to items(userId)
  * Each item has select button, user selects one
  * (profile card disappears, other items disappear)
  * User's items appear (user must have items)
  * User then selects one item (their other items disappear)
+ * User hits submit
  * Check if selected trade exists or has been made before
- * Otherwise, confirm button appears (post request)
+ * ^ this is performed via get request to trades(proposer:userId, approver:userId and vice versa)
+ * User alerted if failure (trade exists) or success (post request of trade)
  */
