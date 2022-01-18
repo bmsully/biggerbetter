@@ -29,7 +29,7 @@ const TradeCard = (props) => {
         <div>{props.proposer.item.img_loc}</div>
         <div>You recieve {props.approver.item.name}</div>
         <div>
-          {props.approver.name} recieves {props.approver.item.name}
+          {props.approver.name} recieves {props.proposer.item.name}
         </div>
         <img src={tempItemPic} />
         <div>{props.approver.item.img_loc}</div>

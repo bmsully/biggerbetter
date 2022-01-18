@@ -45,7 +45,7 @@ const Trades = (props) => {
         }
       }
     });
-  }, []);
+  }, [props.userId]);
 
   return (
     <div>
