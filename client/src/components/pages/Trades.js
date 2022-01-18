@@ -78,7 +78,7 @@ const Trades = (props) => {
             ) : activeTab === "Accepted" ? (
               <Accepted userId={props.userId} acceptedTrades={acceptedTrades} />
             ) : (
-              <Complete completedTrades={completeTrades} />
+              <Complete completeTrades={completeTrades} />
             )}
           </div>
         </>

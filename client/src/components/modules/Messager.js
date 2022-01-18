@@ -26,6 +26,9 @@ const Messager = (props) => {
     loadMessages(props.messagerInfo.tradeid);
   });
 
+  if (!messages) {
+    return <div>Loading!</div>;
+  }
   return (
     <div>
       <h3>Messaging {props.messagerInfo.recipient}</h3>

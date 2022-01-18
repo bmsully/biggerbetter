@@ -14,6 +14,10 @@ import "./Pending.css";
  */
 
 const Pending = (props) => {
+  const handleDecline = (tradeid) => {};
+
+  const handleApprove = (tradeid) => {};
+
   let toTrades = null;
   const hasToTrades = props.propToTrades.length !== 0;
   if (hasToTrades) {
@@ -50,6 +54,7 @@ const Pending = (props) => {
   return (
     <div>
       <h2>Pending Trades</h2>
+      <hr />
       <h3>Proposed to you</h3>
       {toTrades}
       <hr />
