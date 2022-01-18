@@ -138,17 +138,16 @@ router.post("/trade", (req, res) => {
   });
   newTrade.save().then((trade) => res.send(trade));
 });
-// router.get("", (req, res) => { // Retrieves data
 
-// })
+router.get("/messages", (req, res) => {
+  Message.find({ tradeid: req.tradeid })
+    .sort({ date: "desc" })
+    .then((messages) => res.send(messages));
+});
 
-// router.post("", (req, res) => { // Creates data
-
-// })
-
-// router.delete("", (req, res) => { // Deletes data
-
-// })
+// router.get("", (req, res) => {}) // Retrieves data
+// router.post("", (req, res) => {}) // Creates data
+// router.delete("", (req, res) => {}) // Deletes data
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
