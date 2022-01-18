@@ -139,6 +139,55 @@ router.post("/trade", (req, res) => {
   newTrade.save().then((trade) => res.send(trade));
 });
 
+router.post("/approve", (req, res) => {
+  //Find approved trade
+  Trade.findById(req.body.tradeid).then((trade) => {
+    //update approved trade
+    trade.approver.approved = true;
+    trade.save();
+    //set items in approved trade to inactive status
+    let itemQuery = {
+      $or: [{ _id: trade.proposer.item.itemid }, { _id: trade.approver.item.itemid }],
+    };
+    Item.find(itemQuery).then((itemList) => {
+      for (const itemObj of itemList) {
+        itemObj.active = false;
+        itemObj.save();
+      }
+    });
+    //update pending trades that have either item in approved trade
+    let tradeQuery;
+    tradeQuery = {
+      //indicates pending trades
+      "proposer.approved": true,
+      "approver.approved": false,
+      "proposer.completed": false,
+      "approver.completed": false,
+      $or: [
+        //all options for current items being involved in other trades
+        { "proposer.item.itemid": trade.proposer.item.itemid },
+        { "proposer.item.itemid": trade.approver.item.itemid },
+        { "approver.item.itemid": trade.proposer.item.itemid },
+        { "approver.item.itemid": trade.approver.item.itemid },
+      ],
+    };
+    Trade.find(tradeQuery).then((tradeList) => {
+      for (const tradeObj of tradeList) {
+        tradeObj.proposer.approved = false;
+        tradeObj.save();
+      }
+    });
+    res.send(trade);
+  });
+});
+
+router.post("/decline", (req, res) => {
+  Trade.findById(req.body.tradeid).then((trade) => {
+    trade.proposer.approved = false;
+    trade.save().then((trade) => res.send(trade));
+  });
+});
+
 router.get("/messages", (req, res) => {
   Message.find({ tradeid: req.tradeid })
     .sort({ date: "desc" })

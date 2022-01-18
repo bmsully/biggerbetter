@@ -9,14 +9,21 @@ import "./Pending.css";
  *
  * @param {Array} propToTrades
  * @param {Array} propByTrades
- * @param {Function} handleApprove
- * @param {Function} handleDecline
+ * @param {Function} approve
+ * @param {Function} decline
  */
 
 const Pending = (props) => {
-  const handleDecline = (tradeid) => {};
+  //   const handleDecline = (tradeid) => {
+  //     toTrades.delete(`trade_${tradeid}`); //may not need this
+  //     alert("Trade was declined");
+  //     props.decline(tradeid);
+  //   };
 
-  const handleApprove = (tradeid) => {};
+  //   const handleApprove = (tradeid) => {
+  //     toTrades.delete(`trade_${tradeid}`); //may not need this
+  //     props.approve(tradeid);
+  //   };
 
   let toTrades = null;
   const hasToTrades = props.propToTrades.length !== 0;
@@ -29,8 +36,8 @@ const Pending = (props) => {
           approver={tradeObj.approver}
           you={"approver"}
         />
-        <button onClick={props.handleDecline(tradeObj._id)}>Decline</button>
-        <button onClick={props.handleApprove(tradeObj._id)}>Approve</button>
+        <button onClick={() => props.decline(tradeObj._id)}>Decline</button>
+        <button onClick={() => props.approve(tradeObj._id)}>Approve</button>
       </>
     ));
   } else {

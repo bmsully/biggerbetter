@@ -55,9 +55,14 @@ const ItemList = (props) => {
 
   return (
     <div>
-      <h2>Item List</h2>
       {props.userId === props.userid && <AddItem userId={props.userId} onSubmit={addNewItem} />}
+      <hr />
+      <h2>Active Items</h2>
       {items}
+      <hr />
+      <h2>Inactive Items</h2>
+      <h3>These items are currently involved in approved trades</h3>
+      <h3>They are invisible to other users until the trade is complete</h3>
     </div>
   );
 };

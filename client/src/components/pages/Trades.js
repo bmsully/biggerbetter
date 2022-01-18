@@ -2,12 +2,12 @@ import React, { Component, useState, useEffect } from "react";
 import Pending from "../modules/Pending.js";
 import Accepted from "../modules/Accepted.js";
 import Complete from "../modules/Complete.js";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 
 import "../../utilities.css";
 import "./Trades.css";
 
-import { get } from "../../utilities.js";
+import { get, post } from "../../utilities.js";
 
 /**
  * Trades is a page that displays the trades the active user is involved in
@@ -21,19 +21,25 @@ const Trades = (props) => {
   const [propToTrades, setPropToTrades] = useState([]);
   const [acceptedTrades, setAcceptedTrades] = useState([]);
   const [completeTrades, setCompleteTrades] = useState([]);
-  const [declinedTrades, setDeclinedTrades] = useState([]);
+  const [failedTrades, setFailedTrades] = useState([]);
 
   const togglePending = () => setActiveTab("Pending");
   const toggleAccepted = () => setActiveTab("Accepted");
   const toggleComplete = () => setActiveTab("Complete");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    getAndSortTrades();
+  }, [props.userId]);
+
+  const getAndSortTrades = () => {
     get("/api/trades", { proposerid: props.userId }).then((tradeObj) => {
       console.log(tradeObj);
       for (const trade of tradeObj) {
         if (!trade.proposer.approved && !trade.approver.approved) {
-          //trade existed before, but was declined by approver (proposer.approved set to false)
-          setDeclinedTrades([trade].concat(declinedTrades));
+          //trade existed before, but was declined by approver, or items traded in different trade (proposer.approved set to false)
+          setFailedTrades([trade].concat(failedTrades));
         } else if (trade.approver.userid === props.userId && !trade.approver.approved) {
           //active user is approver, and has not yet approved (trade proposed to you)
           setPropToTrades([trade].concat(propToTrades));
@@ -49,7 +55,19 @@ const Trades = (props) => {
         }
       }
     });
-  }, [props.userId]);
+  };
+
+  const approveTrade = (tradeid) => {
+    alert("Trade approved");
+    post("/api/approve", { tradeid: tradeid }); //return response? (success/failure?)
+    navigate("/trades");
+  };
+
+  const declineTrade = (tradeid) => {
+    alert("Trade declined");
+    post("/api/decline", { tradeid: tradeid });
+    navigate("/trades");
+  };
 
   return (
     <div>
@@ -78,7 +96,12 @@ const Trades = (props) => {
           </div>
           <div className="Trades-outlet">
             {activeTab === "Pending" ? (
-              <Pending propToTrades={propToTrades} propByTrades={propByTrades} />
+              <Pending
+                propToTrades={propToTrades}
+                propByTrades={propByTrades}
+                approve={approveTrade}
+                decline={declineTrade}
+              />
             ) : activeTab === "Accepted" ? (
               <Accepted userId={props.userId} acceptedTrades={acceptedTrades} />
             ) : (

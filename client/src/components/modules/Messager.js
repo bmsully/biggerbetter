@@ -32,6 +32,7 @@ const Messager = (props) => {
   return (
     <div>
       <h3>Messaging {props.messagerInfo.recipient}</h3>
+      <button onClick={() => closeMessager()}>Close</button>
       {messages.map((messageObj) => (
         <div>
           <span>{(messageObj.userid === props.userId ? "You" : `${messageObj.name}`) + ":"}</span>
