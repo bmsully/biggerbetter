@@ -41,7 +41,6 @@ const Pending = (props) => {
         key={`trade_${tradeObj._id}`}
         proposer={tradeObj.proposer}
         approver={tradeObj.approver}
-        you={"proposer"}
       />
     ));
   } else {

@@ -76,7 +76,7 @@ const Trades = (props) => {
             {activeTab === "Pending" ? (
               <Pending propToTrades={propToTrades} propByTrades={propByTrades} />
             ) : activeTab === "Accepted" ? (
-              <Accepted acceptedTrades={acceptedTrades} />
+              <Accepted userId={props.userId} acceptedTrades={acceptedTrades} />
             ) : (
               <Complete completedTrades={completeTrades} />
             )}

@@ -10,12 +10,7 @@ import "./TradeCard.css";
  * @param {String} key
  * @param {Object} proposer object representing proposer side of trade
  * @param {Object} approver object representing approver side of trade
- * @param {Boolean} you "proposer" or "approver" indicates if trade was proposed by or to you (for language reasons)
  */
-
-//You recieve "their object"
-//    In exchange,
-//"other user" receives "your object"
 
 const TradeCard = (props) => {
   return (
@@ -44,8 +39,6 @@ export default TradeCard;
 //Testing everthing with more users!
 
 //Trades page:
-//Flesh out TradeCard
-//Sort trades into various pages
 //Sort trades in subpages and map into TradeCards (Pending, Accepted(!), Complete)
 //Create button control for managing trades (Decline/Approve) with backend updating!
 //Create control for completing trades (switch)
