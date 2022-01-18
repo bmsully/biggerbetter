@@ -21,16 +21,20 @@ const Trades = (props) => {
   const [propToTrades, setPropToTrades] = useState([]);
   const [acceptedTrades, setAcceptedTrades] = useState([]);
   const [completeTrades, setCompleteTrades] = useState([]);
+  const [declinedTrades, setDeclinedTrades] = useState([]);
 
-  const handlePending = () => setActiveTab("Pending");
-  const handleAccepted = () => setActiveTab("Accepted");
-  const handleComplete = () => setActiveTab("Complete");
+  const togglePending = () => setActiveTab("Pending");
+  const toggleAccepted = () => setActiveTab("Accepted");
+  const toggleComplete = () => setActiveTab("Complete");
 
   useEffect(() => {
     get("/api/trades", { proposerid: props.userId }).then((tradeObj) => {
       console.log(tradeObj);
       for (const trade of tradeObj) {
-        if (trade.approver.userid === props.userId && !trade.approver.approved) {
+        if (!trade.proposer.approved && !trade.approver.approved) {
+          //trade existed before, but was declined by approver (proposer.approved set to false)
+          setDeclinedTrades([trade].concat(declinedTrades));
+        } else if (trade.approver.userid === props.userId && !trade.approver.approved) {
           //active user is approver, and has not yet approved (trade proposed to you)
           setPropToTrades([trade].concat(propToTrades));
         } else if (trade.proposer.userid === props.userId && !trade.approver.approved) {
@@ -55,19 +59,19 @@ const Trades = (props) => {
           <div className="Trades-buttonGroup">
             <button
               className={(activeTab === "Pending" ? "Trades-active" : "") + "Trades-button"}
-              onClick={handlePending}
+              onClick={togglePending}
             >
               Pending
             </button>
             <button
               className={(activeTab === "Accepted" ? "Trades-active" : "") + "Trades-button"}
-              onClick={handleAccepted}
+              onClick={toggleAccepted}
             >
               Accepted
             </button>
             <button
               className={(activeTab === "Complete" ? "Trades-active" : "") + "Trades-button"}
-              onClick={handleComplete}
+              onClick={toggleComplete}
             >
               Complete
             </button>
