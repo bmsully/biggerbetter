@@ -7,7 +7,7 @@ import "./NavBar.css";
 
 // Identifies your web application to Google's authentication service
 const GOOGLE_CLIENT_ID =
-  "1047284490856-5h5pbkhftbnlhumb5t3rtfm9hq1gv5rv.apps.googleusercontent.com";
+  "1047284490856-mrho1ed88dmqm4m50sgi7pmo2sttogsb.apps.googleusercontent.com";
 
 /**
  * The navigation bar at the top of all pages. Takes no props.
