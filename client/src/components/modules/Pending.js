@@ -14,17 +14,6 @@ import "./Pending.css";
  */
 
 const Pending = (props) => {
-  //   const handleDecline = (tradeid) => {
-  //     toTrades.delete(`trade_${tradeid}`); //may not need this
-  //     alert("Trade was declined");
-  //     props.decline(tradeid);
-  //   };
-
-  //   const handleApprove = (tradeid) => {
-  //     toTrades.delete(`trade_${tradeid}`); //may not need this
-  //     props.approve(tradeid);
-  //   };
-
   let toTrades = null;
   const hasToTrades = props.propToTrades.length !== 0;
   if (hasToTrades) {

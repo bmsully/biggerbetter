@@ -59,14 +59,18 @@ const Trades = (props) => {
 
   const approveTrade = (tradeid) => {
     alert("Trade approved");
-    post("/api/approve", { tradeid: tradeid }); //return response? (success/failure?)
-    navigate("/trades");
+    post("/api/approve", { tradeid: tradeid }).then(() => {
+      getAndSortTrades();
+      toggleAccepted();
+    });
   };
 
   const declineTrade = (tradeid) => {
     alert("Trade declined");
-    post("/api/decline", { tradeid: tradeid });
-    navigate("/trades");
+    post("/api/decline", { tradeid: tradeid }).then(() => {
+      getAndSortTrades();
+      togglePending;
+    });
   };
 
   return (
