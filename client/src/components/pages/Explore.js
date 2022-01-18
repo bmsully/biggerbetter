@@ -9,7 +9,7 @@ import "./Explore.css";
 import { post } from "../../utilities.js";
 
 /**
- * Explore is a page
+ * Explore is a page that displays items for the active user to explore
  *
  * @param {String} userId is the id of the active user
  * @param {String} username is the name of the active user

@@ -54,7 +54,7 @@ const App = () => {
         <NavBar path="/" userId={userId} handleLogout={handleLogout}>
           <Landing path="/" userId={userId} />
           <Explore path="explore" userId={userId} username={username} />
-          <Trades path="trades" />
+          <Trades path="trades" userId={userId} />
           <Profile path="profile/:userid" userId={userId} handleLogin={handleLogin} />
           <LogIn path="login" userId={userId} handleLogin={handleLogin} />
           <NotFound default />

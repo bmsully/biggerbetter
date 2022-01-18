@@ -239,16 +239,3 @@ export default TradeModule;
  * Check if selected trade exists or has been made before
  * Otherwise, confirm button appears (post request)
  */
-
-//TODO:
-//Testing Explore page!!
-
-//Trades page:
-//Sort into various pages
-//Create control for managing trades (approve/deny)
-//Create control for completing trades (switch/keep for self)
-//Create messaging system (socket and messaging api!)
-
-//Create some initial styling!
-
-//Deploy!
