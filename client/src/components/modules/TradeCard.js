@@ -10,22 +10,31 @@ import "./TradeCard.css";
  * @param {String} key
  * @param {Object} proposer object representing proposer side of trade
  * @param {Object} approver object representing approver side of trade
- * @param {Boolean} propToYou indicates if trade was proposed to you (for language reasons)
+ * @param {Boolean} you "proposer" or "approver" indicates if trade was proposed by or to you (for language reasons)
  */
 
-//if proposed to you -> "other user" proposes you give "your object"
-//                      In exchange, you recieve "their object"
-//if proposed by you -> You propose you recieve "their object"
-//                      In exchange, "other user" receives "your object"
+//You recieve "their object"
+//    In exchange,
+//"other user" receives "your object"
 
 const TradeCard = (props) => {
   return (
-    <div>
-      <h3>Trade Card</h3>
-      <p>
-        This will have both item's photos, both people involved, and both descriptions of the items
-      </p>
-    </div>
+    <>
+      <div>
+        <div>Proposer</div>
+        <div>Approver</div>
+      </div>
+      <div>
+        <img src={tempItemPic} />
+        <div>{props.proposer.item.img_loc}</div>
+        <div>You recieve {props.approver.item.name}</div>
+        <div>
+          {props.approver.name} recieves {props.approver.item.name}
+        </div>
+        <img src={tempItemPic} />
+        <div>{props.approver.item.img_loc}</div>
+      </div>
+    </>
   );
 };
 

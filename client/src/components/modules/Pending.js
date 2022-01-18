@@ -5,7 +5,7 @@ import "../../utilities.css";
 import "./Pending.css";
 
 /**
- *
+ * Pending is a Component of Trades that displays pending TradeCards
  *
  * @param {Array} propToTrades
  * @param {Array} propByTrades
@@ -23,7 +23,7 @@ const Pending = (props) => {
           key={`trade_${tradeObj._id}`}
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
-          propToYou={true}
+          you={"approver"}
         />
         <button onClick={props.handleDecline(tradeObj._id)}>Decline</button>
         <button onClick={props.handleApprove(tradeObj._id)}>Approve</button>
@@ -41,21 +41,21 @@ const Pending = (props) => {
         key={`trade_${tradeObj._id}`}
         proposer={tradeObj.proposer}
         approver={tradeObj.approver}
-        propToYou={false}
+        you={"proposer"}
       />
     ));
   } else {
-    toTrades = <div>There are no trades proposed to you</div>;
+    byTrades = <div>There are no trades proposed by you</div>;
   }
 
   return (
     <div>
       <h2>Pending Trades</h2>
       <h3>Proposed to you</h3>
-      <TradeCard />
+      {toTrades}
       <hr />
       <h3>Proposed by you</h3>
-      <TradeCard />
+      {byTrades}
     </div>
   );
 };

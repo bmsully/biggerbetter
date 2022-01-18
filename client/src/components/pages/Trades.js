@@ -28,6 +28,7 @@ const Trades = (props) => {
 
   useEffect(() => {
     get("/api/trades", { proposerid: props.userId }).then((tradeObj) => {
+      console.log(tradeObj);
       for (const trade of tradeObj) {
         if (trade.approver.userid === props.userId && !trade.approver.approved) {
           //active user is approver, and has not yet approved (trade proposed to you)
