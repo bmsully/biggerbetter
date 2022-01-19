@@ -10,6 +10,7 @@ import "./TradeCard.css";
  * @param {String} key
  * @param {Object} proposer object representing proposer side of trade
  * @param {Object} approver object representing approver side of trade
+ * @param {Boolean} toYou indicates if trade is made to you (for language)
  */
 
 const TradeCard = (props) => {
@@ -22,9 +23,10 @@ const TradeCard = (props) => {
       <div>
         <img src={tempItemPic} />
         <div>{props.proposer.item.img_loc}</div>
-        <div>You recieve {props.approver.item.name}</div>
+        <div>You recieve {props.toYou ? props.proposer.item.name : props.approver.item.name}</div>
         <div>
-          {props.approver.name} recieves {props.proposer.item.name}
+          {props.toYou ? props.proposer.name : props.approver.name} recieves{" "}
+          {props.toYou ? props.approver.item.name : props.proposer.item.name}
         </div>
         <img src={tempItemPic} />
         <div>{props.approver.item.img_loc}</div>

@@ -23,7 +23,7 @@ const Pending = (props) => {
           key={`trade_${tradeObj._id}`}
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
-          you={"approver"}
+          toYou={true}
         />
         <button onClick={() => props.decline(tradeObj._id)}>Decline</button>
         <button onClick={() => props.approve(tradeObj._id)}>Approve</button>
@@ -41,6 +41,7 @@ const Pending = (props) => {
         key={`trade_${tradeObj._id}`}
         proposer={tradeObj.proposer}
         approver={tradeObj.approver}
+        toYou={false}
       />
     ));
   } else {

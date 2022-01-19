@@ -18,10 +18,14 @@ const ItemList = (props) => {
   const [itemList, setItemList] = useState([]);
 
   useEffect(() => {
+    getItems();
+  }, []);
+
+  const getItems = () => {
     get("/api/items", { userid: props.userid }).then((userItems) => {
       setItemList(userItems);
     });
-  }, []);
+  };
 
   const addNewItem = (itemObj) => {
     const body = { userid: itemObj.userid, name: itemObj.name, desc: itemObj.desc };
@@ -30,27 +34,46 @@ const ItemList = (props) => {
     });
   };
 
-  let items = null;
-  const hasItems = itemList.length !== 0;
-  if (hasItems) {
-    items = itemList.filter((itemObj) => itemObj.active);
-    if (items.length === 0) {
-      items = <div>No active items :(</div>;
+  let activeItems = [];
+  let inactiveItems = [];
+  for (const item of itemList) {
+    if (item.active) {
+      activeItems = [item, ...activeItems];
     } else {
-      items = items.map((itemObj) => (
-        <ItemCard
-          userId={props.userId}
-          key={`Item_${itemObj._id}`}
-          itemid={itemObj._id}
-          userid={itemObj.userid}
-          name={itemObj.name}
-          desc={itemObj.desc}
-          img_loc={itemObj.img_loc}
-        />
-      ));
+      inactiveItems = [item, ...inactiveItems];
     }
+  }
+  if (activeItems.length !== 0) {
+    activeItems = activeItems.map((itemObj) => (
+      <ItemCard
+        userId={props.userId}
+        key={`Item_${itemObj._id}`}
+        itemid={itemObj._id}
+        userid={itemObj.userid}
+        name={itemObj.name}
+        desc={itemObj.desc}
+        img_loc={itemObj.img_loc}
+        className="ItemCard-active"
+      />
+    ));
   } else {
-    items = <div>No items :(</div>;
+    activeItems = <div>No active items</div>;
+  }
+  if (inactiveItems.length !== 0) {
+    inactiveItems = inactiveItems.map((itemObj) => (
+      <ItemCard
+        userId={props.userId}
+        key={`Item_${itemObj._id}`}
+        itemid={itemObj._id}
+        userid={itemObj.userid}
+        name={itemObj.name}
+        desc={itemObj.desc}
+        img_loc={itemObj.img_loc}
+        className="ItemCard-inactive"
+      />
+    ));
+  } else {
+    inactiveItems = <div>No inactive items</div>;
   }
 
   return (
@@ -58,11 +81,14 @@ const ItemList = (props) => {
       {props.userId === props.userid && <AddItem userId={props.userId} onSubmit={addNewItem} />}
       <hr />
       <h2>Active Items</h2>
-      {items}
+      <h3>These items are currently available to be traded and/or in pending trades</h3>
+      <h3>They are visible to other users until accepted in a trade</h3>
+      {activeItems}
       <hr />
       <h2>Inactive Items</h2>
       <h3>These items are currently involved in approved trades</h3>
       <h3>They are invisible to other users until the trade is complete</h3>
+      {inactiveItems}
     </div>
   );
 };
