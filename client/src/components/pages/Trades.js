@@ -61,6 +61,7 @@ const Trades = (props) => {
     alert("Trade approved");
     post("/api/approve", { tradeid: tradeid }).then(() => {
       getAndSortTrades();
+      location.reload();
       toggleAccepted();
     });
   };
@@ -69,7 +70,8 @@ const Trades = (props) => {
     alert("Trade declined");
     post("/api/decline", { tradeid: tradeid }).then(() => {
       getAndSortTrades();
-      togglePending;
+      location.reload();
+      togglePending();
     });
   };
 

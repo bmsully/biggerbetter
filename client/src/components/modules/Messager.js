@@ -28,25 +28,26 @@ const Messager = (props) => {
 
   if (!messages) {
     return <div>Loading!</div>;
-  }
-  return (
-    <div>
-      <h3>Messaging {props.messagerInfo.recipient}</h3>
-      <button onClick={() => closeMessager()}>Close</button>
-      {messages.map((messageObj) => (
-        <div>
-          <span>{(messageObj.userid === props.userId ? "You" : `${messageObj.name}`) + ":"}</span>
-          <span>{messageObj.content}</span>
-          <span>{messageObj.date}</span>
-        </div>
-      ))}
+  } else {
+    return (
       <div>
-        <span>New Message:</span>
-        <input type="text" />
-        <button type="submit">Send</button>
+        <h3>Messaging {props.messagerInfo.recipient}</h3>
+        <button onClick={() => props.closeMessager()}>Close</button>
+        {messages.map((messageObj) => (
+          <div>
+            <span>{(messageObj.userid === props.userId ? "You" : `${messageObj.name}`) + ":"}</span>
+            <span>{messageObj.content}</span>
+            <span>{messageObj.date}</span>
+          </div>
+        ))}
+        <div>
+          <span>New Message:</span>
+          <input type="text" />
+          <button type="submit">Send</button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Messager;

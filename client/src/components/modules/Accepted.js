@@ -6,7 +6,7 @@ import "../../utilities.css";
 import "./Accepted.css";
 
 /**
- * accepted is a Component of Trades that displays accepted TradeCards
+ * Accepted is a Component of Trades that displays accepted TradeCards
  *
  * @param {String} userId id of active user
  * @param {Array} acceptedTrades
@@ -18,12 +18,12 @@ const Accepted = (props) => {
   const [acceptedAndTheyComplete, setAcceptedAndTheyComplete] = useState([]);
   const [messagerInfo, setMessagerInfo] = useState({ tradeid: null, recipient: null });
 
-  const openMessager = ({ tradeid, recipient }) => {
-    setMessagerInfo({ tradeid: tradeid, recipient: recipient });
+  const openMessager = (info) => {
+    setMessagerInfo({ tradeid: info.tradeid, recipient: info.recipient });
   };
 
   const closeMessager = () => {
-    setMessagerId({ tradeid: null, recipient: null });
+    setMessagerInfo({ tradeid: null, recipient: null });
   };
 
   useEffect(() => {
@@ -58,7 +58,19 @@ const Accepted = (props) => {
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
         />
-        <button onClick={() => openMessager(tradeObj._id)}>Message</button>
+        <button
+          onClick={() =>
+            openMessager({
+              tradeid: tradeObj._id,
+              recipient:
+                props.userId === tradeObj.proposer.userid
+                  ? tradeObj.proposer.name
+                  : tradeObj.approver.name,
+            })
+          }
+        >
+          Message
+        </button>
         <button>Complete Trade</button>
       </>
     ));
@@ -73,7 +85,19 @@ const Accepted = (props) => {
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
         />
-        <button onClick={() => openMessager(tradeObj._id)}>Message</button>
+        <button
+          onClick={() =>
+            openMessager({
+              tradeid: tradeObj._id,
+              recipient:
+                props.userId === tradeObj.proposer.userid
+                  ? tradeObj.proposer.name
+                  : tradeObj.approver.name,
+            })
+          }
+        >
+          Message
+        </button>
         <button>Complete Trade</button>
       </>
     ));
@@ -88,7 +112,19 @@ const Accepted = (props) => {
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
         />
-        <button onClick={() => openMessager(tradeObj._id)}>Message</button>
+        <button
+          onClick={() =>
+            openMessager({
+              tradeid: tradeObj._id,
+              recipient:
+                props.userId === tradeObj.proposer.userid
+                  ? tradeObj.proposer.name
+                  : tradeObj.approver.name,
+            })
+          }
+        >
+          Message
+        </button>
         <button disabled>Complete Trade</button>
       </>
     ));
