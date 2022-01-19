@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
   target: String, //user's target item
   img_loc: String, //location of profile image
   stats: {
-    join: Date, //Date when user joined
+    join: { type: Date, default: Date.now }, //Date when user joined
     propto: Number, //Number of proposals made to user
     propby: Number, //Number of proposals made by user
     trades: Number, //Number of trades user has made
