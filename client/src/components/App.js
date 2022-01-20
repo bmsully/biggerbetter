@@ -44,7 +44,6 @@ const App = () => {
   const handleLogout = () => {
     setUserId(undefined);
     setUsername(undefined);
-    console.log(userId);
     post("/api/logout");
   };
 

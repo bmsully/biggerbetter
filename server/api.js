@@ -181,6 +181,30 @@ router.post("/approve", (req, res) => {
   });
 });
 
+router.post("/complete", (req, res) => {
+  Trade.findById(req.body.tradeid).then((tradeObj) => {
+    if (req.body.userid === tradeObj.proposer.userid) {
+      tradeObj.proposer.completed = true;
+    } else {
+      tradeObj.approver.completed = true;
+    }
+    if (tradeObj.proposer.completed && tradeObj.approver.completed) {
+      //swap item owners and activate
+      Item.findById(tradeObj.proposer.item.itemid).then((itemObj) => {
+        itemObj.userid = tradeObj.approver.userid;
+        itemObj.active = true;
+        itemObj.save();
+      });
+      Item.findById(tradeObj.approver.item.itemid).then((itemObj) => {
+        itemObj.userid = tradeObj.proposer.userid;
+        itemObj.active = true;
+        itemObj.save();
+      });
+    }
+    tradeObj.save().then((trade) => res.send(trade));
+  });
+});
+
 router.post("/decline", (req, res) => {
   Trade.findById(req.body.tradeid).then((trade) => {
     trade.proposer.approved = false;
@@ -189,14 +213,29 @@ router.post("/decline", (req, res) => {
 });
 
 router.get("/messages", (req, res) => {
-  Message.find({ tradeid: req.tradeid })
-    .sort({ date: "desc" })
-    .then((messages) => res.send(messages));
+  Message.find({ tradeid: req.query.tradeid })
+    .sort({ date: "asc" })
+    .then((messages) => {
+      res.send(messages);
+    });
+});
+
+router.post("/messages", auth.ensureLoggedIn, (req, res) => {
+  const newMessage = new Message({
+    tradeid: req.body.tradeid,
+    userid: req.body.userid,
+    name: req.body.name,
+    content: req.body.content,
+  });
+
+  newMessage.save();
+  socketManager.getIo().emit("message", newMessage);
 });
 
 // router.get("", (req, res) => {}) // Retrieves data
 // router.post("", (req, res) => {}) // Creates data
-// router.delete("", (req, res) => {}) // Deletes data
+// modify data with specific post requests :(
+// delete data with specific post requests :(
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

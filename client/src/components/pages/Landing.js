@@ -13,6 +13,7 @@ const Landing = ({ userId }) => {
       <ul>
         <li>What BiggerBetter is!</li>
         <li>The story of Kyle MacDonald (red paper clip guy)</li>
+        <li>Kyle MacDonald Ted Talk!</li>
         <li>The story of the tiktok bobby pin girl and links!</li>
         <li>Instructions on how to use with photos/gifs!</li>
       </ul>

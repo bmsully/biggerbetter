@@ -35,7 +35,6 @@ const Trades = (props) => {
 
   const getAndSortTrades = () => {
     get("/api/trades", { proposerid: props.userId }).then((tradeObj) => {
-      console.log(tradeObj);
       for (const trade of tradeObj) {
         if (!trade.proposer.approved && !trade.approver.approved) {
           //trade existed before, but was declined by approver, or items traded in different trade (proposer.approved set to false)
@@ -58,20 +57,26 @@ const Trades = (props) => {
   };
 
   const approveTrade = (tradeid) => {
-    alert("Trade approved");
+    alert("You have approved this trade");
     post("/api/approve", { tradeid: tradeid }).then(() => {
       getAndSortTrades();
-      location.reload();
-      toggleAccepted();
+      location.reload().then(() => toggleAccepted());
     });
   };
 
   const declineTrade = (tradeid) => {
-    alert("Trade declined");
+    alert("You have declined this trade");
     post("/api/decline", { tradeid: tradeid }).then(() => {
       getAndSortTrades();
-      location.reload();
-      togglePending();
+      location.reload().then(() => togglePending());
+    });
+  };
+
+  const completeTrade = (tradeid) => {
+    alert("You have completed this trade");
+    post("/api/complete", { userid: props.userId, tradeid: tradeid }).then(() => {
+      getAndSortTrades();
+      location.reload().then(() => toggleAccepted());
     });
   };
 
@@ -109,7 +114,11 @@ const Trades = (props) => {
                 decline={declineTrade}
               />
             ) : activeTab === "Accepted" ? (
-              <Accepted userId={props.userId} acceptedTrades={acceptedTrades} />
+              <Accepted
+                userId={props.userId}
+                acceptedTrades={acceptedTrades}
+                complete={completeTrade}
+              />
             ) : (
               <Complete completeTrades={completeTrades} />
             )}
