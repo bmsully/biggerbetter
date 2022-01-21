@@ -36,6 +36,7 @@ const AddItem = (props) => {
     setDesc(event.target.value);
   };
 
+  //called whenever the user uploads an image
   const handleUpload = (event) => {
     event.preventDefault();
     setFile(event.target.files[0]);

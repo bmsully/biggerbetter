@@ -41,13 +41,7 @@ export default TradeCard;
 //Testing everthing with more users!
 
 //Trades page:
-//Sort trades in subpages and map into TradeCards (Pending, Accepted(!), Complete)
-//Create button control for managing trades (Decline/Approve) with backend updating!
-//Create control for completing trades (switch)
-//Create messaging system (socket and messaging api)
-//  recall the message parent is the trade id
-
-//Look into the difficulty of aws photo hosting for image urls
+//Test control for completing trades (switch)
 
 //Create some initial styling!
 
