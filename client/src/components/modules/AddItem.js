@@ -3,6 +3,8 @@ import React, { Component, useState, useEffect } from "react";
 import "../../utilities.css";
 import "./AddItem.css";
 
+import { get } from "../../utilities.js";
+
 /**
  * AddItems is a component of ItemList
  *
@@ -14,9 +16,15 @@ const AddItem = (props) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
+  const [file, setFile] = useState(null);
+  const [img_loc, setImg_Loc] = useState("");
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  useEffect(() => {
+    console.log("File Changed");
+  }, [file]);
 
   //called whenever the user types in name text box
   const handleNameChange = (event) => {
@@ -28,13 +36,38 @@ const AddItem = (props) => {
     setDesc(event.target.value);
   };
 
+  const handleUpload = (event) => {
+    event.preventDefault();
+    setFile(event.target.files[0]);
+  };
+
   // called when the user hits "Submit" in a text input area
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.onSubmit && props.onSubmit({ userid: props.userId, name: name, desc: desc });
+    //get secure url from server
+    get("/api/s3Url").then((res) => {
+      const putRequest = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: file,
+      };
+      fetch(res.url, putRequest); //post image directly to s3 bucket
+
+      const imageUrl = res.url.split("?")[0];
+      console.log(imageUrl);
+      setImg_Loc(imageUrl);
+    });
+    //submit to MongoDB
+    props.onSubmit &&
+      props.onSubmit({ userid: props.userId, name: name, desc: desc, img_loc: img_loc });
+    //close and reset AddItem
     handleClose();
     setName("");
     setDesc("");
+    setFile(null);
+    setImg_Loc("");
   };
 
   return (
@@ -57,7 +90,14 @@ const AddItem = (props) => {
               onChange={handleDescChange}
               className=""
             />
-            <p>Still need image upload here</p>
+            <input type="file" accept="image/*" onChange={handleUpload} />
+            {file && (
+              <div>
+                <img alt="not found" src={URL.createObjectURL(file)} />
+                <br />
+                <button onClick={() => setFile(null)}>Remove</button>
+              </div>
+            )}
             <button type="submit" className="" value="Submit" onClick={handleSubmit}>
               Submit
             </button>

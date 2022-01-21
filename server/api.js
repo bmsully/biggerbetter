@@ -9,6 +9,9 @@
 
 const express = require("express");
 
+// import aws s3 model
+const s3 = require("./s3");
+
 // import models so we can interact with the database
 const User = require("./models/user");
 const Trade = require("./models/trade");
@@ -45,6 +48,11 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
+
+router.get("/s3Url", async (req, res) => {
+  const url = await s3.generateUploadURL();
+  res.send({ url });
+});
 
 router.get("/users", (req, res) => {
   User.find({}).then((users) => {
