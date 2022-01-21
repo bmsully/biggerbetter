@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import Pending from "../modules/Pending.js";
 import Accepted from "../modules/Accepted.js";
 import Complete from "../modules/Complete.js";
-import { Link, useNavigate } from "@reach/router";
+import { Link } from "@reach/router";
 
 import "../../utilities.css";
 import "./Trades.css";
@@ -26,8 +26,6 @@ const Trades = (props) => {
   const togglePending = () => setActiveTab("Pending");
   const toggleAccepted = () => setActiveTab("Accepted");
   const toggleComplete = () => setActiveTab("Complete");
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     getAndSortTrades();

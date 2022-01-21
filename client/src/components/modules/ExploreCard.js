@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
 import defaultProfilePic from "../../public/default-user-image.png";
-import tempItemPic from "../../public/temp-item.png";
 
 import "../../utilities.css";
 import "./ExploreCard.css";
@@ -47,15 +46,14 @@ const ExploreCard = (props) => {
     } else {
       items = items.map((itemObj) => (
         <div key={`UserItem_${itemObj._id}`}>
-          <img src={tempItemPic} className="ExploreCard-itemImg" />
-          <div>{itemObj.img_loc}</div>
+          <img src={itemObj.img_loc} className="ExploreCard-itemImg" />
           <div>Item name: {itemObj.name}</div>
           <div>Item description: {itemObj.desc}</div>
         </div>
       ));
     }
   } else {
-    items = <div> {props.name} does not have any items posted :(</div>;
+    items = <div> {props.name} does not have any active items</div>;
   }
 
   return (

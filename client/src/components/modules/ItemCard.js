@@ -1,5 +1,4 @@
 import React, { Component, useState, useEffect } from "react";
-import tempItemPic from "../../public/temp-item.png";
 
 import "../../utilities.css";
 import "./ItemCard.css";
@@ -19,8 +18,7 @@ const ItemCard = (props) => {
   return (
     <div>
       <h3>Item Card</h3>
-      <img src={tempItemPic} className="ItemCard-img" />
-      <div>{props.img_loc}</div>
+      <img src={props.img_loc} className="ItemCard-img" />
       <h4>Name: {props.name}</h4>
       <h5>Description: {props.desc}</h5>
     </div>
