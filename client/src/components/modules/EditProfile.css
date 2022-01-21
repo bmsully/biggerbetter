@@ -1,0 +1,7 @@
+.EditProfile-itemInputValid {
+  border: 2px solid black;
+}
+
+.EditProfile-itemInputInvalid {
+  border: 2px solid red;
+}

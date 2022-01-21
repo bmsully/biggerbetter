@@ -17,6 +17,7 @@ import { get, post } from "../../utilities.js";
 const Messager = (props) => {
   const [messages, setMessages] = useState([]);
   const [value, setValue] = useState("");
+  const [valueValid, setValueValid] = useState(true);
 
   const loadMessages = (tradeId) => {
     get("/api/messages", { tradeid: tradeId }).then((messageObj) => {
@@ -50,20 +51,32 @@ const Messager = (props) => {
     setValue(event.target.value);
   };
 
+  const inputValid = () => {
+    const valueLength = value.replace(" ", "").length;
+    if (valueLength === 0 || valueLength > 140) {
+      setValueValid(false);
+      return false;
+    } else return true;
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    let query;
-    query = {
-      tradeid: props.tradeInfo._id,
-      userid: props.userId,
-      name:
-        props.userId === props.tradeInfo.proposer.userid
-          ? props.tradeInfo.proposer.name
-          : props.tradeInfo.approver.name,
-      content: value,
-    };
-    post("/api/messages", query);
-    setValue("");
+    //check input is valid
+    if (inputValid()) {
+      let query;
+      query = {
+        tradeid: props.tradeInfo._id,
+        userid: props.userId,
+        name:
+          props.userId === props.tradeInfo.proposer.userid
+            ? props.tradeInfo.proposer.name
+            : props.tradeInfo.approver.name,
+        content: value,
+      };
+      post("/api/messages", query);
+      setValue("");
+      setValueValid(true);
+    }
   };
 
   if (!messages) {
@@ -87,7 +100,13 @@ const Messager = (props) => {
         ))}
         <div>
           <span>New Message:</span>
-          <input type="text" placeholder={"New Message"} value={value} onChange={handleChange} />
+          <input
+            type="text"
+            placeholder={"New Message"}
+            value={value}
+            onChange={handleChange}
+            className={valueValid ? "Messager-valueInputValid" : "Messager-valueInputInvalid"}
+          />
           <button type="submit" value="Submit" onClick={handleSubmit}>
             Submit
           </button>
