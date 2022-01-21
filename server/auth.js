@@ -25,7 +25,7 @@ function getOrCreateUser(user) {
       name: user.name,
       googleid: user.sub,
       target: "No target item :(",
-      img_loc: "url of profile pic once enabled",
+      img_loc: "../../public/default-user-image.png",
       stats: {
         join: Date(),
         propto: 0,

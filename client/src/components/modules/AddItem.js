@@ -18,6 +18,9 @@ const AddItem = (props) => {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const [img_loc, setImg_Loc] = useState("");
+  const [nameValid, setNameValid] = useState(true);
+  const [descValid, setDescValid] = useState(true);
+  const [fileValid, setFileValid] = useState(false);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -40,35 +43,58 @@ const AddItem = (props) => {
   const handleUpload = (event) => {
     event.preventDefault();
     setFile(event.target.files[0]);
+    setFileValid(true);
+  };
+
+  const inputValid = () => {
+    const nameLength = name.replaceAll(" ", "").length;
+    const descLength = desc.replaceAll(" ", "").length;
+    let tempNameValid = true;
+    let tempDescValid = true;
+    if (nameLength === 0) {
+      setNameValid(false);
+      tempNameValid = false;
+    } else setNameValid(true);
+    if (descLength === 0 || descLength > 140) {
+      setDescValid(false);
+      tempDescValid = true;
+    } else setDescValid(true);
+    return tempNameValid && tempDescValid && fileValid;
   };
 
   // called when the user hits "Submit" in a text input area
   const handleSubmit = (event) => {
     event.preventDefault();
-    //get secure url from server
-    get("/api/s3Url").then((res) => {
-      const putRequest = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        body: file,
-      };
-      fetch(res.url, putRequest); //post image directly to s3 bucket
+    //check input is valid
+    if (inputValid()) {
+      //get secure url from server
+      get("/api/s3Url").then((res) => {
+        const putRequest = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          body: file,
+        };
+        fetch(res.url, putRequest); //post image directly to s3 bucket
 
-      const imageUrl = res.url.split("?")[0];
-      console.log(imageUrl);
-      setImg_Loc(imageUrl);
-    });
-    //submit to MongoDB
-    props.onSubmit &&
-      props.onSubmit({ userid: props.userId, name: name, desc: desc, img_loc: img_loc });
-    //close and reset AddItem
-    handleClose();
-    setName("");
-    setDesc("");
-    setFile(null);
-    setImg_Loc("");
+        const imageUrl = res.url.split("?")[0];
+        console.log(imageUrl);
+        setImg_Loc(imageUrl);
+      });
+      //submit to MongoDB
+      props.onSubmit &&
+        props.onSubmit({ userid: props.userId, name: name, desc: desc, img_loc: img_loc });
+      //close and reset AddItem
+      handleClose();
+      setName("");
+      setDesc("");
+      setFile(null);
+      setImg_Loc("");
+      setNameValid(true);
+      setDescValid(true);
+      setFileValid(false);
+    }
   };
 
   return (
@@ -82,16 +108,22 @@ const AddItem = (props) => {
               placeholder={"Item name"}
               value={name}
               onChange={handleNameChange}
-              className=""
+              className={nameValid ? "AddItem-nameInputValid" : "AddItem-nameInputInvalid"}
             />
             <input
               type="text"
               placeholder={"Item description"}
               value={desc}
               onChange={handleDescChange}
-              className=""
+              className={descValid ? "AddItem-descInputValid" : "AddItem-descInputInvalid"}
             />
-            <input type="file" accept="image/*" onChange={handleUpload} />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleUpload}
+              className={fileValid ? "AddItem-fileInputValid" : "AddItem-fileInputInvalid"}
+            />
+            {fileValid ? <></> : <span>Please upload an image for this item</span>}
             {file && (
               <div>
                 <img alt="not found" src={URL.createObjectURL(file)} />
