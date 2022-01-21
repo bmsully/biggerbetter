@@ -78,7 +78,15 @@ const ItemList = (props) => {
 
   return (
     <div>
-      {props.userId === props.userid && <AddItem userId={props.userId} onSubmit={addNewItem} />}
+      {props.userId === props.userid &&
+        (itemList.length < 5 ? (
+          <AddItem userId={props.userId} onSubmit={addNewItem} />
+        ) : (
+          <>
+            <button disabled>Add an item!</button>
+            <p>*Current limit of 5 total items</p>
+          </>
+        ))}
       <hr />
       <h2>Active Items</h2>
       <h3>These items are currently available to be traded and/or in pending trades</h3>
