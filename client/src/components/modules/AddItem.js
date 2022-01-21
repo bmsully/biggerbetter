@@ -17,7 +17,6 @@ const AddItem = (props) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
-  const [img_loc, setImg_Loc] = useState("");
   const [nameValid, setNameValid] = useState(true);
   const [descValid, setDescValid] = useState(true);
   const [fileValid, setFileValid] = useState(false);
@@ -80,20 +79,18 @@ const AddItem = (props) => {
 
         const imageUrl = res.url.split("?")[0];
         console.log(imageUrl);
-        setImg_Loc(imageUrl);
+        //submit to MongoDB
+        props.onSubmit &&
+          props.onSubmit({ userid: props.userId, name: name, desc: desc, img_loc: imageUrl });
+        //close and reset AddItem
+        handleClose();
+        setName("");
+        setDesc("");
+        setFile(null);
+        setNameValid(true);
+        setDescValid(true);
+        setFileValid(false);
       });
-      //submit to MongoDB
-      props.onSubmit &&
-        props.onSubmit({ userid: props.userId, name: name, desc: desc, img_loc: img_loc });
-      //close and reset AddItem
-      handleClose();
-      setName("");
-      setDesc("");
-      setFile(null);
-      setImg_Loc("");
-      setNameValid(true);
-      setDescValid(true);
-      setFileValid(false);
     }
   };
 

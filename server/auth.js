@@ -25,7 +25,7 @@ function getOrCreateUser(user) {
       name: user.name,
       googleid: user.sub,
       target: "No target item :(",
-      img_loc: "../../public/default-user-image.png",
+      img_loc: "default",
       stats: {
         join: Date(),
         propto: 0,

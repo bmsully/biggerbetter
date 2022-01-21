@@ -16,7 +16,6 @@ const EditProfile = (props) => {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState(props.defaultItem);
   const [file, setFile] = useState(null);
-  const [img_loc, setImg_Loc] = useState("");
   const [itemValid, setItemValid] = useState(true);
 
   const handleShow = () => setShow(true);
@@ -49,29 +48,37 @@ const EditProfile = (props) => {
     event.preventDefault();
     //check input is valid
     if (inputValid()) {
-      //get secure url from server
-      get("/api/s3Url").then((res) => {
-        const putRequest = {
-          method: "PUT",
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          body: file,
-        };
-        fetch(res.url, putRequest); //post image directly to s3 bucket
-
-        const imageUrl = res.url.split("?")[0];
-        console.log(imageUrl);
-        setImg_Loc(imageUrl);
-      });
-      //submit to MongoDB
-      props.onSubmit && props.onSubmit({ target: item, img_loc: img_loc });
-      //close and reset EditProfile
-      handleClose();
-      setItem("");
-      setFile(null);
-      setImg_Loc("");
-      setItemValid(true);
+      if (file) {
+        //file uploaded i.e. profile pic being changed from default
+        //get secure url from server
+        get("/api/s3Url").then((res) => {
+          const putRequest = {
+            method: "PUT",
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            body: file,
+          };
+          fetch(res.url, putRequest); //post image directly to s3 bucket
+          const imageUrl = res.url.split("?")[0];
+          console.log(imageUrl);
+          //submit to MongoDB
+          props.onSubmit && props.onSubmit({ target: item, img_loc: imageUrl });
+          //close and reset EditProfile
+          handleClose();
+          setItem("");
+          setFile(null);
+          setItemValid(true);
+        });
+      } else {
+        //no file upload i.e. profile pic is not changing
+        //submit to MongoDB
+        props.onSubmit && props.onSubmit({ target: item });
+        //close and reset EditProfile
+        handleClose();
+        setItem("");
+        setItemValid(true);
+      }
     }
   };
 

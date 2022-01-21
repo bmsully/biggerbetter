@@ -60,8 +60,10 @@ const ExploreCard = (props) => {
 
   return (
     <div>
-      <img src={defaultProfilePic} className="ExploreCard-profileImg" />
-      <p>this will be the user's uploaded image</p>
+      <img
+        src={props.img_loc === "default" ? defaultProfilePic : props.img_loc}
+        className="ExploreCard-profileImg"
+      />
       <h3>{props.name}</h3>
       <h4>Target Item: {props.target}</h4>
       <button onClick={onClick}>Trade with this user!</button>
