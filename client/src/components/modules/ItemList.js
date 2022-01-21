@@ -28,7 +28,12 @@ const ItemList = (props) => {
   };
 
   const addNewItem = (itemObj) => {
-    const body = { userid: itemObj.userid, name: itemObj.name, desc: itemObj.desc };
+    const body = {
+      userid: itemObj.userid,
+      name: itemObj.name,
+      desc: itemObj.desc,
+      img_loc: itemObj.img_loc,
+    };
     post("/api/items", body).then((newItem) => {
       setItemList([newItem].concat(itemList));
     });

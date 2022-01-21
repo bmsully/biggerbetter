@@ -90,7 +90,7 @@ router.post("/items", (req, res) => {
     userid: req.body.userid,
     name: req.body.name,
     desc: req.body.desc,
-    img_loc: "../../public/imageNotFound.png",
+    img_loc: req.body.img_loc,
     active: true,
   });
 
