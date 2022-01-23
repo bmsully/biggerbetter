@@ -59,11 +59,13 @@ const EditProfile = (props) => {
             },
             body: file,
           };
-          fetch(res.url, putRequest); //post image directly to s3 bucket
-          const imageUrl = res.url.split("?")[0];
-          console.log(imageUrl);
-          //submit to MongoDB
-          props.onSubmit && props.onSubmit({ target: item, img_loc: imageUrl });
+          //post image directly to s3 bucket
+          fetch(res.url, putRequest).then(() => {
+            const imageUrl = res.url.split("?")[0];
+            console.log(imageUrl);
+            //submit to MongoDB
+            props.onSubmit && props.onSubmit({ target: item, img_loc: imageUrl });
+          });
           //close and reset EditProfile
           handleClose();
           setItem("");

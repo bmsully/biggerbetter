@@ -21,6 +21,7 @@ const ProfileCard = ({ username, usertarget, userimg_loc }) => {
       <img
         src={userimg_loc === "default" ? defaultProfilePic : userimg_loc}
         className="ProfileCard-img"
+        alt="User's profile picture"
       />
       <h3>Name: {username}</h3>
       <h4>Target Item: {usertarget}</h4>

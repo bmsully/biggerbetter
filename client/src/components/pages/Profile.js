@@ -17,7 +17,9 @@ const Profile = (props) => {
   //userId is for checking if logged in i.e. this is the actual user
   const onSubmit = (newProfileInfo) => {
     const query = { userId: props.userId, newInfo: newProfileInfo };
-    post("/api/user", query).then((userObj) => setUser(userObj));
+    post("/api/user", query).then((userObj) => {
+      setUser(userObj);
+    });
   };
 
   useEffect(() => {
