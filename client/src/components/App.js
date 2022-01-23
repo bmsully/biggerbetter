@@ -9,6 +9,7 @@ import LogIn from "./pages/LogIn.js";
 import NavBar from "./modules/NavBar.js";
 
 import "../utilities.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { socket } from "../client-socket.js";
 
@@ -23,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
-      console.log(user);
+      // console.log(user);
       if (user._id) {
         // they are registed in the database, and currently logged in.
         setUserId(user._id);

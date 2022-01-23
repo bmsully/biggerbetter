@@ -9,12 +9,15 @@ import "./Profile.css";
 
 import { get, post } from "../../utilities.js";
 
+/**
+ * Profile is a page that displays user information
+ * @param {String} userId id of active user
+ * @param {String} userid id of users profile page
+ */
+
 const Profile = (props) => {
   const [user, setUser] = useState();
 
-  //we get userId and userid from props
-  //userid is for get(`/api/user`) i.e. viewing any random profile
-  //userId is for checking if logged in i.e. this is the actual user
   const onSubmit = (newProfileInfo) => {
     const query = { userId: props.userId, newInfo: newProfileInfo };
     post("/api/user", query).then((userObj) => {
@@ -22,9 +25,9 @@ const Profile = (props) => {
     });
   };
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  // useEffect(() => {
+  //   console.log(user);
+  // }, [user]);
 
   useEffect(() => {
     get("/api/user", { userid: props.userid }).then((userObj) => setUser(userObj));

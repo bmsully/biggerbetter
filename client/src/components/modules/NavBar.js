@@ -10,7 +10,11 @@ const GOOGLE_CLIENT_ID =
   "1047284490856-mrho1ed88dmqm4m50sgi7pmo2sttogsb.apps.googleusercontent.com";
 
 /**
- * The navigation bar at the top of all pages. Takes no props.
+ * NavBar is a Navigation Bar Component that appears at the top of all pages
+ *
+ * @param {String} userId id of active user
+ * @param {Function} handleLogout logs out the active user
+ * @param {Component} children active web page
  */
 const NavBar = ({ userId, handleLogout, children }) => {
   const navigate = useNavigate();
