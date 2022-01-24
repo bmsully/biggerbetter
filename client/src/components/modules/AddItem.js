@@ -25,10 +25,6 @@ const AddItem = (props) => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  useEffect(() => {
-    console.log("File Changed");
-  }, [file]);
-
   //called whenever the user types in name text box
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -106,20 +102,29 @@ const AddItem = (props) => {
               placeholder={"Item name"}
               value={name}
               onChange={handleNameChange}
-              className={nameValid ? "AddItem-nameInputValid" : "AddItem-nameInputInvalid"}
+              className={
+                "mb-3 form-control " +
+                (nameValid ? "AddItem-nameInputValid" : "AddItem-nameInputInvalid")
+              }
             />
             <input
               type="text"
               placeholder={"Item description"}
               value={desc}
               onChange={handleDescChange}
-              className={descValid ? "AddItem-descInputValid" : "AddItem-descInputInvalid"}
+              className={
+                "mb-3 form-control " +
+                (descValid ? "AddItem-descInputValid" : "AddItem-descInputInvalid")
+              }
             />
             <input
               type="file"
               accept="image/*"
               onChange={handleUpload}
-              className={fileValid ? "AddItem-fileInputValid" : "AddItem-fileInputInvalid"}
+              className={
+                "mb-3 form-control " +
+                (fileValid ? "AddItem-fileInputValid" : "AddItem-fileInputInvalid")
+              }
             />
             {fileValid ? <></> : <span>Please upload an image for this item</span>}
             {file && (

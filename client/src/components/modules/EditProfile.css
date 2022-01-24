@@ -2,10 +2,17 @@
   margin: var(--xs);
 }
 
-.EditProfile-itemInputValid {
-  border: 2px solid black;
+.EditProfile-img {
+  width: 144px;
+  height: 144px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: var(--xs) solid var(--darkgrey);
+  box-shadow: var(--grey);
+  margin: var(--xs);
 }
 
-.EditProfile-itemInputInvalid {
-  border: 2px solid red;
+.EditProfile-removebtn {
+  margin: var(--xs) var(--xs) var(--s);
 }
