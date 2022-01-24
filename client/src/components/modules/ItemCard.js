@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 import "../../utilities.css";
 import "./ItemCard.css";
@@ -17,10 +18,15 @@ import "./ItemCard.css";
 const ItemCard = (props) => {
   return (
     <div>
-      <h3>Item Card</h3>
       <img src={props.img_loc} className="ItemCard-img" />
-      <h4>Name: {props.name}</h4>
-      <h5>Description: {props.desc}</h5>
+      <div>
+        <h4 className="u-headerFont">
+          Name: <span className="u-bodyFont">{props.name}</span>
+        </h4>
+        <h5 className="u-headerFont">
+          Description: <span className="u-bodyFont">{props.desc}</span>
+        </h5>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,30 @@
+.ProfileCard-container {
+  max-width: 100%;
+  border: 1px solid var(--darkgrey);
+  border-radius: var(--xs);
+  background-color: var(--grey);
+  margin: var(--s) var(--xs);
+  padding: var(--xs);
+}
+
 .ProfileCard-img {
+  display: inline-block;
+  width: 144px;
+  height: 144px;
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  border: var(--xs) solid var(--darkgrey);
+  box-shadow: var(--grey);
+  margin: var(--xs);
+}
+
+.ProfileCard-info {
+  border: 2px solid var(--darkgrey);
+  border-radius: var(--xs);
+  background-color: var(--white);
+  padding: var(--xs);
 }

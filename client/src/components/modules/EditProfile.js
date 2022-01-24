@@ -109,7 +109,9 @@ const EditProfile = (props) => {
           </Button>
         </div>
       ) : (
-        <Button onClick={handleShow}>Edit Profile</Button>
+        <div className="u-flexColumn u-flex-alignCenter EditProfile-btn">
+          <Button onClick={handleShow}>Edit Profile</Button>
+        </div>
       )}
     </div>
   );

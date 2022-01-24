@@ -98,7 +98,6 @@ const AddItem = (props) => {
 
   return (
     <div>
-      <h3>Add Item</h3>
       <div>
         {show ? (
           <div>
@@ -135,7 +134,9 @@ const AddItem = (props) => {
             </Button>
           </div>
         ) : (
-          <Button onClick={handleShow}>Add an item!</Button>
+          <div className="u-flexColumn u-flex-alignCenter AddItem-btn">
+            <Button onClick={handleShow}>Add an item!</Button>
+          </div>
         )}
       </div>
     </div>

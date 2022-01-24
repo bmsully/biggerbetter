@@ -1,7 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import ProfileCard from "../modules/ProfileCard.js";
 import ItemList from "../modules/ItemList.js";
-import { Link } from "@reach/router";
 import EditProfile from "../modules/EditProfile.js";
 import Button from "react-bootstrap/Button";
 
@@ -26,10 +25,6 @@ const Profile = (props) => {
     });
   };
 
-  // useEffect(() => {
-  //   console.log(user);
-  // }, [user]);
-
   useEffect(() => {
     get("/api/user", { userid: props.userid }).then((userObj) => setUser(userObj));
   }, []);
@@ -48,7 +43,6 @@ const Profile = (props) => {
   } else {
     return (
       <div>
-        <h1 className="u-headerFont">Profile Page</h1>
         <div>
           <ProfileCard username={user.name} usertarget={user.target} userimg_loc={user.img_loc} />
           {props.userId === props.userid && (

@@ -1,3 +1,7 @@
+.EditProfile-btn {
+  margin: var(--xs);
+}
+
 .EditProfile-itemInputValid {
   border: 2px solid black;
 }

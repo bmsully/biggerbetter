@@ -1,10 +1,11 @@
 import React, { Component, useState, useEffect } from "react";
 import defaultProfilePic from "../../public/default-user-image.png";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import "../../utilities.css";
 import "./ProfileCard.css";
-
-// NOTE TO BRADY - update profile pic url
 
 /**
  * ProfileCard is a Component displaying info about a user
@@ -15,17 +16,34 @@ import "./ProfileCard.css";
  */
 
 const ProfileCard = ({ username, usertarget, userimg_loc }) => {
+  const divStyle = {
+    backgroundImage: "url(" + (userimg_loc === "default" ? defaultProfilePic : userimg_loc) + ")",
+  };
+
   return (
-    <div>
-      <h2>Profile Card</h2>
-      <img
-        src={userimg_loc === "default" ? defaultProfilePic : userimg_loc}
-        className="ProfileCard-img"
-        alt="User's profile picture"
-      />
-      <h3>Name: {username}</h3>
-      <h4>Target Item: {usertarget}</h4>
-    </div>
+    <>
+      <div className="ProfileCard-container">
+        <Container fluid="md">
+          <Row>
+            {/* <Col xs={4} sm={1}></Col> */}
+            <Col xs={12} sm={4}>
+              <div style={divStyle} className="ProfileCard-img" alt="User's profile picture" />
+            </Col>
+            {/* <Col xs={4} sm={1}></Col> */}
+            <Col xs={12} sm={8}>
+              <div className="ProfileCard-info">
+                <h3 className="u-headerFont u-textCenter">{username}</h3>
+                <div className="u-textCenter">
+                  <h4 className="u-headerFont">
+                    Target Item: <span className="u-bodyFont">{usertarget}</span>
+                  </h4>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 };
 

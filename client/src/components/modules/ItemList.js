@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import ItemCard from "./ItemCard.js";
 import AddItem from "./AddItem.js";
+import Button from "react-bootstrap/Button";
 
 import { get, post } from "../../utilities.js";
 
@@ -88,7 +89,7 @@ const ItemList = (props) => {
           <AddItem userId={props.userId} onSubmit={addNewItem} />
         ) : (
           <>
-            <button disabled>Add an item!</button>
+            <Button disabled>Add an item!</Button>
             <p>*Current limit of 5 total items</p>
           </>
         ))}
