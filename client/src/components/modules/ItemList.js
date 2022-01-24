@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import ItemCard from "./ItemCard.js";
 import AddItem from "./AddItem.js";
-import Button from "react-bootstrap/Button";
+import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 
 import { get, post } from "../../utilities.js";
 
@@ -88,20 +88,27 @@ const ItemList = (props) => {
         (itemList.length < 5 ? (
           <AddItem userId={props.userId} onSubmit={addNewItem} />
         ) : (
-          <>
-            <Button disabled>Add an item!</Button>
-            <p>*Current limit of 5 total items</p>
-          </>
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 250, hide: 400 }}
+            overlay={<Tooltip>Users limited to 5 total items</Tooltip>}
+          >
+            <div className="u-flexColumn u-flex-alignCenter ItemList-btn">
+              <Button disabled>Add an item!</Button>
+            </div>
+          </OverlayTrigger>
         ))}
       <hr />
-      <h2>Active Items</h2>
-      <h3>These items are currently available to be traded and/or in pending trades</h3>
-      <h3>They are visible to other users until accepted in a trade</h3>
+      <h2 className="u-headerFont">Active Items</h2>
+      <h3 className="u-bodyFont">
+        These items are currently available to be traded and/or in pending trades
+      </h3>
+      <h3 className="u-bodyFont">They are visible to other users until accepted in a trade</h3>
       {activeItems}
       <hr />
-      <h2>Inactive Items</h2>
-      <h3>These items are currently involved in approved trades</h3>
-      <h3>They are invisible to other users until the trade is complete</h3>
+      <h2 className="u-headerFont">Inactive Items</h2>
+      <h3 className="u-bodyFont">These items are currently involved in approved trades</h3>
+      <h3 className="u-bodyFont">They are invisible to other users until the trade is complete</h3>
       {inactiveItems}
     </div>
   );
