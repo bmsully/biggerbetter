@@ -1,5 +1,4 @@
 import React, { Component, useState, useEffect } from "react";
-import tempItemPic from "../../public/temp-item.png";
 
 import "../../utilities.css";
 import "./TradeCard.css";

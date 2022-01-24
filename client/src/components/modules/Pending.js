@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import TradeCard from "./TradeCard.js";
+import Button from "react-bootstrap/Button";
 
 import "../../utilities.css";
 import "./Pending.css";
@@ -25,8 +26,12 @@ const Pending = (props) => {
           approver={tradeObj.approver}
           toYou={true}
         />
-        <button onClick={() => props.decline(tradeObj._id)}>Decline</button>
-        <button onClick={() => props.approve(tradeObj._id)}>Approve</button>
+        <Button variant="danger" onClick={() => props.decline(tradeObj._id)}>
+          Decline
+        </Button>
+        <Button variant="success" onClick={() => props.approve(tradeObj._id)}>
+          Approve
+        </Button>
       </>
     ));
   } else {
@@ -50,7 +55,7 @@ const Pending = (props) => {
 
   return (
     <div>
-      <h2>Pending Trades</h2>
+      <h2 className="u-headerFont">Pending Trades</h2>
       <hr />
       <h3>Proposed to you</h3>
       {toTrades}

@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import TradeCard from "./TradeCard.js";
 import Messager from "./Messager.js";
+import Button from "react-bootstrap/Button";
 
 import "../../utilities.css";
 import "./Accepted.css";
@@ -59,8 +60,10 @@ const Accepted = (props) => {
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
         />
-        <button onClick={() => openMessager(tradeObj)}>Message</button>
-        <button onClick={() => props.complete(tradeObj._id)}>Complete Trade</button>
+        <Button variant="secondary" onClick={() => openMessager(tradeObj)}>
+          Message
+        </Button>
+        <Button onClick={() => props.complete(tradeObj._id)}>Complete Trade</Button>
       </>
     ));
   } else accTrades = <></>;
@@ -74,8 +77,10 @@ const Accepted = (props) => {
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
         />
-        <button onClick={() => openMessager(tradeObj)}>Message</button>
-        <button onClick={() => props.complete(tradeObj._id)}>Complete Trade</button>
+        <Button variant="secondary" onClick={() => openMessager(tradeObj)}>
+          Message
+        </Button>
+        <Button onClick={() => props.complete(tradeObj._id)}>Complete Trade</Button>
       </>
     ));
   } else accTheyCompTrades = <></>;
@@ -89,8 +94,10 @@ const Accepted = (props) => {
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
         />
-        <button onClick={() => openMessager(tradeObj)}>Message</button>
-        <button disabled>Complete Trade</button>
+        <Button variant="secondary" onClick={() => openMessager(tradeObj)}>
+          Message
+        </Button>
+        <Button disabled>Complete Trade</Button>
       </>
     ));
   } else accYouCompTrades = <></>;
@@ -98,6 +105,7 @@ const Accepted = (props) => {
   if (messagerInfo) {
     return (
       <div>
+        <h2 className="u-headerFont">Accepted Trades</h2>
         <hr />
         <Messager userId={props.userId} closeMessager={closeMessager} tradeInfo={messagerInfo} />
         <hr />
@@ -117,26 +125,26 @@ const Accepted = (props) => {
       </div>
     );
   } else {
+    return (
+      <div>
+        <h2 className="u-headerFont">Accepted Trades</h2>
+        <hr />
+        <h3>Message or Complete Trade</h3>
+        <h4>Message the other user to coordinate your item handoff!</h4>
+        {accTrades}
+        <hr />
+        <h3>Waiting for You to Complete Trade</h3>
+        <h4>The other user has indicated this trade is complete.</h4>
+        <h4></h4>
+        {accTheyCompTrades}
+        <hr />
+        <h3>Waiting for Other User to Complete Trade</h3>
+        <h4>You have indicated this trade is complete.</h4>
+        <h4></h4>
+        {accYouCompTrades}
+      </div>
+    );
   }
-  return (
-    <div>
-      <h2>Accepted Trades</h2>
-      <hr />
-      <h3>Message or Complete Trade</h3>
-      <h4>Message the other user to coordinate your item handoff!</h4>
-      {accTrades}
-      <hr />
-      <h3>Waiting for You to Complete Trade</h3>
-      <h4>The other user has indicated this trade is complete.</h4>
-      <h4></h4>
-      {accTheyCompTrades}
-      <hr />
-      <h3>Waiting for Other User to Complete Trade</h3>
-      <h4>You have indicated this trade is complete.</h4>
-      <h4></h4>
-      {accYouCompTrades}
-    </div>
-  );
 };
 
 export default Accepted;

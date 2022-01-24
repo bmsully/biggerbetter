@@ -25,7 +25,7 @@ const Complete = (props) => {
 
   return (
     <div>
-      <h2>Complete Trades</h2>
+      <h2 className="u-headerFont">Complete Trades</h2>
       <hr />
       {completeTrades}
     </div>
