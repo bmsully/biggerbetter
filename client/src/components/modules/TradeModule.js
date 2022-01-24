@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import ItemCard from "./ItemCard.js";
 import ProfileCard from "./ProfileCard.js";
+import Button from "react-bootstrap/Button";
 
 import "../../utilities.css";
 import "./TradeModule.css";
@@ -115,7 +116,9 @@ const TradeModule = (props) => {
             desc={itemObj.desc}
             img_loc={itemObj.img_loc}
           />
-          <button onClick={() => setOtherSelected(itemObj)}>Select this item</button>
+          <Button variant="outline-primary" onClick={() => setOtherSelected(itemObj)}>
+            Select this item
+          </Button>
         </div>
       ));
     }
@@ -140,7 +143,9 @@ const TradeModule = (props) => {
             desc={itemObj.desc}
             img_loc={itemObj.img_loc}
           />
-          <button onClick={() => setUserSelected(itemObj)}>Select this item</button>
+          <Button variant="outline-primary" onClick={() => setUserSelected(itemObj)}>
+            Select this item
+          </Button>
         </div>
       ));
     }
@@ -161,7 +166,10 @@ const TradeModule = (props) => {
     return (
       <>
         <h3>Trade Module</h3>
-        <button onClick={() => closeTradeModule()}> Go back </button>
+        <Button variant="outline-danger" onClick={() => closeTradeModule()}>
+          {" "}
+          Go back{" "}
+        </Button>
         <ProfileCard
           username={props.tradeInfo.user.name}
           usertarget={props.tradeInfo.user.target}
@@ -177,7 +185,10 @@ const TradeModule = (props) => {
     return (
       <>
         <h3>Trade Module</h3>
-        <button onClick={() => closeTradeModule()}> Go back </button>
+        <Button variant="outline-danger" onClick={() => closeTradeModule()}>
+          {" "}
+          Go back{" "}
+        </Button>
         <h4>{props.tradeInfo.user.name}'s item</h4>
         <ItemCard
           userId={props.userId}
@@ -187,18 +198,20 @@ const TradeModule = (props) => {
           desc={otherSelected.desc}
           img_loc={otherSelected.img_loc}
         />
-        <button onClick={() => setOtherSelected(null)}>De-select this item</button>
+        <Button variant="outline-secondary" onClick={() => setOtherSelected(null)}>
+          De-select this item
+        </Button>
         <h4>Select one of your items</h4>
         {myItems}
         <hr />
       </>
     );
   } else {
-    //display both selected items and confirm trade button
+    //display both selected items and confirm trade Button
     return (
       <>
         <h3>Trade Module</h3>
-        <button onClick={() => closeTradeModule()}> Go back </button>
+        <Button onClick={() => closeTradeModule()}> Go back </Button>
         <h4>{props.tradeInfo.user.name}'s item</h4>
         <ItemCard
           userId={props.userId}
@@ -217,8 +230,12 @@ const TradeModule = (props) => {
           desc={userSelected.desc}
           img_loc={userSelected.img_loc}
         />
-        <button onClick={() => setUserSelected(null)}>De-select this item</button>
-        <button onClick={() => confirmTrade()}>Confirm trade!</button>
+        <Button variant="outline-secondary" onClick={() => setUserSelected(null)}>
+          De-select this item
+        </Button>
+        <Button variant="success" onClick={() => confirmTrade()}>
+          Confirm trade!
+        </Button>
         <hr />
       </>
     );

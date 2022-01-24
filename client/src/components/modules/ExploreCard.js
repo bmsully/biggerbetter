@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import defaultProfilePic from "../../public/default-user-image.png";
+import Button from "react-bootstrap/Button";
 
 import "../../utilities.css";
 import "./ExploreCard.css";
@@ -42,7 +43,7 @@ const ExploreCard = (props) => {
   if (hasItems) {
     items = itemList.filter((itemObj) => itemObj.active);
     if (items.length === 0) {
-      items = <div>User has no active items :(</div>;
+      items = <div>{props.name} does not have any active items :(</div>;
     } else {
       items = items.map((itemObj) => (
         <div key={`UserItem_${itemObj._id}`}>
@@ -64,7 +65,9 @@ const ExploreCard = (props) => {
       />
       <h3>{props.name}</h3>
       <h4>Target Item: {props.target}</h4>
-      <button onClick={onClick}>Trade with this user!</button>
+      <Button variant="outline-primary" onClick={onClick}>
+        Trade with this user!
+      </Button>
       {items}
     </div>
   );
