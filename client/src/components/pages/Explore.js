@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import ExploreList from "../modules/ExploreList.js";
 import { Link, useNavigate } from "@reach/router";
 import TradeModule from "../modules/TradeModule.js";
+import Form from "react-bootstrap/Form";
 
 import "../../utilities.css";
 import "./Explore.css";
@@ -35,16 +36,16 @@ const Explore = (props) => {
 
   return (
     <>
-      <h1>Explore Page</h1>
+      <h1 className="u-headerFont">Explore Page</h1>
       {props.userId ? (
         <>
-          <h2>Currently Exploring</h2>
-          <form action="#">
-            <select name="City">
-              <option>Boston</option>
+          <div>
+            <h3 className="u-inlineBlock">Currently Exploring </h3>
+            <Form.Select className="form-select" size="--m" action="#">
+              <option default>Boston/Cambridge</option>
               <option disabled>other cities soon!</option>
-            </select>
-          </form>
+            </Form.Select>
+          </div>
           {tradingVisible && (
             <TradeModule
               userId={props.userId}

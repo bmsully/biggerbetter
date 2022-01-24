@@ -82,7 +82,7 @@ const Trades = (props) => {
 
   return (
     <div>
-      <h1>Trades Page</h1>
+      <h1 className="u-headerFont">Trades Page</h1>
       {props.userId ? (
         <>
           <Tabs
