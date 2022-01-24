@@ -2,7 +2,9 @@ import React, { Component, useState, useEffect } from "react";
 import Pending from "../modules/Pending.js";
 import Accepted from "../modules/Accepted.js";
 import Complete from "../modules/Complete.js";
-import { Link } from "@reach/router";
+import Button from "react-bootstrap/Button";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 import "../../utilities.css";
 import "./Trades.css";
@@ -83,51 +85,37 @@ const Trades = (props) => {
       <h1>Trades Page</h1>
       {props.userId ? (
         <>
-          <div className="Trades-buttonGroup">
-            <button
-              className={(activeTab === "Pending" ? "Trades-active" : "") + "Trades-button"}
-              onClick={togglePending}
-            >
-              Pending
-            </button>
-            <button
-              className={(activeTab === "Accepted" ? "Trades-active" : "") + "Trades-button"}
-              onClick={toggleAccepted}
-            >
-              Accepted
-            </button>
-            <button
-              className={(activeTab === "Complete" ? "Trades-active" : "") + "Trades-button"}
-              onClick={toggleComplete}
-            >
-              Complete
-            </button>
-          </div>
-          <div className="Trades-outlet">
-            {activeTab === "Pending" ? (
+          <Tabs
+            activeKey={activeTab}
+            onSelect={(k) => setActiveTab(k)}
+            className="mb-3 u-flex-justifyCenter"
+          >
+            <Tab eventKey="Pending" title="Pending">
               <Pending
                 propToTrades={propToTrades}
                 propByTrades={propByTrades}
                 approve={approveTrade}
                 decline={declineTrade}
               />
-            ) : activeTab === "Accepted" ? (
+            </Tab>
+            <Tab eventKey="Accepted" title="Accepted">
               <Accepted
                 userId={props.userId}
                 acceptedTrades={acceptedTrades}
                 complete={completeTrade}
               />
-            ) : (
+            </Tab>
+            <Tab eventKey="Complete" title="Complete">
               <Complete completeTrades={completeTrades} />
-            )}
-          </div>
+            </Tab>
+          </Tabs>
         </>
       ) : (
         <>
-          <h2> Please log in to see this page </h2>
-          <Link to="/login" className="Explore-linkAsButton">
+          <h2 className="u-headerFont"> Please log in to see this content </h2>
+          <Button href="/login" className="">
             Get Started
-          </Link>
+          </Button>
         </>
       )}
     </div>
