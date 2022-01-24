@@ -48,7 +48,7 @@ const Profile = (props) => {
   } else {
     return (
       <div>
-        <h1>Profile Page</h1>
+        <h1 className="u-headerFont">Profile Page</h1>
         <div>
           <ProfileCard username={user.name} usertarget={user.target} userimg_loc={user.img_loc} />
           {props.userId === props.userid && (
