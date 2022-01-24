@@ -10,6 +10,7 @@ import NavBar from "./modules/NavBar.js";
 
 import "../utilities.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import "../custom.scss";
 
 import { socket } from "../client-socket.js";
 
