@@ -9,6 +9,13 @@ import "./LogIn.css";
 const GOOGLE_CLIENT_ID =
   "1047284490856-mrho1ed88dmqm4m50sgi7pmo2sttogsb.apps.googleusercontent.com";
 
+/**
+ * LogIn is a page
+ *
+ * @param {String} userId id of active user
+ * @param {Function} handleLogin logs in the active user
+ */
+
 const LogIn = ({ userId, handleLogin }) => {
   const navigate = useNavigate();
 
@@ -18,8 +25,8 @@ const LogIn = ({ userId, handleLogin }) => {
   };
 
   return (
-    <div>
-      <h1>Sign Up/Log In Page</h1>
+    <div className="u-flexColumn u-flex-alignCenter">
+      <h1 className="u-headerFont">Sign Up/Log In Page</h1>
       <h3> Please login with google</h3>
       <GoogleLogin
         clientId={GOOGLE_CLIENT_ID}

@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
 
 import "../../utilities.js";
 import "./EditProfile.css";
@@ -92,7 +93,7 @@ const EditProfile = (props) => {
             <div>
               <img alt="not found" src={URL.createObjectURL(file)} />
               <br />
-              <button onClick={() => setFile(null)}>Remove</button>
+              <Button onClick={() => setFile(null)}>Remove</Button>
             </div>
           )}
           <input
@@ -103,12 +104,12 @@ const EditProfile = (props) => {
             className={itemValid ? "EditProfile-itemInputValid" : "EditProfile-itemInputInvalid"}
           />
           <input type="file" accept="image/*" onChange={handleUpload} />
-          <button type="submit" className="" value="Submit" onClick={handleSubmit}>
+          <Button type="submit" className="" value="Submit" onClick={handleSubmit}>
             Submit
-          </button>
+          </Button>
         </div>
       ) : (
-        <button onClick={handleShow}>Edit Profile</button>
+        <Button onClick={handleShow}>Edit Profile</Button>
       )}
     </div>
   );

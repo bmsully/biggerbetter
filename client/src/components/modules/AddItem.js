@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
 
 import "../../utilities.css";
 import "./AddItem.css";
@@ -75,13 +76,14 @@ const AddItem = (props) => {
           },
           body: file,
         };
-        fetch(res.url, putRequest); //post image directly to s3 bucket
-
-        const imageUrl = res.url.split("?")[0];
-        console.log(imageUrl);
-        //submit to MongoDB
-        props.onSubmit &&
-          props.onSubmit({ userid: props.userId, name: name, desc: desc, img_loc: imageUrl });
+        //post image directly to s3 bucket
+        fetch(res.url, putRequest).then(() => {
+          const imageUrl = res.url.split("?")[0];
+          console.log(imageUrl);
+          //submit to MongoDB
+          props.onSubmit &&
+            props.onSubmit({ userid: props.userId, name: name, desc: desc, img_loc: imageUrl });
+        });
         //close and reset AddItem
         handleClose();
         setName("");
@@ -125,15 +127,15 @@ const AddItem = (props) => {
               <div>
                 <img alt="not found" src={URL.createObjectURL(file)} />
                 <br />
-                <button onClick={() => setFile(null)}>Remove</button>
+                <Button onClick={() => setFile(null)}>Remove</Button>
               </div>
             )}
-            <button type="submit" className="" value="Submit" onClick={handleSubmit}>
+            <Button type="submit" className="" value="Submit" onClick={handleSubmit}>
               Submit
-            </button>
+            </Button>
           </div>
         ) : (
-          <button onClick={handleShow}>Add an item!</button>
+          <Button onClick={handleShow}>Add an item!</Button>
         )}
       </div>
     </div>

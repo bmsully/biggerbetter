@@ -3,6 +3,7 @@ import ProfileCard from "../modules/ProfileCard.js";
 import ItemList from "../modules/ItemList.js";
 import { Link } from "@reach/router";
 import EditProfile from "../modules/EditProfile.js";
+import Button from "react-bootstrap/Button";
 
 import "../../utilities.css";
 import "./Profile.css";
@@ -35,12 +36,12 @@ const Profile = (props) => {
 
   if (!props.userId) {
     return (
-      <>
-        <h2> Please log in to see this profile </h2>
-        <Link to="/login" className="NavBar-linkAsButton">
+      <div className="u-flexColumn u-flex-alignCenter">
+        <h2 className="u-headerFont"> Please log in to see this profile </h2>
+        <Button href="/login" className="">
           Get Started
-        </Link>
-      </>
+        </Button>
+      </div>
     );
   } else if (!user) {
     return <div> Loading! </div>;
