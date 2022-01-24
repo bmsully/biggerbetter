@@ -13,19 +13,3 @@
   border: 2px solid var(--jet);
   border-radius: var(--s);
 }
-
-.AddItem-nameInputValid {
-  border: 2px solid black;
-}
-
-.AddItem-nameInputInvalid {
-  border: 2px solid red;
-}
-
-.AddItem-descInputValid {
-  border: 2px solid black;
-}
-
-.AddItem-descInputInvalid {
-  border: 2px solid red;
-}

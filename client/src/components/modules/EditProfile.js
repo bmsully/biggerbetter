@@ -136,35 +136,6 @@ const EditProfile = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
-      {/* {show ? (
-        <div>
-          {file && (
-            <div>
-              <img alt="not found" src={URL.createObjectURL(file)} className="EditProfile-img" />
-              <br />
-              <Button onClick={() => setFile(null)}>Remove</Button>
-            </div>
-          )}
-          <input
-            type="text"
-            placeholder={props.defaultItem}
-            value={item}
-            onChange={handleItemChange}
-            className={
-              "form-control " +
-              (itemValid ? "EditProfile-itemInputValid" : "EditProfile-itemInputInvalid")
-            }
-          />
-          <input type="file" accept="image/*" onChange={handleUpload} className="form-control" />
-          <Button type="submit" value="Submit" onClick={handleSubmit}>
-            Submit
-          </Button>
-        </div>
-      ) : (
-        <div className="u-flexColumn u-flex-alignCenter EditProfile-btn">
-          <Button onClick={handleShow}>Edit Profile</Button>
-        </div>
-      )} */}
     </div>
   );
 };

@@ -164,55 +164,6 @@ const AddItem = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
-      {/* {show ? (
-          <div>
-            <input
-              type="text"
-              placeholder={"Item name"}
-              value={name}
-              onChange={handleNameChange}
-              id="nameValidation"
-              className={"mb-3 form-control " + (nameValid ? "is-valid" : "is-invalid")}
-            />
-            <div id="nameValidation" className="invalid-feedback">
-              Item name must be greater than 1 but no more than 32 characters.
-            </div>
-            <input
-              type="text"
-              placeholder={"Item description"}
-              value={desc}
-              onChange={handleDescChange}
-              id="descValidation"
-              className={"mb-3 form-control " + (descValid ? "is-valid" : "is-invalid")}
-            />
-            <div id="descValidation" className="invalid-feedback">
-              Item description must be greater than 1 but no more than 140 characters.
-            </div>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleUpload}
-              id="fileValidation"
-              className={"mb-3 form-control " + (fileValid ? "is-valid" : "is-invalid")}
-            />
-            <div id="fileValidation" className="invalid-feedback">
-              Please upload a photo of the item.
-            </div>
-            {file && (
-              <div>
-                <img alt="not found" src={URL.createObjectURL(file)} />
-                <Button variant="outline-danger" onClick={() => setFile(null)}>Remove</Button>
-              </div>
-            )}
-            <Button type="submit" className="" value="Submit" onClick={handleSubmit}>
-              Submit
-            </Button>
-          </div>
-        ) : (
-          <div className="u-flexColumn u-flex-alignCenter AddItem-btn">
-            <Button onClick={handleShow}>Add an item!</Button>
-          </div>
-        )} */}
     </div>
   );
 };
