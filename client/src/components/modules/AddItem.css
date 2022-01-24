@@ -1,5 +1,17 @@
 .AddItem-btn {
-  margin: var(--xs);
+  margin: var(--s);
+}
+
+.AddItem-removebtn {
+  margin: var(--xs) var(--xs) var(--s);
+}
+
+.AddItem-img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border: 2px solid var(--jet);
+  border-radius: var(--s);
 }
 
 .AddItem-nameInputValid {

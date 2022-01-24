@@ -18,13 +18,13 @@ const EditProfile = (props) => {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState(props.defaultItem);
   const [file, setFile] = useState(null);
-  const [itemValid, setItemValid] = useState(true);
+  const [itemValid, setItemValid] = useState("");
 
   const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
     setItem("");
-    setItemValid(true);
+    setItemValid("");
     setFile(null);
   };
 
@@ -41,10 +41,13 @@ const EditProfile = (props) => {
 
   const inputValid = () => {
     const itemLen = item.replaceAll(" ", "").length;
-    if (itemLen === 0 || item.length >= 140) {
-      setItemValid(false);
+    if (itemLen === 0 || item.length >= 141) {
+      setItemValid("is-invalid");
       return false;
-    } else return true;
+    } else {
+      setItemValid("is-valid");
+      return true;
+    }
   };
 
   // called when the user hits "Submit" in a text input area
@@ -118,9 +121,9 @@ const EditProfile = (props) => {
             value={item}
             onChange={handleItemChange}
             id="itemValidation"
-            className={"mb-3 form-control " + (itemValid ? "is-valid" : "is-invalid")}
+            className={`mb-1 form-control ${itemValid}`}
           />
-          <div id="itemValidation" className="invalid-feedback">
+          <div id="mb-2 itemValidation" className="invalid-feedback">
             Target item must be between 1 and 140 characters.
           </div>
         </Modal.Body>
