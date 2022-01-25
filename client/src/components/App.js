@@ -8,8 +8,9 @@ import Profile from "./pages/Profile.js";
 import LogIn from "./pages/LogIn.js";
 import NavBar from "./modules/NavBar.js";
 
+import "../../../scss/custom.scss";
 import "../utilities.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 // import "../custom.scss";
 
 import { socket } from "../client-socket.js";

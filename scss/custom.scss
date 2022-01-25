@@ -1,8 +1,5 @@
-@import "~bootstrap/scss/bootstrap";
-
 /* Customizations on bootstrap theme */
 
-$theme-colors: (
-  "primary": #98d900,
-  "danger": #ff4136,
-);
+$primary: #20c997;
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
