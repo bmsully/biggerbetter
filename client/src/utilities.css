@@ -26,7 +26,7 @@
   --acceptgreen: #359157;
   --declinered: #d60000;
   --themebackground: #30343f;
-  --themecards: #eae6e5;
+  --themecards: #f8f9fa;
   --themeborder: #c9e4e7;
 
   --richblack: #0f0f0f;
@@ -41,11 +41,12 @@
 }
 
 body {
-  background-color: var(--grey);
+  background-color: var(--themebackground);
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 form {

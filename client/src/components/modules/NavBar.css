@@ -1,0 +1,4 @@
+.NavBar-border {
+  border-bottom: var(--xs) solid var(--themeborder);
+  /* box-shadow: 0 4px -2px 2px var(--themecards); */
+}

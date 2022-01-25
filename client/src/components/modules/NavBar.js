@@ -31,7 +31,7 @@ const NavBar = ({ userId, handleLogout, children }) => {
 
   return (
     <>
-      <Navbar bg="primary" variant="dark" expand="sm" sticky="top">
+      <Navbar bg="light" variant="light" expand="sm" sticky="top" className="NavBar-border">
         <Container>
           <Navbar.Brand href="/" className="u-headerFont">
             <img alt="" src={redpaperclip} width="60" height="24" className="u-inlineBlock" />{" "}
@@ -63,7 +63,7 @@ const NavBar = ({ userId, handleLogout, children }) => {
             <></>
           ) : (
             <>
-              <Navbar.Toggle aria-controls="basic-navbar-nav-2" />
+              <Navbar.Toggle aria-controls="basic-navbar-nav-2" className="mb-1" />
               <Navbar.Collapse id="basic-navbar-nav-2">
                 <Nav className="me-auto">
                   <Button variant="primary" href="/login" className="mt-1">

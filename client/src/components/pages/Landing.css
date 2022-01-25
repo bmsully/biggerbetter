@@ -1,1 +1,34 @@
 /* Fill me in :) */
+.Landing-container {
+  padding-left: 0rem;
+  padding-right: 0rem;
+  overflow: hidden;
+}
+
+.Landing-bg-dark {
+  background-color: var(--themebackground);
+  height: calc(200px + 5vw);
+  padding: var(--xs);
+}
+.Landing-bg-light {
+  background-color: var(--themecards);
+  height: calc(200px + 5vw);
+  width: 100%;
+  padding: var(--xs);
+}
+
+.Landing-card {
+  background-color: var(--themecards);
+  border: 2px solid var(--themeborder);
+  border-radius: 2px;
+  margin: var(--m);
+}
+
+.Landing-title {
+  font-size: calc(30px + 5vw);
+  color: var(--themecards);
+}
+
+.Landing-period {
+  color: var(--themeborder);
+}
