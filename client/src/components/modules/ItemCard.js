@@ -17,16 +17,24 @@ import "./ItemCard.css";
 
 const ItemCard = (props) => {
   return (
-    <div>
-      <img src={props.img_loc} className="ItemCard-img" />
-      <div>
-        <h4 className="u-headerFont">
-          Name: <span className="u-bodyFont">{props.name}</span>
-        </h4>
-        <h5 className="u-headerFont">
-          Description: <span className="u-bodyFont">{props.desc}</span>
-        </h5>
-      </div>
+    <div className="ItemCard-container">
+      <Container>
+        <Row>
+          <Col className="d-flex justify-content-center">
+            <img src={props.img_loc} className="ItemCard-img" />
+          </Col>
+          <Col>
+            <div>
+              <h4 className="u-headerFont">
+                Name: <span className="u-bodyFont">{props.name}</span>
+              </h4>
+              <h5 className="u-headerFont">
+                Description: <span className="u-bodyFont">{props.desc}</span>
+              </h5>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

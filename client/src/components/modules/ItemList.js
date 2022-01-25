@@ -98,18 +98,28 @@ const ItemList = (props) => {
             </div>
           </OverlayTrigger>
         ))}
-      <hr />
-      <h2 className="u-headerFont">Active Items</h2>
-      <h3 className="u-bodyFont">
-        These items are currently available to be traded and/or in pending trades
-      </h3>
-      <h3 className="u-bodyFont">They are visible to other users until accepted in a trade</h3>
-      {activeItems}
-      <hr />
-      <h2 className="u-headerFont">Inactive Items</h2>
-      <h3 className="u-bodyFont">These items are currently involved in approved trades</h3>
-      <h3 className="u-bodyFont">They are invisible to other users until the trade is complete</h3>
-      {inactiveItems}
+      <div className="ItemList-container">
+        <div className="ItemList-card">
+          <h2 className="u-headerFont ItemList-title">Active Items</h2>
+          <h3 className="u-bodyFont ItemList-info">
+            These items are currently available to be traded and/or in pending trades
+          </h3>
+          <h3 className="u-bodyFont ItemList-info">
+            They are visible to other users until accepted in a trade
+          </h3>
+          {activeItems}
+        </div>
+        <div className="ItemList-card">
+          <h2 className="u-headerFont ItemList-title">Inactive Items</h2>
+          <h3 className="u-bodyFont ItemList-info">
+            These items are currently involved in approved trades
+          </h3>
+          <h3 className="u-bodyFont ItemList-info">
+            They are invisible to other users until the trade is complete
+          </h3>
+          {inactiveItems}
+        </div>
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import ExploreList from "../modules/ExploreList.js";
 import TradeModule from "../modules/TradeModule.js";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { Container, Row, Col } from "react-bootstrap";
 
 import "../../utilities.css";
 import "./Explore.css";

@@ -31,25 +31,23 @@ const Profile = (props) => {
 
   if (!props.userId) {
     return (
-      <div className="u-flexColumn u-flex-alignCenter">
-        <h2 className="u-headerFont"> Please log in to see this profile </h2>
+      <div className="u-flexColumn u-flex-alignCenter Profile-bg">
+        <h2 className="u-headerFont Profile-whitetext"> Please log in to see this profile </h2>
         <Button href="/login" className="">
           Get Started
         </Button>
       </div>
     );
   } else if (!user) {
-    return <div> Loading! </div>;
+    return <div className="Profile-whitetext"> Loading! </div>;
   } else {
     return (
-      <div>
-        <div>
-          <ProfileCard username={user.name} usertarget={user.target} userimg_loc={user.img_loc} />
-          {props.userId === props.userid && (
-            <EditProfile onSubmit={onSubmit} defaultItem={user.target} />
-          )}
-          <ItemList userid={props.userid} userId={props.userId} />
-        </div>
+      <div className="Profile-bg">
+        <ProfileCard username={user.name} usertarget={user.target} userimg_loc={user.img_loc} />
+        {props.userId === props.userid && (
+          <EditProfile onSubmit={onSubmit} defaultItem={user.target} />
+        )}
+        <ItemList userid={props.userid} userId={props.userId} />
       </div>
     );
   }

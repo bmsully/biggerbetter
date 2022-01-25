@@ -1,0 +1,10 @@
+.Profile-bg {
+  background-color: var(--themebackground);
+  height: 100%;
+  padding: var(--xs) 0;
+}
+
+.Profile-whitetext {
+  color: var(--themecards);
+  margin: var(--s);
+}

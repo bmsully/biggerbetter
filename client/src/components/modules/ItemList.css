@@ -1,3 +1,23 @@
 .ItemList-btn {
   margin: var(--s);
 }
+
+.ItemList-container {
+  border: 1px solid var(--themeborder);
+  border-radius: 2px;
+}
+
+.ItemList-card {
+  background-color: var(--themecards);
+  border-bottom: 2px solid var(--themeborder);
+}
+
+.ItemList-title {
+  font-size: calc(32px + 1vw);
+  margin: 0 var(--xs);
+}
+
+.ItemList-info {
+  font-size: medium;
+  margin: var(--xs);
+}

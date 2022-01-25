@@ -1,0 +1,8 @@
+.TradeModule-btn {
+  margin: var(--xs);
+}
+
+.TradeModule-hr {
+  color: var(--themebackground);
+  size: 2px;
+}

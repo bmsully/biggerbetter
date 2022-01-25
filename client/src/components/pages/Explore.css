@@ -1,5 +1,6 @@
 .Explore-bg {
   background-color: var(--themebackground);
+  height: 100%;
 }
 
 .Explore-location {

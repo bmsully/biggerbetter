@@ -5,3 +5,11 @@
   border: 2px solid var(--jet);
   border-radius: var(--s);
 }
+
+.ItemCard-container {
+  padding: var(--xs);
+  margin: var(--xs) var(--s);
+  border: 1px solid var(--themeborder);
+  box-shadow: 0 0 var(--s) var(--themebackground);
+  border-radius: var(--xs);
+}

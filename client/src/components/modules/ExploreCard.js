@@ -47,7 +47,7 @@ const ExploreCard = (props) => {
       items = <div>{props.name} does not have any active items :(</div>;
     } else {
       items = items.map((itemObj) => (
-        <div key={`UserItem_${itemObj._id}`}>
+        <div key={`UserItem_${itemObj._id}`} className="ExploreCard-itemCard-container">
           <Container>
             <Row>
               <Col>
@@ -65,6 +65,7 @@ const ExploreCard = (props) => {
               </Col>
             </Row>
           </Container>
+          <hr />
         </div>
       ));
     }
@@ -76,7 +77,7 @@ const ExploreCard = (props) => {
     <div className="ExploreCard-container">
       <Container>
         <Row className="align-items-center">
-          <Col className="justify-center">
+          <Col className="d-flex justify-content-center">
             <img
               src={props.img_loc === "default" ? defaultProfilePic : props.img_loc}
               className="ExploreCard-profileImg"
@@ -97,7 +98,6 @@ const ExploreCard = (props) => {
           Trade with this user!
         </Button>
       </div>
-
       {items}
     </div>
   );

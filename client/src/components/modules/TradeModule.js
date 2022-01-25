@@ -118,9 +118,16 @@ const TradeModule = (props) => {
             desc={itemObj.desc}
             img_loc={itemObj.img_loc}
           />
-          <Button variant="outline-primary" onClick={() => setOtherSelected(itemObj)}>
-            Select this item
-          </Button>
+          <div className="u-flex u-flex-justifyCenter">
+            <Button
+              className="TradeModule-btn"
+              variant="outline-primary"
+              onClick={() => setOtherSelected(itemObj)}
+            >
+              Select this item
+            </Button>
+          </div>
+          <hr />
         </div>
       ));
     }
@@ -145,9 +152,16 @@ const TradeModule = (props) => {
             desc={itemObj.desc}
             img_loc={itemObj.img_loc}
           />
-          <Button variant="outline-primary" onClick={() => setUserSelected(itemObj)}>
-            Select this item
-          </Button>
+          <div className="u-flex u-flex-justifyCenter">
+            <Button
+              className="TradeModule-btn"
+              variant="outline-primary"
+              onClick={() => setUserSelected(itemObj)}
+            >
+              Select this item
+            </Button>
+          </div>
+          <hr />
         </div>
       ));
     }
@@ -173,7 +187,7 @@ const TradeModule = (props) => {
               usertarget={props.tradeInfo.user.target}
               userimg_loc={props.tradeInfo.user.img_loc}
             />
-            <h4>Select one of {props.tradeInfo.user.name}'s items</h4>
+            <h4 className="u-headerFont">Select one of {props.tradeInfo.user.name}'s items</h4>
             {otherItems}
           </div>
         </Fade>
@@ -185,7 +199,7 @@ const TradeModule = (props) => {
       <>
         <Fade in={otherSelected !== null && userSelected === null}>
           <div id="second-fade">
-            <h4>{props.tradeInfo.user.name}'s item</h4>
+            <h4 className="u-headerFont">{props.tradeInfo.user.name}'s item</h4>
             <ItemCard
               userId={props.userId}
               itemid={otherSelected._id}
@@ -194,10 +208,17 @@ const TradeModule = (props) => {
               desc={otherSelected.desc}
               img_loc={otherSelected.img_loc}
             />
-            <Button variant="outline-secondary" onClick={() => setOtherSelected(null)}>
-              De-select this item
-            </Button>
-            <h4>Select one of your items</h4>
+            <div className="u-flex u-flex-justifyCenter">
+              <Button
+                className="TradeModule-btn"
+                variant="outline-secondary"
+                onClick={() => setOtherSelected(null)}
+              >
+                De-select this item
+              </Button>
+            </div>
+            <hr className="TradeModule-hr" />
+            <h4 className="u-headerFont">Select one of your items</h4>
             {myItems}
           </div>
         </Fade>
@@ -209,7 +230,7 @@ const TradeModule = (props) => {
       <>
         <Fade in={otherSelected !== null && userSelected !== null}>
           <div id="third-fade">
-            <h4>{props.tradeInfo.user.name}'s item</h4>
+            <h4 className="u-headerFont">{props.tradeInfo.user.name}'s item</h4>
             <ItemCard
               userId={props.userId}
               itemid={otherSelected._id}
@@ -218,7 +239,9 @@ const TradeModule = (props) => {
               desc={otherSelected.desc}
               img_loc={otherSelected.img_loc}
             />
-            <h4>Your item</h4>
+            <hr className="TradeModule-hr" />
+            <hr className="TradeModule-hr" />
+            <h4 className="u-headerFont">Your item</h4>
             <ItemCard
               userId={props.userId}
               itemid={userSelected._id}
@@ -227,12 +250,18 @@ const TradeModule = (props) => {
               desc={userSelected.desc}
               img_loc={userSelected.img_loc}
             />
-            <Button variant="outline-secondary" onClick={() => setUserSelected(null)}>
-              De-select this item
-            </Button>
-            <Button variant="success" onClick={() => confirmTrade()}>
-              Request trade!
-            </Button>
+            <div className="u-flex u-flex-justifyCenter">
+              <Button
+                className="TradeModule-btn"
+                variant="outline-secondary"
+                onClick={() => setUserSelected(null)}
+              >
+                De-select this item
+              </Button>
+              <Button className="TradeModule-btn" variant="success" onClick={() => confirmTrade()}>
+                Request trade!
+              </Button>
+            </div>
           </div>
         </Fade>
       </>
