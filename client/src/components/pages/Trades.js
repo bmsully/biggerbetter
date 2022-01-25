@@ -76,7 +76,7 @@ const Trades = (props) => {
     alert("You have completed this trade");
     post("/api/complete", { userid: props.userId, tradeid: tradeid }).then(() => {
       getAndSortTrades();
-      location.reload().then(() => toggleAccepted());
+      location.reload().then(() => toggleComplete());
     });
   };
 

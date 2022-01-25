@@ -48,7 +48,7 @@ const Accepted = (props) => {
         setAcceptedAndTheyComplete([trade].concat(acceptedAndTheyComplete));
       }
     }
-  }, []);
+  }, [props.acceptedTrades]);
 
   //Accepted Trades (message or complete)
   let accTrades = null;

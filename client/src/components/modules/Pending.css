@@ -1,4 +1,24 @@
 .Pending-title {
   color: var(--themecards);
   padding: var(--s);
+  font-size: calc(29px + 1vw);
+}
+
+.Pending-hr {
+  color: var(--themecards);
+}
+
+.Pending-tradehr {
+  color: var(--themeborder);
+  width: 50%;
+  margin: auto;
+}
+
+.Pending-notradestext {
+  color: var(--themecards);
+  padding: var(--s);
+}
+
+.Pending-btn {
+  margin: var(--xs) var(--m);
 }

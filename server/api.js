@@ -181,8 +181,10 @@ router.post("/approve", (req, res) => {
     };
     Trade.find(tradeQuery).then((tradeList) => {
       for (const tradeObj of tradeList) {
-        tradeObj.proposer.approved = false;
-        tradeObj.save();
+        if (tradeObj._id != req.body.tradeid) {
+          tradeObj.proposer.approved = false;
+          tradeObj.save();
+        }
       }
     });
     res.send(trade);

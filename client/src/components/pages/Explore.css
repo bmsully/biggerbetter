@@ -6,6 +6,7 @@
 .Explore-title {
   color: var(--themecards);
   margin: var(--s);
+  font-size: calc(30px + 1vw);
 }
 
 .Explore-dropdown {

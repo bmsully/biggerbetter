@@ -26,16 +26,33 @@ const Pending = (props) => {
           approver={tradeObj.approver}
           toYou={true}
         />
-        <Button variant="danger" onClick={() => props.decline(tradeObj._id)}>
-          Decline
-        </Button>
-        <Button variant="success" onClick={() => props.approve(tradeObj._id)}>
-          Approve
-        </Button>
+        <div className="u-flex u-flex-justifyCenter">
+          <Button
+            size="lg"
+            className="Pending-btn"
+            variant="danger"
+            onClick={() => props.decline(tradeObj._id)}
+          >
+            Decline
+          </Button>
+          <Button
+            size="lg"
+            className="Pending-btn"
+            variant="success"
+            onClick={() => props.approve(tradeObj._id)}
+          >
+            Approve
+          </Button>
+        </div>
+        <hr className="Pending-tradehr u-flex u-flex-justifyCenter" />
       </>
     ));
   } else {
-    toTrades = <div>There are no trades proposed to you</div>;
+    toTrades = (
+      <div className="u-bodyFont Pending-notradestext">
+        There are no active trades proposed to you
+      </div>
+    );
   }
 
   let byTrades = null;
@@ -50,14 +67,16 @@ const Pending = (props) => {
       />
     ));
   } else {
-    byTrades = <div>There are no trades proposed by you</div>;
+    byTrades = (
+      <div className="u-bodyFont Pending-notradestext">You have no active proposed trades</div>
+    );
   }
 
   return (
     <div>
       <h3 className="u-headerFont Pending-title">Proposed to you</h3>
       {toTrades}
-      <hr />
+      <hr className="Pending-hr" />
       <h3 className="u-headerFont Pending-title">Proposed by you</h3>
       {byTrades}
     </div>

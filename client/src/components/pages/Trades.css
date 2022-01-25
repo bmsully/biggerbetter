@@ -10,4 +10,5 @@
 .Trades-title {
   color: var(--themecards);
   padding: var(--s);
+  font-size: calc(30px + 1vw);
 }
