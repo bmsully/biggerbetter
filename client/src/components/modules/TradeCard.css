@@ -1,0 +1,24 @@
+.TradeCard-container {
+  margin: var(--xs);
+  background-color: var(--themecards);
+  border: 1px solid var(--themeborder);
+  border-radius: var(--xs);
+  padding: var(--xs);
+  box-shadow: 0 0 var(--xs) var(--themebackground);
+}
+
+.TradeCard-img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border: 2px solid var(--jet);
+  border-radius: var(--xs);
+}
+
+.TradeCard-text {
+  margin: var(--xs);
+  padding: var(--xs);
+  background-color: var(--white);
+  border: 2px solid var(--blackshadow);
+  border-radius: var(--xs);
+}

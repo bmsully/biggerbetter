@@ -1,1 +1,13 @@
+.Trades-bg {
+  background-color: var(--themebackground);
+  height: 100%;
+}
 
+/* .Trades-tabbg {
+  background-color: var(--themecards);
+} */
+
+.Trades-title {
+  color: var(--themecards);
+  padding: var(--s);
+}

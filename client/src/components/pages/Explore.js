@@ -39,7 +39,7 @@ const Explore = (props) => {
     <div className="Explore-bg">
       {props.userId ? (
         <>
-          <div className="u-inlineBlock u-flex Explore-location">
+          <div className="u-inlineBlock u-flex Explore-title">
             <h3 className="u-headerFont">Currently Exploring </h3>
             <div>
               <Form.Select className="form-select Explore-dropdown" size="--m" action="#">
@@ -62,7 +62,7 @@ const Explore = (props) => {
         </>
       ) : (
         <>
-          <h2 className="u-headerFont Explore-location"> Please log in to see this page </h2>
+          <h2 className="u-headerFont Explore-title"> Please log in to see this page </h2>
           <Button href="/login">Get Started</Button>
         </>
       )}

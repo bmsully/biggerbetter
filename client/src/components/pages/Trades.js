@@ -81,14 +81,15 @@ const Trades = (props) => {
   };
 
   return (
-    <div>
-      <h1 className="u-headerFont">Trades Page</h1>
+    <div className="Trades-bg">
+      <h1 className="u-headerFont Trades-title">Your Trades</h1>
       {props.userId ? (
-        <>
+        <div className="Trades-tabbg">
           <Tabs
             activeKey={activeTab}
             onSelect={(k) => setActiveTab(k)}
             className="mb-3 u-flex-justifyCenter"
+            variant="pills"
           >
             <Tab eventKey="Pending" title="Pending">
               <Pending
@@ -109,10 +110,10 @@ const Trades = (props) => {
               <Complete completeTrades={completeTrades} />
             </Tab>
           </Tabs>
-        </>
+        </div>
       ) : (
         <>
-          <h2 className="u-headerFont"> Please log in to see this content </h2>
+          <h2 className="u-headerFont Trades-title"> Please log in to see this content </h2>
           <Button href="/login" className="">
             Get Started
           </Button>

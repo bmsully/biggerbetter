@@ -55,12 +55,10 @@ const Pending = (props) => {
 
   return (
     <div>
-      <h2 className="u-headerFont">Pending Trades</h2>
-      <hr />
-      <h3>Proposed to you</h3>
+      <h3 className="u-headerFont Pending-title">Proposed to you</h3>
       {toTrades}
       <hr />
-      <h3>Proposed by you</h3>
+      <h3 className="u-headerFont Pending-title">Proposed by you</h3>
       {byTrades}
     </div>
   );
