@@ -1,8 +1,8 @@
 import React, { Component, useEffect, useState } from "react";
 import ExploreList from "../modules/ExploreList.js";
-import { Link, useNavigate } from "@reach/router";
 import TradeModule from "../modules/TradeModule.js";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 import "../../utilities.css";
 import "./Explore.css";
@@ -35,19 +35,21 @@ const Explore = (props) => {
   };
 
   return (
-    <>
-      <h1 className="u-headerFont">Explore Page</h1>
+    <div className="Explore-bg">
       {props.userId ? (
         <>
-          <div>
-            <h3 className="u-inlineBlock">Currently Exploring </h3>
-            <Form.Select className="form-select" size="--m" action="#">
-              <option default>Boston/Cambridge</option>
-              <option disabled>other cities soon!</option>
-            </Form.Select>
+          <div className="u-inlineBlock u-flex Explore-location">
+            <h3 className="u-headerFont">Currently Exploring </h3>
+            <div>
+              <Form.Select className="form-select Explore-dropdown" size="--m" action="#">
+                <option default>Boston/Cambridge</option>
+                <option disabled>other cities soon!</option>
+              </Form.Select>
+            </div>
           </div>
           {tradingVisible && (
             <TradeModule
+              tradingVisible={tradingVisible}
               userId={props.userId}
               username={props.username}
               tradeInfo={tradeInfo}
@@ -59,13 +61,11 @@ const Explore = (props) => {
         </>
       ) : (
         <>
-          <h2> Please log in to see this page </h2>
-          <Link to="/login" className="Explore-linkAsButton">
-            Get Started
-          </Link>
+          <h2 className="u-headerFont Explore-location"> Please log in to see this page </h2>
+          <Button href="/login">Get Started</Button>
         </>
       )}
-    </>
+    </div>
   );
 };
 

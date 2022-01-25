@@ -23,9 +23,6 @@ const ExploreList = (props) => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(allUsers);
-  }, []);
   //create sorting function that sorts by distance
   //create sorting function that sorts by newest/oldest items
   //create sorting function that sorts by newest/oldest members

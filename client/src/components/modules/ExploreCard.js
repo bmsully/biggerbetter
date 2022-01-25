@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import defaultProfilePic from "../../public/default-user-image.png";
 import Button from "react-bootstrap/Button";
+import { Container, Row, Col } from "react-bootstrap";
 
 import "../../utilities.css";
 import "./ExploreCard.css";
@@ -47,9 +48,23 @@ const ExploreCard = (props) => {
     } else {
       items = items.map((itemObj) => (
         <div key={`UserItem_${itemObj._id}`}>
-          <img src={itemObj.img_loc} className="ExploreCard-itemImg" />
-          <div>Item name: {itemObj.name}</div>
-          <div>Item description: {itemObj.desc}</div>
+          <Container>
+            <Row>
+              <Col>
+                <img src={itemObj.img_loc} className="ExploreCard-itemImg" />
+              </Col>
+              <Col>
+                <div className="u-headerFont">
+                  Item name: <span className="u-bodyFont">{itemObj.name}</span>
+                </div>
+              </Col>
+              <Col>
+                <div className="u-headerFont">
+                  Item description: <span className="u-bodyFont">{itemObj.desc}</span>
+                </div>
+              </Col>
+            </Row>
+          </Container>
         </div>
       ));
     }
@@ -58,16 +73,31 @@ const ExploreCard = (props) => {
   }
 
   return (
-    <div>
-      <img
-        src={props.img_loc === "default" ? defaultProfilePic : props.img_loc}
-        className="ExploreCard-profileImg"
-      />
-      <h3>{props.name}</h3>
-      <h4>Target Item: {props.target}</h4>
-      <Button variant="outline-primary" onClick={onClick}>
-        Trade with this user!
-      </Button>
+    <div className="ExploreCard-container">
+      <Container>
+        <Row className="align-items-center">
+          <Col className="justify-center">
+            <img
+              src={props.img_loc === "default" ? defaultProfilePic : props.img_loc}
+              className="ExploreCard-profileImg"
+            />
+          </Col>
+          <Col>
+            <div>
+              <h3 className="u-headerFont">{props.name}</h3>
+              <h4 className="u-headerFont">
+                Target Item: <span className="u-bodyFont">{props.target}</span>
+              </h4>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <div className="u-flex u-flex-justifyCenter">
+        <Button variant="outline-primary" className="mb-2" onClick={onClick}>
+          Trade with this user!
+        </Button>
+      </div>
+
       {items}
     </div>
   );

@@ -2,6 +2,8 @@ import React, { Component, useState, useEffect } from "react";
 import ItemCard from "./ItemCard.js";
 import ProfileCard from "./ProfileCard.js";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import Fade from "react-bootstrap/Fade";
 
 import "../../utilities.css";
 import "./TradeModule.css";
@@ -153,93 +155,98 @@ const TradeModule = (props) => {
     myItems = <div>You must add items to trade!</div>;
   }
 
+  let content = <div>Loading!</div>;
   if (loading) {
-    return (
+    content = (
       <>
-        <h3>Trade Module</h3>
         <div>Loading!</div>
-        <hr />
       </>
     );
   } else if (!otherSelected) {
     //display other user's profile and items
-    return (
+    content = (
       <>
-        <h3>Trade Module</h3>
-        <Button variant="outline-danger" onClick={() => closeTradeModule()}>
-          {" "}
-          Go back{" "}
-        </Button>
-        <ProfileCard
-          username={props.tradeInfo.user.name}
-          usertarget={props.tradeInfo.user.target}
-          userimg_loc={props.tradeInfo.user.img_loc}
-        />
-        <h4>Select one of {props.tradeInfo.user.name}'s items</h4>
-        {otherItems}
-        <hr />
+        <Fade in={otherSelected === null}>
+          <div id="first-fade">
+            <ProfileCard
+              username={props.tradeInfo.user.name}
+              usertarget={props.tradeInfo.user.target}
+              userimg_loc={props.tradeInfo.user.img_loc}
+            />
+            <h4>Select one of {props.tradeInfo.user.name}'s items</h4>
+            {otherItems}
+          </div>
+        </Fade>
       </>
     );
   } else if (otherSelected && !userSelected) {
     //display selected item and active user's items
-    return (
+    content = (
       <>
-        <h3>Trade Module</h3>
-        <Button variant="outline-danger" onClick={() => closeTradeModule()}>
-          {" "}
-          Go back{" "}
-        </Button>
-        <h4>{props.tradeInfo.user.name}'s item</h4>
-        <ItemCard
-          userId={props.userId}
-          itemid={otherSelected._id}
-          userid={props.tradeInfo.user._id}
-          name={otherSelected.name}
-          desc={otherSelected.desc}
-          img_loc={otherSelected.img_loc}
-        />
-        <Button variant="outline-secondary" onClick={() => setOtherSelected(null)}>
-          De-select this item
-        </Button>
-        <h4>Select one of your items</h4>
-        {myItems}
-        <hr />
+        <Fade in={otherSelected !== null && userSelected === null}>
+          <div id="second-fade">
+            <h4>{props.tradeInfo.user.name}'s item</h4>
+            <ItemCard
+              userId={props.userId}
+              itemid={otherSelected._id}
+              userid={props.tradeInfo.user._id}
+              name={otherSelected.name}
+              desc={otherSelected.desc}
+              img_loc={otherSelected.img_loc}
+            />
+            <Button variant="outline-secondary" onClick={() => setOtherSelected(null)}>
+              De-select this item
+            </Button>
+            <h4>Select one of your items</h4>
+            {myItems}
+          </div>
+        </Fade>
       </>
     );
   } else {
     //display both selected items and confirm trade Button
-    return (
+    content = (
       <>
-        <h3>Trade Module</h3>
-        <Button onClick={() => closeTradeModule()}> Go back </Button>
-        <h4>{props.tradeInfo.user.name}'s item</h4>
-        <ItemCard
-          userId={props.userId}
-          itemid={otherSelected._id}
-          userid={props.tradeInfo.user._id}
-          name={otherSelected.name}
-          desc={otherSelected.desc}
-          img_loc={otherSelected.img_loc}
-        />
-        <h4>Your item</h4>
-        <ItemCard
-          userId={props.userId}
-          itemid={userSelected._id}
-          userid={props.userId}
-          name={userSelected.name}
-          desc={userSelected.desc}
-          img_loc={userSelected.img_loc}
-        />
-        <Button variant="outline-secondary" onClick={() => setUserSelected(null)}>
-          De-select this item
-        </Button>
-        <Button variant="success" onClick={() => confirmTrade()}>
-          Confirm trade!
-        </Button>
-        <hr />
+        <Fade in={otherSelected !== null && userSelected !== null}>
+          <div id="third-fade">
+            <h4>{props.tradeInfo.user.name}'s item</h4>
+            <ItemCard
+              userId={props.userId}
+              itemid={otherSelected._id}
+              userid={props.tradeInfo.user._id}
+              name={otherSelected.name}
+              desc={otherSelected.desc}
+              img_loc={otherSelected.img_loc}
+            />
+            <h4>Your item</h4>
+            <ItemCard
+              userId={props.userId}
+              itemid={userSelected._id}
+              userid={props.userId}
+              name={userSelected.name}
+              desc={userSelected.desc}
+              img_loc={userSelected.img_loc}
+            />
+            <Button variant="outline-secondary" onClick={() => setUserSelected(null)}>
+              De-select this item
+            </Button>
+            <Button variant="success" onClick={() => confirmTrade()}>
+              Request trade!
+            </Button>
+          </div>
+        </Fade>
       </>
     );
   }
+
+  return (
+    <Modal show={props.tradingVisible} backdrop="static" onHide={closeTradeModule}>
+      <Modal.Header className="u-headerFont" closeButton>
+        <Modal.Title>Trade Module</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{content}</Modal.Body>
+    </Modal>
+  );
 };
 
 export default TradeModule;

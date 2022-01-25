@@ -1,0 +1,16 @@
+.Explore-bg {
+  background-color: var(--themebackground);
+}
+
+.Explore-location {
+  color: var(--themecards);
+  margin: var(--s);
+}
+
+.Explore-dropdown {
+  border: 2px solid var(--themeborder);
+}
+
+.Explore-top {
+  margin: 0 var(--s);
+}
