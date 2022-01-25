@@ -23,8 +23,12 @@
   --medgrey: #e0e0e0;
   --grey: #f7f7f7;
 
-  --acceptgreen: #319540;
-  --rossocorsa: #d60000;
+  --acceptgreen: #359157;
+  --declinered: #d60000;
+  --themebackground: #30343f;
+  --themecards: #eae6e5;
+  --themeborder: #c9e4e7;
+
   --richblack: #0f0f0f;
   --jet: #2d2e2e;
   --blackshadow: #bcabae;
