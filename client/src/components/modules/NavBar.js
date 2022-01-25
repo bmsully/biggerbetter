@@ -1,6 +1,11 @@
 import React, { Component } from "react";
-import { Link, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import { GoogleLogout } from "react-google-login";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import redpaperclip from "../../public/redpaperclip.png";
 
 import "../../utilities.css";
 import "./NavBar.css";
@@ -26,7 +31,51 @@ const NavBar = ({ userId, handleLogout, children }) => {
 
   return (
     <>
-      <nav>
+      <Navbar bg="primary" variant="dark" expand="sm" sticky="top">
+        <Container>
+          <Navbar.Brand href="/" className="u-headerFont">
+            <img alt="" src={redpaperclip} width="60" height="24" className="u-inlineBlock" />{" "}
+            BiggerBetter
+          </Navbar.Brand>
+          {userId && (
+            <>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                  <Nav.Link href="/explore">Explore</Nav.Link>
+                  <Nav.Link href="/trades">Trades</Nav.Link>
+                  <Nav.Link href={`/profile/${userId}`}>Profile</Nav.Link>
+                  {userId ? (
+                    <GoogleLogout
+                      clientId={GOOGLE_CLIENT_ID}
+                      buttonText="Logout"
+                      onLogoutSuccess={redirect}
+                      onFailure={(err) => console.log(err)}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                </Nav>
+              </Navbar.Collapse>
+            </>
+          )}
+          {userId ? (
+            <></>
+          ) : (
+            <>
+              <Navbar.Toggle aria-controls="basic-navbar-nav-2" />
+              <Navbar.Collapse id="basic-navbar-nav-2">
+                <Nav className="me-auto">
+                  <Button variant="primary" href="/login" className="mt-1">
+                    Get Started
+                  </Button>
+                </Nav>
+              </Navbar.Collapse>
+            </>
+          )}
+        </Container>
+      </Navbar>
+      {/* <nav>
         <div>BiggerBetter</div>
         <div>
           <Link to="/">Home</Link>
@@ -52,7 +101,7 @@ const NavBar = ({ userId, handleLogout, children }) => {
             </Link>
           </div>
         )}
-      </nav>
+      </nav> */}
       {children}
     </>
   );
