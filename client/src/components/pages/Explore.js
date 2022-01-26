@@ -62,8 +62,14 @@ const Explore = (props) => {
         </>
       ) : (
         <>
-          <h2 className="u-headerFont Explore-title"> Please log in to see this page </h2>
-          <Button href="/login">Get Started</Button>
+          <div className="Explore-bg u-flex u-flex-justifyCenter u-flex-alignCenter">
+            <div className="Explore-card u-flexColumn u-flex-alignCenter u-flex-justifyCenter">
+              <h3 className="u-headerFont Explore-title-bottom"> Please login to see this page</h3>
+              <div>
+                <Button href="/login">Get Started</Button>
+              </div>
+            </div>
+          </div>
         </>
       )}
     </div>

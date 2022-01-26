@@ -9,6 +9,22 @@
   font-size: calc(30px + 1vw);
 }
 
+.Explore-title-bottom {
+  color: var(--themebackground);
+  margin: var(--s);
+  font-size: calc(12px + 2vw);
+}
+
+.Explore-card {
+  background-color: var(--themecards);
+  border: 2px solid var(--themeborder);
+  border-radius: var(--xs);
+  margin: var(--xs) 2px;
+  box-shadow: 0 0 10px var(--themecard);
+  width: calc(300px + 25vw);
+  height: calc(100px + 5vw);
+}
+
 .Explore-dropdown {
   border: 2px solid var(--themeborder);
 }

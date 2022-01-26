@@ -1,0 +1,15 @@
+.NotFound-bg {
+  background-color: var(--themebackground);
+  height: 100vh;
+}
+
+.NotFound-title {
+  color: var(--themecards);
+  margin: 0 var(--s);
+  padding-top: var(--xs);
+}
+
+.NotFound-subtitle {
+  color: var(--themecards);
+  margin: var(--s);
+}

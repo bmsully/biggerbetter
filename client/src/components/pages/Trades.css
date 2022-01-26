@@ -1,6 +1,6 @@
 .Trades-bg {
   background-color: var(--themebackground);
-  height: 100%;
+  height: 100vh;
 }
 
 /* .Trades-tabbg {
@@ -16,4 +16,20 @@
 .Trades-hr {
   color: var(--bs-blue);
   margin: 0 !important;
+}
+
+.Trades-title-bottom {
+  color: var(--themebackground);
+  margin: var(--s);
+  font-size: calc(12px + 2vw);
+}
+
+.Trades-card {
+  background-color: var(--themecards);
+  border: 2px solid var(--themeborder);
+  border-radius: var(--xs);
+  margin: var(--xs) 2px;
+  box-shadow: 0 0 10px var(--themecard);
+  width: calc(300px + 25vw);
+  height: calc(100px + 5vw);
 }

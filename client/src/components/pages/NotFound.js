@@ -5,9 +5,9 @@ import "./NotFound.css";
 
 const NotFound = () => {
   return (
-    <div>
-      <h1>404 Not Found</h1>
-      <p>The page you requested couldn't be found.</p>
+    <div className="NotFound-bg u-textCenter">
+      <h1 className="u-headerFont NotFound-title">404 Not Found</h1>
+      <div className="u-bodyFont NotFound-subtitle">The page you requested couldn't be found.</div>
     </div>
   );
 };

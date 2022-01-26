@@ -4,6 +4,14 @@ import { Container, Row, Col } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import strawmillionaire from "../../public/strawmillionaire.png";
 import demiskipper from "../../public/demiskipper.png";
+import {
+  PlusCircle,
+  InfoCircle,
+  Binoculars,
+  PatchQuestion,
+  ArrowLeftRight,
+  HandThumbsUp,
+} from "react-bootstrap-icons";
 
 import "../../utilities.css";
 import "./Landing.css";
@@ -21,11 +29,34 @@ const Landing = ({ userId }) => {
         <div className="u-headerFont Landing-title">BiggerBetter</div>
         <div className="u-headerFont Landing-subtitle">The 1-for-1 trading platform</div>
       </div>
-      <div className="Landing-bg-light u-bodyFont">
-        BiggerBetter is simple: brief overview on how to use.
+      <div className="Landing-bg-light u-bodyFont u-textCenter">
+        <Container>
+          <Col>
+            <Row className="my-3">
+              <div className="u-headerFont Landing-iconSection1">BiggerBetter is Easy</div>
+            </Row>
+            <Row className="my-2">
+              <div className="u-bodyFont Landing-iconSection2">
+                <PlusCircle /> Add items by uploading a photo, providing a name and description{" "}
+                <InfoCircle />
+              </div>
+            </Row>
+            <Row className="my-2">
+              <div className="u-bodyFont Landing-iconSection3">
+                <Binoculars /> Explore other users' items and propose trades <PatchQuestion />
+              </div>
+            </Row>
+            <Row className="my-1">
+              <div className="u-bodyFont Landing-iconSection4">
+                <ArrowLeftRight /> Trade up for Bigger and Better stuff! <HandThumbsUp />
+              </div>
+            </Row>
+          </Col>
+        </Container>
       </div>
       <Container fluid>
         <Row className="Landing-bg-dark-cards u-bodyFont">
+          <div className="u-headerFont Landing-inspiration">Inspiration for BiggerBetter</div>
           <Col xs={12} md={4}>
             <Card className="Landing-card u-flexColumn u-flex-alignCenter">
               <Row className="align-items-center">

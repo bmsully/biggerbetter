@@ -32,7 +32,7 @@ const Complete = (props) => {
   return (
     <div>
       <h2 className="u-headerFont Complete-title">Finished</h2>
-      <h3 className="u-headerFont Complete-subtitle">Items have been swapped</h3>
+      <h3 className="u-headerFont Complete-subtitle">Items in these trades have been swapped</h3>
       {completeTrades}
     </div>
   );

@@ -18,7 +18,7 @@
 }
 .Landing-bg-light {
   background-color: var(--themecards);
-  height: calc(200px + 5vw);
+  height: calc(60px + 27vw);
   width: 100%;
   padding: var(--xs);
   border-bottom: var(--xs) solid var(--themeborder);
@@ -52,6 +52,27 @@
 
 .Landing-period {
   color: var(--themeborder);
+}
+
+.Landing-iconSection1 {
+  font-size: calc(3px + 5vw);
+}
+
+.Landing-iconSection2 {
+  font-size: calc(2px + 1.75vw);
+}
+
+.Landing-iconSection3 {
+  font-size: calc(2px + 2.65vw);
+}
+
+.Landing-iconSection4 {
+  font-size: calc(2px + 3.4vw);
+}
+
+.Landing-inspiration {
+  font-size: calc(5px + 3vw);
+  color: var(--themecards);
 }
 
 .Landing-iframe {

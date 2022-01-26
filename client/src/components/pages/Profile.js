@@ -3,6 +3,7 @@ import ProfileCard from "../modules/ProfileCard.js";
 import ItemList from "../modules/ItemList.js";
 import EditProfile from "../modules/EditProfile.js";
 import Button from "react-bootstrap/Button";
+import { Container, Row, Col } from "react-bootstrap";
 
 import "../../utilities.css";
 import "./Profile.css";
@@ -31,15 +32,19 @@ const Profile = (props) => {
 
   if (!props.userId) {
     return (
-      <div className="u-flexColumn u-flex-alignCenter Profile-bg">
-        <h2 className="u-headerFont Profile-whitetext"> Please log in to see this profile </h2>
-        <Button href="/login" className="">
-          Get Started
-        </Button>
-      </div>
+      <>
+        <div className="Profile-bg u-flex u-flex-justifyCenter u-flex-alignCenter">
+          <div className="Profile-card u-flexColumn u-flex-alignCenter u-flex-justifyCenter">
+            <h3 className="u-headerFont Profile-title-bottom"> Please login to see this page</h3>
+            <div>
+              <Button href="/login">Get Started</Button>
+            </div>
+          </div>
+        </div>
+      </>
     );
   } else if (!user) {
-    return <div className="Profile-whitetext"> Loading! </div>;
+    return <div className="Profile-whitetext u-headerFont"> Loading! </div>;
   } else {
     return (
       <div className="Profile-bg">

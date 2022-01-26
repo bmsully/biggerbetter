@@ -5,6 +5,7 @@ import Complete from "../modules/Complete.js";
 import Button from "react-bootstrap/Button";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import { Container, Row, Col } from "react-bootstrap";
 
 import "../../utilities.css";
 import "./Trades.css";
@@ -82,44 +83,50 @@ const Trades = (props) => {
 
   return (
     <div className="Trades-bg">
-      <h1 className="u-headerFont Trades-title">Your Trades</h1>
       {props.userId ? (
-        <div className="Trades-tabbg">
-          <Tabs
-            activeKey={activeTab}
-            onSelect={(k) => setActiveTab(k)}
-            className="mb-0 u-flex-justifyCenter"
-            variant="pills"
-          >
-            <Tab eventKey="Pending" title="Pending">
-              <hr className="Trades-hr" />
-              <Pending
-                propToTrades={propToTrades}
-                propByTrades={propByTrades}
-                approve={approveTrade}
-                decline={declineTrade}
-              />
-            </Tab>
-            <Tab eventKey="Accepted" title="Accepted">
-              <hr className="Trades-hr" />
-              <Accepted
-                userId={props.userId}
-                acceptedTrades={acceptedTrades}
-                complete={completeTrade}
-              />
-            </Tab>
-            <Tab eventKey="Complete" title="Complete">
-              <hr className="Trades-hr" />
-              <Complete completeTrades={completeTrades} />
-            </Tab>
-          </Tabs>
-        </div>
+        <>
+          <h1 className="u-headerFont Trades-title">Your Trades</h1>
+          <div className="Trades-tabbg">
+            <Tabs
+              activeKey={activeTab}
+              onSelect={(k) => setActiveTab(k)}
+              className="mb-0 u-flex-justifyCenter"
+              variant="pills"
+            >
+              <Tab eventKey="Pending" title="Pending">
+                <hr className="Trades-hr" />
+                <Pending
+                  propToTrades={propToTrades}
+                  propByTrades={propByTrades}
+                  approve={approveTrade}
+                  decline={declineTrade}
+                />
+              </Tab>
+              <Tab eventKey="Accepted" title="Accepted">
+                <hr className="Trades-hr" />
+                <Accepted
+                  userId={props.userId}
+                  acceptedTrades={acceptedTrades}
+                  complete={completeTrade}
+                />
+              </Tab>
+              <Tab eventKey="Complete" title="Complete">
+                <hr className="Trades-hr" />
+                <Complete completeTrades={completeTrades} />
+              </Tab>
+            </Tabs>
+          </div>
+        </>
       ) : (
         <>
-          <h2 className="u-headerFont Trades-title"> Please log in to see this content </h2>
-          <Button href="/login" className="">
-            Get Started
-          </Button>
+          <div className="Trades-bg u-flex u-flex-justifyCenter u-flex-alignCenter">
+            <div className="Trades-card u-flexColumn u-flex-alignCenter u-flex-justifyCenter">
+              <h3 className="u-headerFont Trades-title-bottom"> Please login to see this page</h3>
+              <div>
+                <Button href="/login">Get Started</Button>
+              </div>
+            </div>
+          </div>
         </>
       )}
     </div>
