@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import strawmillionaire from "../../public/strawmillionaire.png";
+import demiskipper from "../../public/demiskipper.png";
 
 import "../../utilities.css";
 import "./Landing.css";
@@ -14,33 +17,85 @@ import "./Landing.css";
 const Landing = ({ userId }) => {
   return (
     <div className="Landing-container">
-      <div className="Landing-bg-dark u-headerFont Landing-title">
-        <div>
-          Bigger<span className="Landing-period">.</span>
-        </div>
-        <div>
-          Better<span className="Landing-period">.</span>
-        </div>
+      <div className="Landing-bg-dark">
+        <div className="u-headerFont Landing-title">BiggerBetter</div>
+        <div className="u-headerFont Landing-subtitle">The 1-for-1 trading platform</div>
       </div>
       <div className="Landing-bg-light u-bodyFont">
-        This is what BiggerBetter is: brief overview on how to use.
+        BiggerBetter is simple: brief overview on how to use.
       </div>
       <Container fluid>
-        <Row className="Landing-bg-dark">
-          <Col className="Landing-card">Story of Kyle MacDonald (red paper clip guy)</Col>
-          <Col className="Landing-card">Wikipedia link to BiggerBetter</Col>
-          <Col className="Landing-card">TikTok Girl Account</Col>
+        <Row className="Landing-bg-dark-cards u-bodyFont">
+          <Col xs={12} md={4}>
+            <Card className="Landing-card u-flexColumn u-flex-alignCenter">
+              <Row className="align-items-center">
+                <Col className="d-flex justify-content-center">
+                  <a href="https://www.tiktok.com/@trademeproject" target="_blank">
+                    <img src={demiskipper} className="Landing-img" />
+                  </a>
+                </Col>
+                <Col>
+                  <div className="Landing-cardtext">
+                    Demi Skipper documented her journey of trading a bobby pin for a house on TikTok{" "}
+                    <a href="https://www.tiktok.com/@trademeproject" target="_blank">
+                      @trademeproject
+                    </a>
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+          <Col xs={12} md={4}>
+            <Card className="Landing-card u-flexColumn u-flex-justifyCenter">
+              <iframe
+                className="Landing-iframe"
+                src="https://www.youtube.com/embed/8s3bdVxuFBs"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+              <div className="Landing-cardtext">
+                In 2006, Kyle MacDonald traded his way from one red paperclip to a two-story house.
+                At TEDxVienna in 2015, Kyle reflected on his journey of successive trades and how by
+                asking "what if..." we can cultivate ambition, foster collaboration, and strengthen
+                community.
+              </div>
+            </Card>
+          </Col>
+          <Col xs={12} md={4}>
+            <Card className="Landing-card u-flexColumn u-flex-alignCenter">
+              <Row className="align-items-center">
+                <Col className="d-flex justify-content-center">
+                  <a href="https://en.wikipedia.org/wiki/Straw_Millionaire" target="_blank">
+                    <img src={strawmillionaire} className="Landing-img" />
+                  </a>
+                </Col>
+                <Col>
+                  <div className="Landing-cardtext">
+                    Learn about the folk tale,{" "}
+                    <a href="https://en.wikipedia.org/wiki/Straw_Millionaire" target="_blank">
+                      Straw Millionaire
+                    </a>
+                    , where a peasant trades his way to fortune from a single piece of straw.
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
         </Row>
       </Container>
       {userId ? (
         <></>
       ) : (
-        <div className="Landing-bg-light">
-          <div className="Landing-card">
-            <h3 className="u-headerFont">Start Trading!</h3>
-            <Button href="/login" className="">
-              Get Started
-            </Button>
+        <div className="Landing-bg-light u-flex u-flex-alignCenter u-flex-justifyCenter">
+          <div className="Landing-card-bottom u-flexColumn u-flex-alignCenter u-flex-justifyCenter">
+            <h3 className="u-headerFont Landing-card-bottom-text">Start Trading!</h3>
+            <div>
+              <Button href="/login" className="Landing-btn">
+                Get Started
+              </Button>
+            </div>
           </div>
         </div>
       )}

@@ -65,7 +65,7 @@ const NavBar = ({ userId, handleLogout, children }) => {
             <>
               <Navbar.Toggle aria-controls="basic-navbar-nav-2" className="mb-1" />
               <Navbar.Collapse id="basic-navbar-nav-2">
-                <Nav className="me-auto">
+                <Nav className="ms-auto">
                   <Button variant="primary" href="/login" className="mt-1">
                     Get Started
                   </Button>
@@ -75,33 +75,6 @@ const NavBar = ({ userId, handleLogout, children }) => {
           )}
         </Container>
       </Navbar>
-      {/* <nav>
-        <div>BiggerBetter</div>
-        <div>
-          <Link to="/">Home</Link>
-          {userId && (
-            <>
-              <Link to="/explore">Explore</Link>
-              <Link to="/trades">Trades</Link>
-              <Link to={`/profile/${userId}`}>Profile</Link>
-            </>
-          )}
-        </div>
-        {userId ? (
-          <GoogleLogout
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Logout"
-            onLogoutSuccess={redirect}
-            onFailure={(err) => console.log(err)}
-          />
-        ) : (
-          <div>
-            <Link to="/login" className="NavBar-linkAsButton">
-              Get Started
-            </Link>
-          </div>
-        )}
-      </nav> */}
       {children}
     </>
   );

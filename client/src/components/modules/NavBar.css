@@ -2,3 +2,7 @@
   border-bottom: var(--xs) solid var(--themeborder);
   /* box-shadow: 0 4px -2px 2px var(--themecards); */
 }
+
+.NavBar-bottom {
+  border-top: var(-xs) solid var(--themeborder);
+}

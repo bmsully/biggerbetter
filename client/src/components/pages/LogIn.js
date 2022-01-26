@@ -25,15 +25,21 @@ const LogIn = ({ userId, handleLogin }) => {
   };
 
   return (
-    <div className="u-flexColumn u-flex-alignCenter">
-      <h1 className="u-headerFont">Sign Up/Log In Page</h1>
-      <h3> Please login with google</h3>
-      <GoogleLogin
-        clientId={GOOGLE_CLIENT_ID}
-        buttonText="Login"
-        onSuccess={redirect}
-        onFailure={(err) => console.log(err)}
-      />
+    <div className="LogIn-bg u-flex u-flex-justifyCenter u-flex-alignCenter">
+      <div className="LogIn-card u-flexColumn u-flex-alignCenter u-flex-justifyCenter">
+        <h3 className="u-headerFont LogIn-title"> Please login with google</h3>
+        <h4 className="u-bodyFont LogIn-subtitle">
+          If you are new, an account will be made for you upon log-in
+        </h4>
+        <div>
+          <GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={redirect}
+            onFailure={(err) => console.log(err)}
+          />
+        </div>
+      </div>
     </div>
   );
 };

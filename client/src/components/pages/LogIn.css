@@ -1,0 +1,27 @@
+.LogIn-bg {
+  background-color: var(--themebackground);
+  height: 100vh;
+  margin-top: 0 !important;
+}
+
+.LogIn-card {
+  background-color: var(--themecards);
+  border: 2px solid var(--themeborder);
+  border-radius: var(--xs);
+  margin: var(--xs) 2px;
+  box-shadow: 0 0 10px var(--themecard);
+  width: calc(300px + 25vw);
+  height: calc(100px + 10vw);
+}
+
+.LogIn-title {
+  color: var(--themebackground);
+  padding: var(--xs);
+  font-size: calc(20px + 2vw);
+}
+
+.LogIn-subtitle {
+  color: var(--themebackground);
+  padding: var(--xs);
+  font-size: calc(10px + 1vw);
+}

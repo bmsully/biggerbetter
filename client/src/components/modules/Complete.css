@@ -1,0 +1,26 @@
+.Complete-title {
+  color: var(--themecards);
+  padding: var(--s);
+  font-size: calc(29px + 1vw);
+}
+
+.Complete-subtitle {
+  color: var(--themecards);
+  padding: var(--s);
+  font-size: calc(15px + 1vw);
+}
+
+.Complete-tradehr {
+  color: var(--themeborder);
+  width: 50%;
+  margin: auto;
+}
+
+.Complete-notradestext {
+  color: var(--themecards);
+  padding: var(--s);
+}
+
+.Complete-btn {
+  margin: var(--xs) var(--m);
+}

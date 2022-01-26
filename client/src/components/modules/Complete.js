@@ -15,18 +15,24 @@ const Complete = (props) => {
   const hasCompleteTrades = props.completeTrades.length !== 0;
   if (hasCompleteTrades) {
     completeTrades = props.completeTrades.map((tradeObj) => (
-      <TradeCard
-        key={`trade_${tradeObj._id}`}
-        proposer={tradeObj.proposer}
-        approver={tradeObj.approver}
-      />
+      <>
+        <TradeCard
+          key={`trade_${tradeObj._id}`}
+          proposer={tradeObj.proposer}
+          approver={tradeObj.approver}
+        />
+        <hr className="Complete-tradehr u-flex u-flex-justifyCenter" />
+      </>
     ));
-  } else completeTrades = <div>You have not completed any trades</div>;
+  } else
+    completeTrades = (
+      <div className="u-bodyFont Complete-notradestext">You have no complete trades</div>
+    );
 
   return (
     <div>
-      <h2 className="u-headerFont">Complete Trades</h2>
-      <hr />
+      <h2 className="u-headerFont Complete-title">Finished</h2>
+      <h3 className="u-headerFont Complete-subtitle">Items have been swapped</h3>
       {completeTrades}
     </div>
   );

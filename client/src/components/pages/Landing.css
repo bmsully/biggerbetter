@@ -2,33 +2,98 @@
 .Landing-container {
   padding-left: 0rem;
   padding-right: 0rem;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .Landing-bg-dark {
   background-color: var(--themebackground);
-  height: calc(200px + 5vw);
+  background-image: url("../../public/bannerimage.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  height: calc(300px + 20vw);
   padding: var(--xs);
+  border-bottom: var(--xs) solid var(--themeborder);
 }
 .Landing-bg-light {
   background-color: var(--themecards);
   height: calc(200px + 5vw);
   width: 100%;
   padding: var(--xs);
+  border-bottom: var(--xs) solid var(--themeborder);
+}
+
+.Landing-bg-dark-cards {
+  background-color: var(--themebackground);
+  padding: var(--xs);
+  border-bottom: var(--xs) solid var(--themeborder);
 }
 
 .Landing-card {
   background-color: var(--themecards);
   border: 2px solid var(--themeborder);
-  border-radius: 2px;
-  margin: var(--m);
+  border-radius: var(--xs);
+  margin: var(--xs) 2px;
+  box-shadow: 0 0 10px var(--themebackground);
 }
 
 .Landing-title {
-  font-size: calc(30px + 5vw);
+  font-size: calc(10px + 5vw);
   color: var(--themecards);
+  margin: 3vw;
+}
+
+.Landing-subtitle {
+  font-size: calc(5px + 3vw);
+  color: var(--themecards);
+  margin: 0 3vw;
 }
 
 .Landing-period {
   color: var(--themeborder);
+}
+
+.Landing-iframe {
+  width: 260;
+  height: 200;
+  margin: var(--xs);
+}
+
+.Landing-cardtext {
+  font-size: calc(10px + 1vw);
+  margin: var(--xs) var(--s);
+  text-align: center;
+}
+
+.Landing-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  background-position: center center;
+  margin: var(--xs);
+  border-radius: var(--xs);
+  border: 2px solid var(--themeborder);
+}
+
+.Landing-tiktok {
+  width: 100%;
+}
+
+.Landing-btn {
+  margin: var(--xs);
+}
+
+.Landing-card-bottom {
+  background-color: var(--themecards);
+  border: 2px solid var(--themeborder);
+  border-radius: var(--xs);
+  margin: var(--xs) 2px;
+  box-shadow: 0 0 10px var(--themebackground);
+  width: calc(300px + 20vw);
+  height: calc(100px + 5vw);
+}
+
+.Landing-card-bottom-text {
+  font-size: calc(10px + 4vw);
 }
