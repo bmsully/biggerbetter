@@ -80,7 +80,9 @@ const Accepted = (props) => {
     ));
   } else
     accTrades = (
-      <div className="u-bodyFont Accepted-notradestext">No trades awaiting completion</div>
+      <div className="u-bodyFont  u-textCenter Accepted-notradestext">
+        No trades awaiting completion
+      </div>
     );
   //Accepted Trades and Other User Complete (message or complete)
   let accTheyCompTrades = null;
@@ -111,7 +113,9 @@ const Accepted = (props) => {
     ));
   } else
     accTheyCompTrades = (
-      <div className="u-bodyFont Accepted-notradestext">No trades awaiting your completion</div>
+      <div className="u-bodyFont  u-textCenter Accepted-notradestext">
+        No trades awaiting your completion
+      </div>
     );
   //Accepted Trades and You Complete
   let accYouCompTrades = null;
@@ -150,8 +154,8 @@ const Accepted = (props) => {
     ));
   } else
     accYouCompTrades = (
-      <div className="u-bodyFont Accepted-notradestext">
-        No trades awaiting other user's completion
+      <div className="u-bodyFont u-textCenter  Accepted-notradestext">
+        No trades awaiting other users' completion
       </div>
     );
 

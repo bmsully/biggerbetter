@@ -28,7 +28,9 @@ const Complete = (props) => {
     ));
   } else
     completeTrades = (
-      <div className="u-bodyFont Complete-notradestext">You have no complete trades</div>
+      <div className="u-bodyFont  u-textCenter Complete-notradestext">
+        You have no complete trades
+      </div>
     );
 
   return (

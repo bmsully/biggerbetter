@@ -5,6 +5,7 @@
   background-color: var(--themecards);
   margin: var(--s) var(--xs);
   padding: var(--xs);
+  box-shadow: 0 0 var(--xs) var(--themebackground);
 }
 
 .ProfileCard-img {

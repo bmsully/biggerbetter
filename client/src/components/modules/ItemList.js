@@ -63,7 +63,7 @@ const ItemList = (props) => {
       />
     ));
   } else {
-    activeItems = <div>No active items</div>;
+    activeItems = <div className="u-bodyFont u-textCenter ItemList-text">No active items</div>;
   }
   if (inactiveItems.length !== 0) {
     inactiveItems = inactiveItems.map((itemObj) => (
@@ -79,7 +79,7 @@ const ItemList = (props) => {
       />
     ));
   } else {
-    inactiveItems = <div>No inactive items</div>;
+    inactiveItems = <div className="u-bodyFont u-textCenter ItemList-text">No inactive items</div>;
   }
 
   return (
@@ -98,25 +98,25 @@ const ItemList = (props) => {
             </div>
           </OverlayTrigger>
         ))}
+      <hr className="ItemList-hr" />
       <div className="ItemList-container">
         <div className="ItemList-card">
           <h2 className="u-headerFont ItemList-title">Active Items</h2>
-          <h3 className="u-bodyFont ItemList-info">
-            These items are currently available to be traded and/or in pending trades
-          </h3>
-          <h3 className="u-bodyFont ItemList-info">
-            They are visible to other users until accepted in a trade
-          </h3>
+          <div className="u-bodyFont ItemList-subtitle">-Currently available to be traded</div>
+          <div className="u-bodyFont ItemList-subtitle">-May exist in pending trade</div>
+          <div className="u-bodyFont ItemList-subtitle">
+            -Visible to other users until accepted in a trade
+          </div>
           {activeItems}
         </div>
+        <hr className="ItemList-hr" />
         <div className="ItemList-card">
           <h2 className="u-headerFont ItemList-title">Inactive Items</h2>
-          <h3 className="u-bodyFont ItemList-info">
-            These items are currently involved in approved trades
-          </h3>
-          <h3 className="u-bodyFont ItemList-info">
-            They are invisible to other users until the trade is complete
-          </h3>
+          <div className="u-bodyFont ItemList-subtitle">-Currently unavailable to be traded</div>
+          <div className="u-bodyFont ItemList-subtitle">-Exist in an accepted trade</div>
+          <div className="u-bodyFont ItemList-subtitle">
+            -Invisible to other users until the trade is complete
+          </div>
           {inactiveItems}
         </div>
       </div>

@@ -7,9 +7,10 @@
 }
 
 .ItemCard-container {
+  background-color: var(--themecards);
   padding: var(--xs);
   margin: var(--xs) var(--s);
-  border: 1px solid var(--themeborder);
+  border: 2px solid var(--themeborder);
   box-shadow: 0 0 var(--xs) var(--themebackground);
   border-radius: var(--xs);
 }

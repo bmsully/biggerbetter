@@ -49,7 +49,7 @@ const Pending = (props) => {
     ));
   } else {
     toTrades = (
-      <div className="u-bodyFont Pending-notradestext">
+      <div className="u-bodyFont u-textCenter Pending-notradestext">
         There are no active trades proposed to you
       </div>
     );
@@ -71,7 +71,9 @@ const Pending = (props) => {
     ));
   } else {
     byTrades = (
-      <div className="u-bodyFont Pending-notradestext">You have no active proposed trades</div>
+      <div className="u-bodyFont  u-textCenter Pending-notradestext">
+        You have no active proposed trades
+      </div>
     );
   }
 

@@ -3,21 +3,31 @@
 }
 
 .ItemList-container {
-  border: 1px solid var(--themeborder);
-  border-radius: 2px;
+  /* border: 1px solid var(--themeborder);
+  border-radius: 2px; */
 }
 
 .ItemList-card {
-  background-color: var(--themecards);
-  border-bottom: 2px solid var(--themeborder);
+  /* background-color: var(--themecards);
+  border-bottom: 2px solid var(--themeborder); */
+}
+
+.ItemList-hr {
+  color: var(--themecards);
 }
 
 .ItemList-title {
-  font-size: calc(32px + 1vw);
+  color: var(--themecards);
+  font-size: calc(20px + 1vw);
   margin: 0 var(--xs);
 }
 
-.ItemList-info {
-  font-size: medium;
+.ItemList-subtitle {
+  color: var(--themecards);
+  font-size: calc(10px + 1vw);
   margin: var(--xs);
+}
+
+.ItemList-text {
+  color: var(--themecards);
 }
