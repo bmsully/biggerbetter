@@ -1,6 +1,8 @@
 .Explore-bg {
   background-color: var(--themebackground);
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding: var(--xs);
 }
 
 .Explore-title {

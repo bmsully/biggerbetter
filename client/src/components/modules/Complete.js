@@ -7,6 +7,7 @@ import "./Complete.css";
 /**
  * Complete is a Component of Trades that displays complete TradeCards
  *
+ * @param {String} userId id of active user
  * @param {Array} completeTrades
  */
 
@@ -20,6 +21,7 @@ const Complete = (props) => {
           key={`trade_${tradeObj._id}`}
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
+          toYou={props.userId === tradeObj.approver.userid}
         />
         <hr className="Complete-tradehr u-flex u-flex-justifyCenter" />
       </>

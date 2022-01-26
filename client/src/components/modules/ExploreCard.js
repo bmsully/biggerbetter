@@ -44,21 +44,21 @@ const ExploreCard = (props) => {
   if (hasItems) {
     items = itemList.filter((itemObj) => itemObj.active);
     if (items.length === 0) {
-      items = <div>{props.name} does not have any active items :(</div>;
+      items = (
+        <div className="u-textCenter u-bodyFont">{props.name} does not have any active items</div>
+      );
     } else {
       items = items.map((itemObj) => (
         <div key={`UserItem_${itemObj._id}`} className="ExploreCard-itemCard-container">
           <Container>
-            <Row>
-              <Col>
+            <Row className="align-items-center">
+              <Col className="d-flex justify-content-center">
                 <img src={itemObj.img_loc} className="ExploreCard-itemImg" />
               </Col>
               <Col>
                 <div className="u-headerFont">
                   Item name: <span className="u-bodyFont">{itemObj.name}</span>
                 </div>
-              </Col>
-              <Col>
                 <div className="u-headerFont">
                   Item description: <span className="u-bodyFont">{itemObj.desc}</span>
                 </div>
@@ -70,7 +70,9 @@ const ExploreCard = (props) => {
       ));
     }
   } else {
-    items = <div> {props.name} does not have any active items</div>;
+    items = (
+      <div className="u-textCenter u-bodyFont"> {props.name} does not have any active items</div>
+    );
   }
 
   return (

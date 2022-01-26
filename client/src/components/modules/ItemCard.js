@@ -19,19 +19,17 @@ const ItemCard = (props) => {
   return (
     <div className="ItemCard-container">
       <Container>
-        <Row>
+        <Row className="align-items-center">
           <Col className="d-flex justify-content-center">
             <img src={props.img_loc} className="ItemCard-img" />
           </Col>
           <Col className="align-items-center">
-            <div>
-              <h4 className="u-headerFont">
-                Name: <span className="u-bodyFont">{props.name}</span>
-              </h4>
-              <h5 className="u-headerFont">
-                Description: <span className="u-bodyFont">{props.desc}</span>
-              </h5>
-            </div>
+            <h4 className="u-headerFont">
+              Name: <span className="u-bodyFont">{props.name}</span>
+            </h4>
+            <h5 className="u-headerFont">
+              Description: <span className="u-bodyFont">{props.desc}</span>
+            </h5>
           </Col>
         </Row>
       </Container>

@@ -60,6 +60,7 @@ const Accepted = (props) => {
           key={`trade_${tradeObj._id}`}
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
+          toYou={props.userId === tradeObj.approver.userid}
         />
         <div className="u-flex u-flex-justifyCenter">
           <Button
@@ -90,6 +91,7 @@ const Accepted = (props) => {
           key={`trade_${tradeObj._id}`}
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
+          toYou={props.userId === tradeObj.approver.userid}
         />
         <div className="u-flex u-flex-justifyCenter">
           <Button
@@ -120,6 +122,7 @@ const Accepted = (props) => {
           key={`trade_${tradeObj._id}`}
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
+          toYou={props.userId === tradeObj.approver.userid}
         />
         <div className="u-flex u-flex-justifyCenter">
           <Button

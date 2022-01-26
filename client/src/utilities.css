@@ -40,6 +40,10 @@
   --l: 24px;
 }
 
+html {
+  background-color: var(--themebackground);
+}
+
 body {
   background-color: var(--themebackground);
   margin: 0;
@@ -47,6 +51,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   overflow-x: hidden;
+  height: 100%;
 }
 
 form {

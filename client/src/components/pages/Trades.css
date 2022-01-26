@@ -1,6 +1,8 @@
 .Trades-bg {
   background-color: var(--themebackground);
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding: var(--xs);
 }
 
 /* .Trades-tabbg {
@@ -14,8 +16,8 @@
 }
 
 .Trades-hr {
-  color: var(--bs-blue);
-  margin: 0 !important;
+  color: var(--themecards);
+  margin: var(--xs);
 }
 
 .Trades-title-bottom {

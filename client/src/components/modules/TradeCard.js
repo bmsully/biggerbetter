@@ -19,7 +19,6 @@ const TradeCard = (props) => {
       <Container>
         <Row className="align-items-center">
           <Col className="d-flex justify-content-center" xs={12} sm={4}>
-            {/* <div className="u-headerFont">Proposer</div> */}
             <img className="TradeCard-img" src={props.proposer.item.img_loc} />
           </Col>
           <Col className="d-flex justify-content-center" xs={12} sm={4}>
@@ -39,7 +38,6 @@ const TradeCard = (props) => {
             </div>
           </Col>
           <Col className="d-flex justify-content-center" xs={12} sm={4}>
-            {/* <div className="u-headerFont">Approver</div> */}
             <img className="TradeCard-img" src={props.approver.item.img_loc} />
           </Col>
         </Row>

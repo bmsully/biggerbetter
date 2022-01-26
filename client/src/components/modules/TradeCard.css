@@ -1,7 +1,7 @@
 .TradeCard-container {
   margin: var(--xs);
   background-color: var(--themecards);
-  border: 1px solid var(--themeborder);
+  border: 2px solid var(--themeborder);
   border-radius: var(--xs);
   padding: var(--xs);
   box-shadow: 0 0 var(--xs) var(--themebackground);
@@ -18,7 +18,8 @@
 .TradeCard-text {
   margin: var(--xs);
   padding: var(--xs);
-  background-color: var(--white);
-  border: 2px solid var(--blackshadow);
+  background-color: var(--themecards);
+  border: 2px solid var(--themeborder);
+  box-shadow: 0 0 var(--xs) var(--themebackground);
   border-radius: var(--xs);
 }

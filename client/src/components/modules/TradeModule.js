@@ -61,19 +61,13 @@ const TradeModule = (props) => {
       } else {
         for (const tradeObj of trades) {
           if (
-            tradeObj.proposer.item.itemid === userSelected._id &&
-            tradeObj.approver.item.itemid === otherSelected._id
+            (tradeObj.proposer.item.itemid === userSelected._id &&
+              tradeObj.approver.item.itemid === otherSelected._id) ||
+            (tradeObj.proposer.item.itemid === otherSelected._id &&
+              tradeObj.approver.item.itemid === userSelected._id)
           ) {
             setLoading(false);
-            const message = "You have proposed this trade before.\nPlease select different items.";
-            alert(message);
-            break;
-          } else if (
-            tradeObj.proposer.item.itemid === otherSelected._id &&
-            tradeObj.approver.item.itemid === userSelected._id
-          ) {
-            setLoading(false);
-            const message = `${props.tradeInfo.user.name} has proposed this trade before\nPlease select different items.`;
+            const message = `You and ${props.tradeInfo.user.name} have traded these items before\nPlease select different items.`;
             alert(message);
             break;
           } else {
@@ -106,7 +100,7 @@ const TradeModule = (props) => {
   if (otherHasItems) {
     const tempOtherItems = props.tradeInfo.items.filter((itemObj) => itemObj.active);
     if (tempOtherItems.length === 0) {
-      otherItems = <div>User has no active items :(</div>;
+      otherItems = <div className="u-textCenter u-bodyFont">No active items</div>;
     } else {
       otherItems = tempOtherItems.map((itemObj) => (
         <div key={`UserItem_${itemObj._id}`}>
@@ -132,7 +126,7 @@ const TradeModule = (props) => {
       ));
     }
   } else {
-    otherItems = <div>User has no items :(</div>;
+    otherItems = <div className="u-textCenter u-bodyFont">No items</div>;
   }
 
   let myItems = null;
@@ -140,7 +134,7 @@ const TradeModule = (props) => {
   if (userHasItems) {
     const tempMyItems = userItems.filter((itemObj) => itemObj.active);
     if (tempMyItems.length === 0) {
-      myItems = <div>You have no active items to trade</div>;
+      myItems = <div className="u-textCenter u-bodyFont">You have no active items</div>;
     } else {
       myItems = tempMyItems.map((itemObj) => (
         <div key={`MyItem_${itemObj._id}`}>
@@ -166,14 +160,14 @@ const TradeModule = (props) => {
       ));
     }
   } else {
-    myItems = <div>You must add items to trade!</div>;
+    myItems = <div className="u-textCenter u-bodyFont">You must add items to trade</div>;
   }
 
-  let content = <div>Loading!</div>;
+  let content = <div className="u-textCenter u-headerFont">Loading!</div>;
   if (loading) {
     content = (
       <>
-        <div>Loading!</div>
+        <div className="u-textCenter u-headerFont">Loading!</div>
       </>
     );
   } else if (!otherSelected) {

@@ -25,7 +25,6 @@ const ProfileCard = ({ username, usertarget, userimg_loc }) => {
       <div className="ProfileCard-container">
         <Container fluid="md">
           <Row className="align-items-center">
-            {/* <Col xs={4} sm={1}></Col> */}
             <Col
               className="d-flex justify-content-center"
               xs={{ span: 8, offset: 2 }}
@@ -33,7 +32,6 @@ const ProfileCard = ({ username, usertarget, userimg_loc }) => {
             >
               <div style={divStyle} className="ProfileCard-img" alt="User's profile picture" />
             </Col>
-            {/* <Col xs={4} sm={1}></Col> */}
             <Col xs={12} sm={8}>
               <div className="ProfileCard-info">
                 <h3 className="u-headerFont u-textCenter">{username}</h3>

@@ -1,8 +1,8 @@
 .ProfileCard-container {
   max-width: 100%;
-  border: 1px solid var(--darkgrey);
+  border: 2px solid var(--themeborder);
   border-radius: var(--xs);
-  background-color: var(--grey);
+  background-color: var(--themecards);
   margin: var(--s) var(--xs);
   padding: var(--xs);
 }
@@ -23,8 +23,5 @@
 }
 
 .ProfileCard-info {
-  border: 2px solid var(--darkgrey);
-  border-radius: var(--xs);
-  background-color: var(--white);
   padding: var(--xs);
 }

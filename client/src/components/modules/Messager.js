@@ -103,9 +103,6 @@ const Messager = (props) => {
               </span>
               <span className="u-bodyFont Messager-content">{messageObj.content}</span>
             </div>
-            {/* <div>
-              <span className="Messager-date">{messageObj.date}</span>
-            </div> */}
           </>
         ))}
       </Modal.Body>

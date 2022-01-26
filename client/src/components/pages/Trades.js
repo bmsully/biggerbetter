@@ -112,7 +112,7 @@ const Trades = (props) => {
               </Tab>
               <Tab eventKey="Complete" title="Complete">
                 <hr className="Trades-hr" />
-                <Complete completeTrades={completeTrades} />
+                <Complete userId={props.userId} completeTrades={completeTrades} />
               </Tab>
             </Tabs>
           </div>
