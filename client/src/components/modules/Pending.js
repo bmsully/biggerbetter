@@ -59,12 +59,15 @@ const Pending = (props) => {
   const hasByTrades = props.propByTrades.length !== 0;
   if (hasByTrades) {
     byTrades = props.propByTrades.map((tradeObj) => (
-      <TradeCard
-        key={`trade_${tradeObj._id}`}
-        proposer={tradeObj.proposer}
-        approver={tradeObj.approver}
-        toYou={false}
-      />
+      <>
+        <TradeCard
+          key={`trade_${tradeObj._id}`}
+          proposer={tradeObj.proposer}
+          approver={tradeObj.approver}
+          toYou={false}
+        />
+        <hr className="Pending-tradehr u-flex u-flex-justifyCenter" />
+      </>
     ));
   } else {
     byTrades = (

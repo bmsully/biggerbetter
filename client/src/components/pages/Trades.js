@@ -88,10 +88,11 @@ const Trades = (props) => {
           <Tabs
             activeKey={activeTab}
             onSelect={(k) => setActiveTab(k)}
-            className="mb-3 u-flex-justifyCenter"
+            className="mb-0 u-flex-justifyCenter"
             variant="pills"
           >
             <Tab eventKey="Pending" title="Pending">
+              <hr className="Trades-hr" />
               <Pending
                 propToTrades={propToTrades}
                 propByTrades={propByTrades}
@@ -100,6 +101,7 @@ const Trades = (props) => {
               />
             </Tab>
             <Tab eventKey="Accepted" title="Accepted">
+              <hr className="Trades-hr" />
               <Accepted
                 userId={props.userId}
                 acceptedTrades={acceptedTrades}
@@ -107,6 +109,7 @@ const Trades = (props) => {
               />
             </Tab>
             <Tab eventKey="Complete" title="Complete">
+              <hr className="Trades-hr" />
               <Complete completeTrades={completeTrades} />
             </Tab>
           </Tabs>

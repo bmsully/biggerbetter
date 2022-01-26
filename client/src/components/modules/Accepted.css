@@ -1,0 +1,29 @@
+.Accepted-title {
+  color: var(--themecards);
+  padding: var(--s);
+  font-size: calc(29px + 1vw);
+}
+.Accepted-subtitle {
+  color: var(--themecards);
+  padding: var(--s);
+  font-size: calc(15px + 1vw);
+}
+
+.Accepted-hr {
+  color: var(--themecards);
+}
+
+.Accepted-tradehr {
+  color: var(--themeborder);
+  width: 50%;
+  margin: auto;
+}
+
+.Accepted-notradestext {
+  color: var(--themecards);
+  padding: var(--s);
+}
+
+.Accepted-btn {
+  margin: var(--xs) var(--m);
+}

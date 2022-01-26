@@ -12,3 +12,8 @@
   padding: var(--s);
   font-size: calc(30px + 1vw);
 }
+
+.Trades-hr {
+  color: var(--bs-blue);
+  margin: 0 !important;
+}

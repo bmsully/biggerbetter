@@ -23,7 +23,7 @@ const ItemCard = (props) => {
           <Col className="d-flex justify-content-center">
             <img src={props.img_loc} className="ItemCard-img" />
           </Col>
-          <Col>
+          <Col className="align-items-center">
             <div>
               <h4 className="u-headerFont">
                 Name: <span className="u-bodyFont">{props.name}</span>

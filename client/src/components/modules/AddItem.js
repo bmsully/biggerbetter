@@ -56,11 +56,11 @@ const AddItem = (props) => {
     let tempNameValid = true;
     let tempDescValid = true;
     let tempFileValid = true;
-    if (nameLength === 0 || name.length > 33) {
+    if (nameLength === 0 || name.length > 32) {
       setNameValid("is-invalid");
       tempNameValid = false;
     } else setNameValid("is-valid");
-    if (descLength === 0 || descLength > 141) {
+    if (descLength === 0 || descLength > 140) {
       setDescValid("is-invalid");
       tempDescValid = true;
     } else setDescValid("is-valid");
@@ -141,7 +141,7 @@ const AddItem = (props) => {
             className={`mb-1 mt-1 form-control ${nameValid}`}
           />
           <div id="mb-2 nameValidation" className="invalid-feedback">
-            Item name must be greater than 1 but no more than 32 characters.
+            Item name must be greater than 0 but no more than 32 characters.
           </div>
           <input
             type="text"
@@ -152,7 +152,7 @@ const AddItem = (props) => {
             className={`mb-1 mt-1 form-control ${descValid}`}
           />
           <div id="mb-2 descValidation" className="invalid-feedback">
-            Item description must be greater than 1 but no more than 140 characters.
+            Item description must be greater than 0 but no more than 140 characters.
           </div>
         </Modal.Body>
         <Modal.Footer>

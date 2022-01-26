@@ -1,4 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 import "../../utilities.css";
 import "./Messager.css";
@@ -17,7 +19,7 @@ import { get, post } from "../../utilities.js";
 const Messager = (props) => {
   const [messages, setMessages] = useState([]);
   const [value, setValue] = useState("");
-  const [valueValid, setValueValid] = useState(true);
+  const [valueValid, setValueValid] = useState("");
 
   const loadMessages = (tradeId) => {
     get("/api/messages", { tradeid: tradeId }).then((messageObj) => {
@@ -52,11 +54,14 @@ const Messager = (props) => {
   };
 
   const inputValid = () => {
-    const valueLength = value.replace(" ", "").length;
-    if (valueLength === 0 || valueLength > 140) {
-      setValueValid(false);
+    const valueLength = value.replaceAll(" ", "").length;
+    if (valueLength === 0 || value.length > 140) {
+      setValueValid("is-invalid");
       return false;
-    } else return true;
+    } else {
+      setValueValid("is-valid");
+      return true;
+    }
   };
 
   const handleSubmit = (event) => {
@@ -79,41 +84,49 @@ const Messager = (props) => {
     }
   };
 
-  if (!messages) {
-    return <div>Loading!</div>;
-  } else {
-    return (
-      <div>
-        <h3>
+  return (
+    <Modal show={props.tradeInfo !== null} backdrop="static" onHide={handleClose}>
+      <Modal.Header className="u-headerFont" closeButton>
+        <Modal.Title>
           Messaging{" "}
           {props.userId === props.tradeInfo.proposer.userid
             ? props.tradeInfo.approver.name
             : props.tradeInfo.proposer.name}
-        </h3>
-        <button onClick={() => handleClose()}>Close</button>
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
         {messages.map((messageObj) => (
-          <div key={messageObj._id}>
-            <span>{(messageObj.userid === props.userId ? "You" : `${messageObj.name}`) + ":"}</span>
-            <span>{messageObj.content}</span>
-            <span>{messageObj.date}</span>
-          </div>
+          <>
+            <div key={messageObj._id} className="Messager-messageContainer">
+              <span className="u-headerFont Messager-name">
+                {(messageObj.userid === props.userId ? "You" : `${messageObj.name}`) + ": "}
+              </span>
+              <span className="u-bodyFont Messager-content">{messageObj.content}</span>
+            </div>
+            {/* <div>
+              <span className="Messager-date">{messageObj.date}</span>
+            </div> */}
+          </>
         ))}
-        <div>
-          <span>New Message:</span>
-          <input
-            type="text"
-            placeholder={"New Message"}
-            value={value}
-            onChange={handleChange}
-            className={valueValid ? "Messager-valueInputValid" : "Messager-valueInputInvalid"}
-          />
-          <button type="submit" value="Submit" onClick={handleSubmit}>
-            Submit
-          </button>
+      </Modal.Body>
+      <Modal.Footer>
+        <input
+          type="text"
+          id="valueValidation"
+          placeholder={"New Message"}
+          value={value}
+          onChange={handleChange}
+          className={`mb-1 mt-1 form-control ${valueValid}`}
+        />
+        <div id="valueValidation" className="invalid-feedback">
+          Message must be between 1 and 140 characters.
         </div>
-      </div>
-    );
-  }
+        <Button type="submit" value="Submit" onClick={handleSubmit}>
+          Send
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
 };
 
 export default Messager;

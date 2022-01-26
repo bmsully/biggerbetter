@@ -1,7 +1,19 @@
-.Messager-valueInputValid {
-  border: 2px solid black;
+.Messager-messageContainer {
+  margin: 2px 2px 1px 2px;
+  background-color: var(--themeborder);
+  padding: 1px 3vw 1px;
+  border-radius: 10vw;
+  width: fit-content;
 }
 
-.Messager-valueInputInvalid {
-  border: 2px solid red;
+.Messager-name {
+  font-size: calc(15px + 1vw);
+}
+
+.Messager-content {
+  font-size: calc(15px + 1vw);
+}
+
+.Messager-date {
+  font-size: calc(16px+ 1vw);
 }

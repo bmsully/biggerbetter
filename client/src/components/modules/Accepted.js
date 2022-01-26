@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import TradeCard from "./TradeCard.js";
 import Messager from "./Messager.js";
 import Button from "react-bootstrap/Button";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 import "../../utilities.css";
 import "./Accepted.css";
@@ -60,13 +61,26 @@ const Accepted = (props) => {
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
         />
-        <Button variant="secondary" onClick={() => openMessager(tradeObj)}>
-          Message
-        </Button>
-        <Button onClick={() => props.complete(tradeObj._id)}>Complete Trade</Button>
+        <div className="u-flex u-flex-justifyCenter">
+          <Button
+            size="lg"
+            className="Accepted-btn"
+            variant="secondary"
+            onClick={() => openMessager(tradeObj)}
+          >
+            Message
+          </Button>
+          <Button size="lg" className="Accepted-btn" onClick={() => props.complete(tradeObj._id)}>
+            Complete Trade
+          </Button>
+        </div>
+        <hr className="Accepted-tradehr u-flex u-flex-justifyCenter" />
       </>
     ));
-  } else accTrades = <></>;
+  } else
+    accTrades = (
+      <div className="u-bodyFont Accepted-notradestext">No trades awaiting completion</div>
+    );
   //Accepted Trades and Other User Complete (message or complete)
   let accTheyCompTrades = null;
   if (acceptedAndTheyComplete.length !== 0) {
@@ -77,13 +91,26 @@ const Accepted = (props) => {
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
         />
-        <Button variant="secondary" onClick={() => openMessager(tradeObj)}>
-          Message
-        </Button>
-        <Button onClick={() => props.complete(tradeObj._id)}>Complete Trade</Button>
+        <div className="u-flex u-flex-justifyCenter">
+          <Button
+            size="lg"
+            className="Accepted-btn"
+            variant="secondary"
+            onClick={() => openMessager(tradeObj)}
+          >
+            Message
+          </Button>
+          <Button size="lg" className="Accepted-btn" onClick={() => props.complete(tradeObj._id)}>
+            Complete Trade
+          </Button>
+        </div>
+        <hr className="Accepted-tradehr u-flex u-flex-justifyCenter" />
       </>
     ));
-  } else accTheyCompTrades = <></>;
+  } else
+    accTheyCompTrades = (
+      <div className="u-bodyFont Accepted-notradestext">No trades awaiting your completion</div>
+    );
   //Accepted Trades and You Complete
   let accYouCompTrades = null;
   if (acceptedAndYouComplete.length !== 0) {
@@ -94,57 +121,61 @@ const Accepted = (props) => {
           proposer={tradeObj.proposer}
           approver={tradeObj.approver}
         />
-        <Button variant="secondary" onClick={() => openMessager(tradeObj)}>
-          Message
-        </Button>
-        <Button disabled>Complete Trade</Button>
+        <div className="u-flex u-flex-justifyCenter">
+          <Button
+            size="lg"
+            className="Accepted-btn"
+            variant="secondary"
+            onClick={() => openMessager(tradeObj)}
+          >
+            Message
+          </Button>
+          <OverlayTrigger
+            placement="top"
+            delay={{ show: 250, hide: 400 }}
+            overlay={<Tooltip>You have already completed this trade</Tooltip>}
+          >
+            <div>
+              <Button size="lg" className="Accepted-btn" disabled>
+                Complete Trade
+              </Button>
+            </div>
+          </OverlayTrigger>
+        </div>
+        <hr className="Accepted-tradehr u-flex u-flex-justifyCenter" />
       </>
     ));
-  } else accYouCompTrades = <></>;
+  } else
+    accYouCompTrades = (
+      <div className="u-bodyFont Accepted-notradestext">
+        No trades awaiting other user's completion
+      </div>
+    );
 
-  if (messagerInfo) {
-    return (
-      <div>
-        <h2 className="u-headerFont">Accepted Trades</h2>
-        <hr />
+  return (
+    <div>
+      {messagerInfo && (
         <Messager userId={props.userId} closeMessager={closeMessager} tradeInfo={messagerInfo} />
-        <hr />
-        <h3>Message or Complete Trade</h3>
-        <h4>Message the other user to coordinate your item handoff!</h4>
-        {accTrades}
-        <hr />
-        <h3>Waiting for You to Complete Trade</h3>
-        <h4>The other user has indicated this trade is complete.</h4>
-        <h4></h4>
-        {accTheyCompTrades}
-        <hr />
-        <h3>Waiting for Other User to Complete Trade</h3>
-        <h4>You have indicated this trade is complete.</h4>
-        <h4></h4>
-        {accYouCompTrades}
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <h2 className="u-headerFont">Accepted Trades</h2>
-        <hr />
-        <h3>Message or Complete Trade</h3>
-        <h4>Message the other user to coordinate your item handoff!</h4>
-        {accTrades}
-        <hr />
-        <h3>Waiting for You to Complete Trade</h3>
-        <h4>The other user has indicated this trade is complete.</h4>
-        <h4></h4>
-        {accTheyCompTrades}
-        <hr />
-        <h3>Waiting for Other User to Complete Trade</h3>
-        <h4>You have indicated this trade is complete.</h4>
-        <h4></h4>
-        {accYouCompTrades}
-      </div>
-    );
-  }
+      )}
+      <h3 className="u-headerFont Accepted-title">Message or Complete Trade</h3>
+      <h4 className="u-headerFont Accepted-subtitle">
+        Message the other user to coordinate your item handoff!
+      </h4>
+      {accTrades}
+      <hr className="Accepted-hr" />
+      <h3 className="u-headerFont Accepted-title">Waiting for You to Complete</h3>
+      <h4 className="u-headerFont Accepted-subtitle">
+        The other users have indicated these trades are complete.
+      </h4>
+      {accTheyCompTrades}
+      <hr className="Accepted-hr" />
+      <h3 className="u-headerFont Accepted-title">Waiting for Other User to Complete</h3>
+      <h4 className="u-headerFont Accepted-subtitle">
+        You have indicated these trades are complete.
+      </h4>
+      {accYouCompTrades}
+    </div>
+  );
 };
 
 export default Accepted;

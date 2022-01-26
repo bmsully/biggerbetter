@@ -33,7 +33,7 @@ const NavBar = ({ userId, handleLogout, children }) => {
     <>
       <Navbar bg="light" variant="light" expand="sm" sticky="top" className="NavBar-border">
         <Container>
-          <Navbar.Brand href="/" className="u-headerFont">
+          <Navbar.Brand href="/" className="u-headerFont me-auto">
             <img alt="" src={redpaperclip} width="60" height="24" className="u-inlineBlock" />{" "}
             BiggerBetter
           </Navbar.Brand>
@@ -41,7 +41,7 @@ const NavBar = ({ userId, handleLogout, children }) => {
             <>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
+                <Nav className="ms-auto">
                   <Nav.Link href="/explore">Explore</Nav.Link>
                   <Nav.Link href="/trades">Trades</Nav.Link>
                   <Nav.Link href={`/profile/${userId}`}>Profile</Nav.Link>
