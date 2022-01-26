@@ -42,19 +42,26 @@
   font-size: calc(10px + 5vw);
   color: var(--themecards);
   margin: 3vw;
+  text-shadow: 0 0 4px var(--themebackground);
 }
 
 .Landing-subtitle {
   font-size: calc(5px + 3vw);
   color: var(--themecards);
   margin: 0 3vw;
+  text-shadow: 0 0 4px var(--themebackground);
 }
 
 .Landing-period {
   color: var(--themeborder);
 }
 
+.Landing-blue {
+  color: var(--themeborder);
+}
+
 .Landing-iconSection1 {
+  color: var(--themeborder);
   font-size: calc(3px + 5vw);
 }
 
@@ -117,4 +124,22 @@
 
 .Landing-card-bottom-text {
   font-size: calc(10px + 4vw);
+}
+
+.Landing-footerContainer {
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  background-color: var(--jet);
+}
+
+.Landing-footerText {
+  color: var(--blackshadow);
+  font-size: calc(8px + 4px);
+  margin: 0 10%;
+}
+
+.Landing-footerText > a {
+  color: var(--blackshadow);
+  text-decoration: none;
 }

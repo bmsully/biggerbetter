@@ -83,52 +83,63 @@ const Trades = (props) => {
 
   return (
     <div className="Trades-bg">
-      {props.userId ? (
-        <>
-          <h1 className="u-headerFont Trades-title">Your Trades</h1>
-          <div className="Trades-tabbg">
-            <Tabs
-              activeKey={activeTab}
-              onSelect={(k) => setActiveTab(k)}
-              className="mb-0 u-flex-justifyCenter"
-              variant="pills"
-            >
-              <Tab eventKey="Pending" title="Pending">
-                <hr className="Trades-hr" />
-                <Pending
-                  propToTrades={propToTrades}
-                  propByTrades={propByTrades}
-                  approve={approveTrade}
-                  decline={declineTrade}
-                />
-              </Tab>
-              <Tab eventKey="Accepted" title="Accepted">
-                <hr className="Trades-hr" />
-                <Accepted
-                  userId={props.userId}
-                  acceptedTrades={acceptedTrades}
-                  complete={completeTrade}
-                />
-              </Tab>
-              <Tab eventKey="Complete" title="Complete">
-                <hr className="Trades-hr" />
-                <Complete userId={props.userId} completeTrades={completeTrades} />
-              </Tab>
-            </Tabs>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="Trades-bg u-flex u-flex-justifyCenter u-flex-alignCenter">
-            <div className="Trades-card u-flexColumn u-flex-alignCenter u-flex-justifyCenter">
-              <h3 className="u-headerFont Trades-title-bottom"> Please login to see this page</h3>
-              <div>
-                <Button href="/login">Get Started</Button>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+      <Container>
+        <Row>
+          <Col md={0} lg={2} />
+          <Col md={12} lg={8}>
+            {props.userId ? (
+              <>
+                <h1 className="u-headerFont Trades-title">Your Trades</h1>
+                <div className="Trades-tabbg">
+                  <Tabs
+                    activeKey={activeTab}
+                    onSelect={(k) => setActiveTab(k)}
+                    className="mb-0 u-flex-justifyCenter"
+                    variant="pills"
+                  >
+                    <Tab eventKey="Pending" title="Pending">
+                      <hr className="Trades-hr" />
+                      <Pending
+                        propToTrades={propToTrades}
+                        propByTrades={propByTrades}
+                        approve={approveTrade}
+                        decline={declineTrade}
+                      />
+                    </Tab>
+                    <Tab eventKey="Accepted" title="Accepted">
+                      <hr className="Trades-hr" />
+                      <Accepted
+                        userId={props.userId}
+                        acceptedTrades={acceptedTrades}
+                        complete={completeTrade}
+                      />
+                    </Tab>
+                    <Tab eventKey="Complete" title="Complete">
+                      <hr className="Trades-hr" />
+                      <Complete userId={props.userId} completeTrades={completeTrades} />
+                    </Tab>
+                  </Tabs>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="Trades-bg u-flex u-flex-justifyCenter u-flex-alignCenter">
+                  <div className="Trades-card u-flexColumn u-flex-alignCenter u-flex-justifyCenter">
+                    <h3 className="u-headerFont Trades-title-bottom">
+                      {" "}
+                      Please login to see this page
+                    </h3>
+                    <div>
+                      <Button href="/login">Get Started</Button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+          </Col>
+          <Col md={0} lg={2} />
+        </Row>
+      </Container>
     </div>
   );
 };

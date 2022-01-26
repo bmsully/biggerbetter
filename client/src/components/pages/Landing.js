@@ -27,28 +27,32 @@ const Landing = ({ userId }) => {
     <div className="Landing-container">
       <div className="Landing-bg-dark">
         <div className="u-headerFont Landing-title">BiggerBetter</div>
-        <div className="u-headerFont Landing-subtitle">The 1-for-1 trading platform</div>
+        <div className="u-headerFont Landing-subtitle">
+          The <span className="Landing-blue">1-for-1</span> trading platform
+        </div>
       </div>
       <div className="Landing-bg-light u-bodyFont u-textCenter">
         <Container>
           <Col>
             <Row className="my-3">
-              <div className="u-headerFont Landing-iconSection1">BiggerBetter is Easy</div>
+              <div className="u-headerFont Landing-iconSection1">How it's done</div>
             </Row>
             <Row className="my-2">
               <div className="u-bodyFont Landing-iconSection2">
-                <PlusCircle /> Add items by uploading a photo, providing a name and description{" "}
-                <InfoCircle />
+                <PlusCircle className="Landing-blue" /> Add items by uploading a photo, providing a
+                name and description <InfoCircle className="Landing-blue" />
               </div>
             </Row>
             <Row className="my-2">
               <div className="u-bodyFont Landing-iconSection3">
-                <Binoculars /> Explore other users' items and propose trades <PatchQuestion />
+                <Binoculars className="Landing-blue" /> Explore other users' items and propose
+                trades <PatchQuestion className="Landing-blue" />
               </div>
             </Row>
             <Row className="my-1">
               <div className="u-bodyFont Landing-iconSection4">
-                <ArrowLeftRight /> Trade up for Bigger and Better stuff! <HandThumbsUp />
+                <ArrowLeftRight className="Landing-blue" /> Trade up for Bigger and Better stuff!{" "}
+                <HandThumbsUp className="Landing-blue" />
               </div>
             </Row>
           </Col>
@@ -88,9 +92,16 @@ const Landing = ({ userId }) => {
               ></iframe>
               <div className="Landing-cardtext">
                 In 2006, Kyle MacDonald traded his way from one red paperclip to a two-story house.
-                At TEDxVienna in 2015, Kyle reflected on his journey of successive trades and how by
-                asking "what if..." we can cultivate ambition, foster collaboration, and strengthen
-                community.
+                At{" "}
+                <a
+                  href="https://www.tedxvienna.at/
+                "
+                  target="_blank"
+                >
+                  TEDxVienna
+                </a>{" "}
+                in 2015, Kyle reflected on his journey of successive trades and how by asking "what
+                if..." we can cultivate ambition, foster collaboration, and strengthen community.
               </div>
             </Card>
           </Col>
@@ -130,6 +141,14 @@ const Landing = ({ userId }) => {
           </div>
         </div>
       )}
+      <div className="Landing-footerContainer u-flex u-flex-alignCenter u-flex-justifyCenter">
+        <div className="Landing-footerText">Brady Sullivan</div>
+        <div className="Landing-footerText">
+          <a href="https://weblab.mit.edu/" target="_blank">
+            web.lab IAP 2022
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

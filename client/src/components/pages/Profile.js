@@ -48,11 +48,23 @@ const Profile = (props) => {
   } else {
     return (
       <div className="Profile-bg">
-        <ProfileCard username={user.name} usertarget={user.target} userimg_loc={user.img_loc} />
-        {props.userId === props.userid && (
-          <EditProfile onSubmit={onSubmit} defaultItem={user.target} />
-        )}
-        <ItemList userid={props.userid} userId={props.userId} />
+        <Container>
+          <Row>
+            <Col md={0} lg={2} />
+            <Col md={12} lg={8}>
+              <ProfileCard
+                username={user.name}
+                usertarget={user.target}
+                userimg_loc={user.img_loc}
+              />
+              {props.userId === props.userid && (
+                <EditProfile onSubmit={onSubmit} defaultItem={user.target} />
+              )}
+              <ItemList userid={props.userid} userId={props.userId} />
+            </Col>
+            <Col md={0} lg={2} />
+          </Row>
+        </Container>
       </div>
     );
   }

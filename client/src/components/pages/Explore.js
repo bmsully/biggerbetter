@@ -36,43 +36,56 @@ const Explore = (props) => {
   };
 
   return (
-    <div className="Explore-bg">
-      {props.userId ? (
-        <>
-          <div className="u-inlineBlock u-flex Explore-title">
-            <h3 className="u-headerFont">Currently Exploring </h3>
-            <div>
-              <Form.Select className="form-select Explore-dropdown" size="--m" action="#">
-                <option default>Boston/Cambridge</option>
-                <option disabled>other cities soon!</option>
-              </Form.Select>
-            </div>
-          </div>
-          {tradingVisible && (
-            <TradeModule
-              tradingVisible={tradingVisible}
-              userId={props.userId}
-              username={props.username}
-              tradeInfo={tradeInfo}
-              toggle={toggleTradeModule}
-              onSubmit={submitTrade}
-            />
-          )}
-          <ExploreList userId={props.userId} toggle={toggleTradeModule} />
-        </>
-      ) : (
-        <>
-          <div className="Explore-bg u-flex u-flex-justifyCenter u-flex-alignCenter">
-            <div className="Explore-card u-flexColumn u-flex-alignCenter u-flex-justifyCenter">
-              <h3 className="u-headerFont Explore-title-bottom"> Please login to see this page</h3>
-              <div>
-                <Button href="/login">Get Started</Button>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
+    <>
+      <div className="Explore-bg">
+        <Container>
+          <Row>
+            <Col md={0} lg={2} />
+            <Col md={12} lg={8}>
+              {props.userId ? (
+                <>
+                  <div className="u-inlineBlock u-flex Explore-title">
+                    <h3 className="u-headerFont">Currently Exploring </h3>
+                    <div>
+                      <Form.Select className="form-select Explore-dropdown" size="--m" action="#">
+                        <option default>Boston/Cambridge</option>
+                        <option disabled>other cities soon!</option>
+                      </Form.Select>
+                    </div>
+                  </div>
+                  {tradingVisible && (
+                    <TradeModule
+                      tradingVisible={tradingVisible}
+                      userId={props.userId}
+                      username={props.username}
+                      tradeInfo={tradeInfo}
+                      toggle={toggleTradeModule}
+                      onSubmit={submitTrade}
+                    />
+                  )}
+                  <ExploreList userId={props.userId} toggle={toggleTradeModule} />
+                </>
+              ) : (
+                <>
+                  <div className="Explore-bg u-flex u-flex-justifyCenter u-flex-alignCenter">
+                    <div className="Explore-card u-flexColumn u-flex-alignCenter u-flex-justifyCenter">
+                      <h3 className="u-headerFont Explore-title-bottom">
+                        {" "}
+                        Please login to see this page
+                      </h3>
+                      <div>
+                        <Button href="/login">Get Started</Button>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </Col>
+            <Col md={0} lg={2} />
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 };
 

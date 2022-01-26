@@ -56,10 +56,10 @@ const ExploreCard = (props) => {
                 <img src={itemObj.img_loc} className="ExploreCard-itemImg" />
               </Col>
               <Col>
-                <div className="u-headerFont">
+                <div className="u-headerFont ExploreCard-itemFont">
                   Item name: <span className="u-bodyFont">{itemObj.name}</span>
                 </div>
-                <div className="u-headerFont">
+                <div className="u-headerFont ExploreCard-itemFont">
                   Item description: <span className="u-bodyFont">{itemObj.desc}</span>
                 </div>
               </Col>

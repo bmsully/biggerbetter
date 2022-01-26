@@ -9,8 +9,8 @@
 
 .ExploreCard-profileImg {
   display: inline-block;
-  width: 144px;
-  height: 144px;
+  width: calc(144px + 1vw);
+  height: calc(144px + 1vw);
   border-radius: 50%;
 
   background-repeat: no-repeat;
@@ -24,8 +24,8 @@
 }
 
 .ExploreCard-itemImg {
-  height: 100px;
-  width: 100px;
+  height: calc(100px + 5vw);
+  width: calc(100px + 5vw);
   object-fit: cover;
   border: 2px solid var(--jet);
   border-radius: var(--xs);
@@ -39,4 +39,8 @@
 
 .ExploreCard-itemCard-container {
   margin: var(--xs);
+}
+
+.ExploreCard-itemFont {
+  font-size: calc(12px + 1vw);
 }
