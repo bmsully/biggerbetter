@@ -8,7 +8,7 @@ The main purpose of the app is to provide a platform to arrange 1-for-1 item tra
 
 ## Deployment
 
-The app is currently online and visible at https://biggerbetter.herokuapp.com/.
+The app is currently offline, however would be visible at https://biggerbetter.herokuapp.com/.
 
 ## External Packages
 
